@@ -7,6 +7,10 @@
 <script>
     export default {
         name: "Chord",
+        props: {
+          selectedScale: {
+          }
+        },
         data: function () {
             return {
                 tonic: '',
