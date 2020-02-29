@@ -9,11 +9,11 @@
         name: "Chord",
         data: function () {
             return {
-             chordName: "CMA7",
-             tonic: "C3",
-             third: "E3",
-             fifth: "G3",
-             seventh: "B3"
+             chordName: '',
+             tonic: '',
+             third: '',
+             fifth: '',
+             seventh: ''
             }
         }
     }
