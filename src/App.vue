@@ -1,19 +1,17 @@
 <template>
   <div id="app">
-    <Chord></Chord>
-    <Modes></Modes>
+    <Scales>Test</Scales>
+
   </div>
 </template>
 
 <script>
-import Chord from './components/Chord.vue'
-import Modes from "@/components/Modes";
+import Scales from "@/components/Scales";
 export default {
 
   name: 'App',
   components: {
-    Modes,
-    Chord
+    Scales
   }
 }
 </script>
