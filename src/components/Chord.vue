@@ -9,11 +9,16 @@
         name: "Chord",
         data: function () {
             return {
-             chordName: '',
-             tonic: '',
-             third: '',
-             fifth: '',
-             seventh: ''
+                tonic: '',
+                third: '',
+                fifth: '',
+                seventh: '',
+                chordQuality: ''
+            }
+        },
+        computed: {
+            chordName() {
+                return this.tonic + this.chordQuality;
             }
         }
     }
