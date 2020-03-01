@@ -8,7 +8,7 @@
     export default {
         name: "Chord",
         props: {
-            keyReference: [],
+            keyReference: {},
             degree: {}
         },
         data: function () {

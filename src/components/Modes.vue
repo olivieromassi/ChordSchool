@@ -15,7 +15,7 @@
             Chord
         },
         props: {
-            keyReference : []
+            keyReference : {}
         },
         data: function () {
             return {
