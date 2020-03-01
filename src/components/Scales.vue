@@ -7,12 +7,18 @@
         <ul v-if="selectedScale != null">
             <li v-for="note in referenceScale" v-bind:key="note">{{note}}</li>
         </ul>
+        <Modes :keyReference="referenceScale">Test</Modes>
     </div>
 </template>
 
 <script>
+    import Modes from "@/components/Modes";
+
     export default {
         name: "Scales",
+        components: {
+            Modes
+        },
         data: function () {
             return {
                 scaleNames: ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'],
@@ -33,6 +39,7 @@
         },
         computed: {
             referenceScale() {
+                this.$emit('chosen-scale-event', this.scales[this.scaleNames.indexOf(this.selectedScale)]);
                 return this.scales[this.scaleNames.indexOf(this.selectedScale)];
             }
         }
