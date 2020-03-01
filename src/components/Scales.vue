@@ -39,7 +39,6 @@
         },
         computed: {
             referenceScale() {
-                this.$emit('chosen-scale-event', this.scales[this.scaleNames.indexOf(this.selectedScale)]);
                 return this.scales[this.scaleNames.indexOf(this.selectedScale)];
             }
         }
