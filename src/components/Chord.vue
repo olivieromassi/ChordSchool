@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{buildChord(keyReference.indexOf(degree))}}</h1>
+        <h1>{{buildChord(keyReference.indexOf(degree))}}{{chordName}}</h1>
     </div>
 </template>
 
