@@ -1,19 +1,21 @@
 <template>
     <div>
-        <h1>{{features}}</h1>
+        <h1>{{this.features}}</h1>
     </div>
 </template>
 
 <script>
     export default {
         name: "Progression",
-        props: {
-            features: {
-                tonic: '',
-                third: '',
-                fifth: '',
-                seventh: '',
-                chordQuality: ''
+        data: function () {
+            return {
+                features: {
+                    tonic: '',
+                    third: '',
+                    fifth: '',
+                    seventh: '',
+                    chordQuality: ''
+                }
             }
         }
     }
