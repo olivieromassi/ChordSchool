@@ -1,6 +1,9 @@
 <template>
     <div>
         <h1>{{buildChord(keyReference.indexOf(degree))}}{{chordName}}</h1>
+        <button v-on:click="selectChord">
+            <h1>+</h1>
+        </button>
     </div>
 </template>
 
@@ -13,34 +16,39 @@
         },
         data: function () {
             return {
-                tonic: '',
-                third: '',
-                fifth: '',
-                seventh: '',
-                chordQuality: ''
+                features: {
+                    tonic: '',
+                    third: '',
+                    fifth: '',
+                    seventh: '',
+                    chordQuality: ''
+                }
             }
         },
         methods: {
             buildChord() {
-                this.tonic = this.keyReference[(this.degree) % 7];
-                this.third = this.keyReference[(this.degree + 2) % 7];
-                this.fifth = this.keyReference[(this.degree + 4) % 7];
-                this.seventh = this.keyReference[(this.degree + 6) % 7];
+                this.features.tonic = this.keyReference[(this.degree) % 7];
+                this.features.third = this.keyReference[(this.degree + 2) % 7];
+                this.features.fifth = this.keyReference[(this.degree + 4) % 7];
+                this.features.seventh = this.keyReference[(this.degree + 6) % 7];
                 switch (this.degree) {
-                   case 0 : this.chordQuality = 'MA7'; break;
-                   case 1 : this.chordQuality = 'mi7'; break;
-                   case 2 : this.chordQuality = 'mi7'; break;
-                   case 3 : this.chordQuality = 'MA7'; break;
-                   case 4 : this.chordQuality = 'MA7'; break;
-                   case 5 : this.chordQuality = 'mi7'; break;
-                   case 6 : this.chordQuality = 'dim7'; break;
-                   default: this.chordQuality = ''; break;
+                   case 0 : this.features.chordQuality = 'MA7'; break;
+                   case 1 : this.features.chordQuality = 'mi7'; break;
+                   case 2 : this.features.chordQuality = 'mi7'; break;
+                   case 3 : this.features.chordQuality = 'MA7'; break;
+                   case 4 : this.features.chordQuality = 'MA7'; break;
+                   case 5 : this.features.chordQuality = 'mi7'; break;
+                   case 6 : this.features.chordQuality = 'dim7'; break;
+                   default: this.features.chordQuality = ''; break;
                 }
+            },
+            selectChord() {
+                this.$emit('selected-chord-event', this.features)
             }
         },
         computed: {
             chordName() {
-                return this.tonic + this.chordQuality;
+                return this.features.tonic + this.features.chordQuality;
             }
         }
     }
