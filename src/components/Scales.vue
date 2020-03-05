@@ -34,6 +34,7 @@
                     ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
                     ['Bb', 'C', 'D', 'Eb', 'F', 'G', 'A'],
                     ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#']],
+                //comment
                 selectedScale: null
             }
         },
