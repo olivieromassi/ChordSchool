@@ -1,7 +1,9 @@
 <template>
     <div>
         <ol>
-            <li v-for="note in keyReference" v-bind:key="note"><Chord :keyReference="keyReference" :degree="keyReference.indexOf(note)">Test</Chord></li>
+            <li v-for="note in keyReference" v-bind:key="note">
+                <Chord :keyReference="keyReference" :degree="keyReference.indexOf(note)">Test</Chord>
+            </li>
         </ol>
     </div>
 </template>
