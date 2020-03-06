@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import Chord from "@/components/Chord";
+    import Chord from "@/components/ModalChord";
 
     export default {
         name: "Modes",
