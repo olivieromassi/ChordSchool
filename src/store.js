@@ -19,7 +19,8 @@ export const store = new Vuex.Store({
             ['Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G'],
             ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
             ['Bb', 'C', 'D', 'Eb', 'F', 'G', 'A'],
-            ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#']]
+            ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#']],
+        modes: []
     },
     getters: {
         getKeys(state) {
