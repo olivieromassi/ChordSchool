@@ -41,7 +41,7 @@
                 }
             },
             selectChord() {
-                this.$emit('selected-chord-event', this.features)
+                this.$store.state.modes.push(this.features);
             }
         },
         computed: {
