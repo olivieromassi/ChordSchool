@@ -1,21 +1,20 @@
 <template>
   <div id="app">
-    <Scales>Test</Scales>
-    <Progression>Test</Progression>
-
+    <KeyReference>Test</KeyReference>
+    <Modes>Test</Modes>
   </div>
 </template>
 
 <script>
-import Scales from "@/components/Scales";
-import Progression from "@/components/Progression";
+import KeyReference from "@/components/KeyReference";
+import Modes from "@/components/Modes";
 
 export default {
 
   name: 'App',
   components: {
-    Scales,
-    Progression
+    Modes,
+    KeyReference
   }
 }
 </script>
