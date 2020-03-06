@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div id="window">
         <h1>CHORD PROGRESSION LIST</h1>
-        <div v-for="chord in modes" v-bind:key="chord">
+        <div id="chords" v-for="chord in modes" v-bind:key="chord">
                 <Chord :keyReference="keyReference" :degree="keyReference.indexOf(chord.tonic)">Test</Chord>
         </div>
     </div>
@@ -27,5 +27,13 @@
 </script>
 
 <style scoped>
+    #window {
+        width: 1000px;
+        height: 500px;
+        background: lightblue;
+    }
+    #chords {
+        display: inline-block;
+    }
 
 </style>

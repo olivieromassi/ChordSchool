@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div id="window">
+        <h1>MODAL CHORDS</h1>
         <ol>
-            <li v-for="note in keyReference" v-bind:key="note">
+            <li id="modes" v-for="note in keyReference" v-bind:key="note">
                 <Chord :keyReference="keyReference" :degree="keyReference.indexOf(note)">Test</Chord>
             </li>
         </ol>
@@ -25,5 +26,13 @@
 </script>
 
 <style scoped>
+    #window {
+        width: 1000px;
+        height: 500px;
+        background: lightblue;
+    }
+    #modes {
+        display: inline-block;
+    }
 
 </style>

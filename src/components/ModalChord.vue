@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="chord">
         <h1>{{buildChord(keyReference.indexOf(degree))}}{{chordName}}</h1>
         <button id="plus" v-on:click="selectChord">+</button>
     </div>
@@ -54,6 +54,13 @@
 
 <style scoped>
     #plus {
-        background: cyan;
+        background: grey;
+        position: center;
+    }
+    #chord {
+        background-color: dimgrey;
+        width: 120px;
+        height: 120px;
+        border: 5px solid black;
     }
 </style>
