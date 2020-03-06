@@ -16,12 +16,9 @@
         components: {
             Chord
         },
-        props: {
-            keyReference : {}
-        },
-        data: function () {
-            return {
-                modes: []
+        computed: {
+            keyReference() {
+                return this.$store.getters.getKeyReference;
             }
         }
     }
