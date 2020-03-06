@@ -34,6 +34,9 @@ export const store = new Vuex.Store({
         },
         getScales(state) {
             return state.scales;
+        },
+        getModes(state) {
+            return state.modes;
         }
 
     },
