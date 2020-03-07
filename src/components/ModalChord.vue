@@ -61,6 +61,7 @@
     }
     #chord {
         background-color: dimgrey;
+        background-image: repeating-linear-gradient(whitesmoke, transparent);
         width: 120px;
         height: 120px;
         border: 5px solid black;
