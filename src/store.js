@@ -62,6 +62,9 @@ export const store = new Vuex.Store({
         },
         addChordToProgression(state, features) {
             state.progression.push(features);
+        },
+        deleteChordFromProgression(state, features) {
+            state.progression.splice(state.progression.indexOf(features), 1);
         }
     }
 });
