@@ -39,7 +39,8 @@
                    case 6 : this.features.chordQuality = 'dim7'; break;
                    default: this.features.chordQuality = ''; break;
                 }
-                // this.$store.commit('addChordToModes', this.features);
+                // Still need to understand how to add correctly the modes to the state property
+                //this.$store.commit('addChordToModes', this.features);
             },
             selectChord() {
                 this.$store.commit('addChordToProgression', this.features);
