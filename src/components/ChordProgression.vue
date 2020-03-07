@@ -1,14 +1,15 @@
 <template>
     <div id="window">
         <h1>CHORD PROGRESSION LIST</h1>
-        <div id="chords" v-for="chord in progression" v-bind:key="chord.tonic">
-                <Chord :keyReference="keyReference" :degree="keyReference.indexOf(chord.tonic)">Test</Chord>
+        <div id="chords" v-for="chord in progression" v-bind:key="chord.index">
+            <Chord :features="chord"></Chord>
         </div>
     </div>
 </template>
 
 <script>
-    import Chord from "@/components/ModalChord";
+
+    import Chord from "@/components/Chord";
 
     export default {
         name: "ChordProgression",
@@ -35,5 +36,4 @@
     #chords {
         display: inline-block;
     }
-
 </style>
