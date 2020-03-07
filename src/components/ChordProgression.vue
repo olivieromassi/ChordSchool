@@ -21,9 +21,6 @@
         computed: {
             progression() {
                 return this.$store.getters.getProgression;
-            },
-            keyReference() {
-                return this.$store.getters.getKeyReference;
             }
         }
     }
