@@ -1,6 +1,6 @@
 <template>
     <div id="window">
-        <h1>MODAL CHORDS</h1>
+        <h1> MODAL CHORDS: </h1>
         <ol>
             <li id="modes" v-for="note in keyReference" v-bind:key="note">
                 <ModalChord :keyReference="keyReference" :degree="keyReference.indexOf(note)">Test</ModalChord>

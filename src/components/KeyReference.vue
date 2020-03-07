@@ -1,6 +1,6 @@
 <template>
     <div id="window">
-        <label> SELECT A KEY REFERENCE
+        <label> SELECT A KEY REFERENCE:
             <select v-model="selectedKey" @change="setKey($event)">
                 <option v-for="reference in keys" v-bind:key="reference">{{ reference }}</option>
             </select>

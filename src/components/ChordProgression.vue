@@ -1,9 +1,11 @@
 <template>
     <div id="window">
-        <h1>CHORD PROGRESSION LIST</h1>
-        <div id="chords" v-for="chord in progression" v-bind:key="chord.index">
-            <Chord :features="chord"></Chord>
-        </div>
+        <h1> CHORD PROGRESSION LIST: </h1>
+        <ol>
+            <li id="chords" v-for="chord in progression" v-bind:key="chord.index">
+                <Chord :features="chord"></Chord>
+            </li>
+        </ol>
     </div>
 </template>
 
