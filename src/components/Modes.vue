@@ -20,6 +20,9 @@
         computed: {
             keyReference() {
                 return this.$store.getters.getKeyReference;
+            },
+            modes() {
+                return this.$store.getters.getModes;
             }
         }
     }
@@ -29,6 +32,7 @@
     #window {
         width: 1000px;
         height: 500px;
+        border: solid black;
         background: lightblue;
     }
     #modes {
