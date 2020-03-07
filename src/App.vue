@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <KeyReference>Test</KeyReference>
-    <Modes>Test</Modes>
-    <ChordProgression>Test</ChordProgression>
+    <KeyReference></KeyReference>
+    <Modes></Modes>
+    <ChordProgression></ChordProgression>
   </div>
 </template>
 
