@@ -1,7 +1,7 @@
 <template>
     <div id="window">
         <h1>CHORD PROGRESSION LIST</h1>
-        <div id="chords" v-for="chord in modes" v-bind:key="chord">
+        <div id="chords" v-for="chord in progression" v-bind:key="chord">
                 <Chord :keyReference="keyReference" :degree="keyReference.indexOf(chord.tonic)">Test</Chord>
         </div>
     </div>
@@ -16,8 +16,8 @@
             Chord
         },
         computed: {
-            modes() {
-                return this.$store.getters.getModes;
+            progression() {
+                return this.$store.getters.getProgression;
             },
             keyReference() {
                 return this.$store.getters.getKeyReference;

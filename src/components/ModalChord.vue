@@ -41,7 +41,7 @@
                 }
             },
             selectChord() {
-                this.$store.state.modes.push(this.features);
+                this.$store.commit('addChordToProgression', this.features);
             }
         },
         computed: {

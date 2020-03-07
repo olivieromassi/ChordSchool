@@ -20,7 +20,8 @@ export const store = new Vuex.Store({
             ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
             ['Bb', 'C', 'D', 'Eb', 'F', 'G', 'A'],
             ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#']],
-        modes: []
+        modes: [],
+        progression: []
     },
     getters: {
         getKeys(state) {
@@ -37,6 +38,9 @@ export const store = new Vuex.Store({
         },
         getModes(state) {
             return state.modes;
+        },
+        getProgression(state) {
+            return state.progression;
         }
 
     },
@@ -46,6 +50,15 @@ export const store = new Vuex.Store({
         },
         setSelectedKeyScale(state) {
             state.keyReference = state.scales[state.keys.indexOf(state.selectedKey)];
+        },
+        resetModes(state) {
+            state.modes = [];
+        },
+        resetProgression(state) {
+            state.progression = [];
+        },
+        addChordToProgression(state, features) {
+            state.progression.push(features);
         }
     }
 });
