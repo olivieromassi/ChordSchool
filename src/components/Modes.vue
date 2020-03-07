@@ -3,19 +3,19 @@
         <h1>MODAL CHORDS</h1>
         <ol>
             <li id="modes" v-for="note in keyReference" v-bind:key="note">
-                <Chord :keyReference="keyReference" :degree="keyReference.indexOf(note)">Test</Chord>
+                <ModalChord :keyReference="keyReference" :degree="keyReference.indexOf(note)">Test</ModalChord>
             </li>
         </ol>
     </div>
 </template>
 
 <script>
-    import Chord from "@/components/ModalChord";
+    import ModalChord from "@/components/ModalChord";
 
     export default {
         name: "Modes",
         components: {
-            Chord
+            ModalChord
         },
         computed: {
             keyReference() {
