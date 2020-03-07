@@ -18,6 +18,7 @@
         },
         methods: {
           setKey(event) {
+              this.$store.commit('resetModes');
               this.$store.commit('resetProgression');
               this.$store.commit('setSelectedKey', event.target.value);
               this.$store.commit('setSelectedKeyScale');

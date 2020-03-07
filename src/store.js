@@ -54,6 +54,9 @@ export const store = new Vuex.Store({
         resetModes(state) {
             state.modes = [];
         },
+        addChordToModes(state, features) {
+            state.modes.push(features);
+        },
         resetProgression(state) {
             state.progression = [];
         },
