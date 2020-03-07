@@ -39,6 +39,7 @@
     #window {
         width: 500px;
         height: 25px;
+        border: solid black;
         background: lightblue;
     }
 

@@ -33,6 +33,7 @@
     #window {
         width: 1000px;
         height: 500px;
+        border: solid black;
         background: lightblue;
     }
     #chords {
