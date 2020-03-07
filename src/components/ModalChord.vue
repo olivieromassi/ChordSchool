@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: "Chord",
+        name: "ModalChord",
         props: {
             keyReference: {},
             degree: {}
@@ -19,7 +19,7 @@
                     third: '',
                     fifth: '',
                     seventh: '',
-                    chordQuality: ''
+                    chordQuality: '',
                 }
             }
         },
@@ -39,6 +39,7 @@
                    case 6 : this.features.chordQuality = 'dim7'; break;
                    default: this.features.chordQuality = ''; break;
                 }
+               // this.$store.commit('addChordToModes', this.features);
             },
             selectChord() {
                 this.$store.commit('addChordToProgression', this.features);

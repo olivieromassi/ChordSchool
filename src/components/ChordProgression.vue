@@ -1,7 +1,7 @@
 <template>
     <div id="window">
         <h1>CHORD PROGRESSION LIST</h1>
-        <div id="chords" v-for="chord in progression" v-bind:key="chord">
+        <div id="chords" v-for="chord in progression" v-bind:key="chord.tonic">
                 <Chord :keyReference="keyReference" :degree="keyReference.indexOf(chord.tonic)">Test</Chord>
         </div>
     </div>
