@@ -1,6 +1,7 @@
 <template>
-    <div id="chord">
-        <h1>{{buildChord(keyReference.indexOf(degree))}}{{chordName}}</h1>
+    <div id="chord" :style="{backgroundColor: chordColor}">
+        {{ chordMode }}
+        <h1 id="chord-name">{{buildChord(keyReference.indexOf(degree))}}{{chordName}}</h1>
         <button id="plus" v-on:click="selectChord">+</button>
     </div>
 </template>
@@ -49,6 +50,30 @@
         computed: {
             chordName() {
                 return this.features.tonic + this.features.chordQuality;
+            },
+            chordColor() {
+                switch(this.degree) {
+                    case 0: return 'orange';
+                    case 1: return 'deepskyblue';
+                    case 2: return 'darkblue';
+                    case 3: return 'yellow';
+                    case 4: return 'red';
+                    case 5: return 'blue';
+                    case 6: return 'purple';
+                    default: return 'dim-grey';
+                }
+            },
+            chordMode() {
+                switch(this.degree) {
+                    case 0: return 'Ionian';
+                    case 1: return 'Dorian';
+                    case 2: return 'Phrygian';
+                    case 3: return 'Lydian';
+                    case 4: return 'Mixolydian';
+                    case 5: return 'Aeolian';
+                    case 6: return 'Locrian';
+                    default: return 'Unknown';
+                }
             }
         }
     }
@@ -65,5 +90,8 @@
         width: 120px;
         height: 120px;
         border: 5px solid black;
+    }
+    #chord-name {
+        font-size: 30px;
     }
 </style>
