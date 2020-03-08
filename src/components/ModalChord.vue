@@ -35,7 +35,7 @@
                    case 1 : this.features.chordQuality = 'mi7'; break;
                    case 2 : this.features.chordQuality = 'mi7'; break;
                    case 3 : this.features.chordQuality = "\u0394"; break;
-                   case 4 : this.features.chordQuality = "\u0394"; break;
+                   case 4 : this.features.chordQuality = "7"; break;
                    case 5 : this.features.chordQuality = 'mi7'; break;
                    case 6 : this.features.chordQuality = '\u00D8'; break;
                    default: this.features.chordQuality = ''; break;
