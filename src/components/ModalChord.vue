@@ -60,7 +60,7 @@
                     case 4: return 'red';
                     case 5: return 'blue';
                     case 6: return 'purple';
-                    default: return 'dim-grey';
+                    default: return 'dimgrey';
                 }
             },
             chordMode() {
