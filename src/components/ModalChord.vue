@@ -31,13 +31,13 @@
                 this.features.fifth = this.keyReference[(this.degree + 4) % 7];
                 this.features.seventh = this.keyReference[(this.degree + 6) % 7];
                 switch (this.degree) {
-                   case 0 : this.features.chordQuality = 'MA7'; break;
+                   case 0 : this.features.chordQuality = '\u0394'; break;
                    case 1 : this.features.chordQuality = 'mi7'; break;
                    case 2 : this.features.chordQuality = 'mi7'; break;
-                   case 3 : this.features.chordQuality = 'MA7'; break;
-                   case 4 : this.features.chordQuality = 'MA7'; break;
+                   case 3 : this.features.chordQuality = "\u0394"; break;
+                   case 4 : this.features.chordQuality = "\u0394"; break;
                    case 5 : this.features.chordQuality = 'mi7'; break;
-                   case 6 : this.features.chordQuality = 'dim7'; break;
+                   case 6 : this.features.chordQuality = '\u00D8'; break;
                    default: this.features.chordQuality = ''; break;
                 }
                 // Still need to understand how to add correctly the modes to the state property
