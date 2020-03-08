@@ -82,7 +82,8 @@
 <style scoped>
     #plus {
         background: grey;
-        position: center;
+        position: relative;
+        margin-left: 50px;
     }
     #chord {
         background-color: dimgrey;
@@ -92,6 +93,8 @@
         border: 5px solid black;
     }
     #chord-name {
+        position: relative;
+        margin-left: 5px;
         font-size: 30px;
     }
 </style>
