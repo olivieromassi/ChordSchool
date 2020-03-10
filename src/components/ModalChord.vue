@@ -1,7 +1,7 @@
 <template>
     <div id="chord" :style="{backgroundColor: chordColor}">
         {{ chordMode }}
-        <h1 id="chord-name">{{buildChord(keyReference.indexOf(degree))}}{{chordName}}</h1>
+        <h1 id="chord-name">{{buildChord()}}{{chordName}}</h1>
         <button id="plus" v-on:click="selectChord">+</button>
     </div>
 </template>
