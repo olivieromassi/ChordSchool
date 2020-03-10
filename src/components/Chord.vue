@@ -22,7 +22,8 @@
 <style scoped>
     #remove {
         background: grey;
-        position: center;
+        position: relative;
+        margin-left: 50px;
     }
     #chord {
         background-color: dimgrey;
