@@ -44,7 +44,7 @@
     .key {
         position: relative;
         width: 60px;
-        height: 180px;
+        height: 200px;
         border: 1px solid black;
         border-right: none;
         background: #fffff0;
@@ -62,7 +62,7 @@
     ul .black-key {
         position: absolute;
         top: -1px;
-        left: 37.5px;
+        left: 38px;
         width: 40px;
         height: 120px;
         background: black;
