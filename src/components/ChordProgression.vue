@@ -1,6 +1,7 @@
 <template>
     <div id="window">
         <h1> CHORD PROGRESSION LIST: </h1>
+        <button id="play" @click="playProgression">PLAY</button>
         <ol>
             <li id="chords" v-for="chord in progression" v-bind:key="chord.index">
                 <Chord :features="chord"></Chord>
@@ -17,6 +18,11 @@
         name: "ChordProgression",
         components: {
             Chord
+        },
+        methods: {
+          playProgression() {
+              //TODO complete the function once defined the strategy to generate sounds
+          }
         },
         computed: {
             progression() {
@@ -35,5 +41,9 @@
     }
     #chords {
         display: inline-block;
+    }
+    #play {
+        left: 25px;
+        position: relative;
     }
 </style>
