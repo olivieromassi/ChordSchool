@@ -1,5 +1,31 @@
 <template>
     <ul id="piano">
+        <li data-note="C3" class="key">
+            <div data-note="C#3" class="black-key">C#/Db</div>
+            C
+        </li>
+        <li data-note="D3" class="key">
+            <div data-note="D#3" class="black-key">D#/Eb</div>
+            D
+        </li>
+        <li data-note="E3" class="key">
+            E
+        </li>
+        <li data-note="F3" class="key">
+            <div data-note="F#3" class="black-key">F#/Gb</div>
+            F
+        </li>
+        <li data-note="G3" class="key">
+            <div data-note="G#3" class="black-key">G#/Ab</div>
+            G
+        </li>
+        <li data-note="A3" class="key">
+            <div data-note="A#3" class="black-key">A#/Bb</div>
+            A
+        </li>
+        <li data-note="B3" class="key">
+            B
+        </li>
         <li data-note="C4" class="key">
             <div data-note="C#4" class="black-key">C#/Db</div>
             C
@@ -26,7 +52,6 @@
         <li data-note="B4" class="key">
             B
         </li>
-
     </ul>
 </template>
 
