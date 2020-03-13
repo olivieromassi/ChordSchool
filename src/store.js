@@ -32,7 +32,38 @@ export const store = new Vuex.Store({
         modes: [],
 
         /*This list contains the chords chosen by the user to be part of a chord progression*/
-        progression: []
+        progression: [],
+
+        /* This list contains the state of the keyboard keys, that alternate between "pressed-1" or "released-0".*/
+        keyboard: [
+            {name:'C3',     pressed: false,  partOfRefScale: false},
+            {name:'C#3',    pressed: false,  partOfRefScale: false},
+            {name:'D3',     pressed: false,  partOfRefScale: false},
+            {name:'D#3',    pressed: false,  partOfRefScale: false},
+            {name:'E3',     pressed: false,  partOfRefScale: false},
+            {name:'F3',     pressed: false,  partOfRefScale: false},
+            {name:'F#3',    pressed: false,  partOfRefScale: false},
+            {name:'G3',     pressed: false,  partOfRefScale: false},
+            {name:'G#3',    pressed: false,  partOfRefScale: false},
+            {name:'A3',     pressed: false,  partOfRefScale: false},
+            {name:'A#3',    pressed: false,  partOfRefScale: false},
+            {name:'B3',     pressed: false,  partOfRefScale: false},
+            {name:'C4',     pressed: false,  partOfRefScale: false},
+            {name:'C#4',    pressed: false,  partOfRefScale: false},
+            {name:'D4',     pressed: false,  partOfRefScale: false},
+            {name:'D#4',    pressed: false,  partOfRefScale: false},
+            {name:'E4',     pressed: false,  partOfRefScale: false},
+            {name:'F4',     pressed: false,  partOfRefScale: false},
+            {name:'F#4',    pressed: false,  partOfRefScale: false},
+            {name:'G4',     pressed: false,  partOfRefScale: false},
+            {name:'G#4',    pressed: false,  partOfRefScale: false},
+            {name:'A4',     pressed: false,  partOfRefScale: false},
+            {name:'A#4',    pressed: false,  partOfRefScale: false},
+            {name:'B4',     pressed: false,  partOfRefScale: false},
+            ],
+
+        /* This variable will reset the keyboard if true */
+        resetKeyboard: true
     },
     getters: {
         getKeys(state) {
@@ -85,6 +116,14 @@ export const store = new Vuex.Store({
         },
         deleteChordFromProgression(state, features) {
             state.progression.splice(state.progression.indexOf(features), 1);
+        },
+
+        /*METHODS RELATED TO KEYBOARD FINGERING*/
+        /*This method resets the keyboard state to zero and fingers the chord*/
+        resetChordFingering(state){
+            for ( const key in state.keyboard){
+                state.keyboard[key].pressed = false
+            }
         }
     }
 });

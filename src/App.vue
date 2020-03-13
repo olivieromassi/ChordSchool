@@ -3,7 +3,7 @@
     <KeyReference></KeyReference>
     <Modes></Modes>
     <ChordProgression></ChordProgression>
-    <Piano></Piano>
+    <Keyboard></Keyboard>
   </div>
 </template>
 
@@ -11,13 +11,13 @@
 import KeyReference from "@/components/KeyReference";
 import Modes from "@/components/Modes";
 import ChordProgression from "@/components/ChordProgression";
-import Piano from "@/components/Piano";
+import Keyboard from "@/components/Keyboard";
 
 export default {
 
   name: 'App',
   components: {
-    Piano,
+    Keyboard,
     ChordProgression,
     Modes,
     KeyReference

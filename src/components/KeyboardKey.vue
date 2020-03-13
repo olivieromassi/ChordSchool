@@ -1,0 +1,61 @@
+<template>
+    <div v-bind:class = "{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack}">{{ note }}
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "keyboardKey",
+        props: {
+            note: {
+                type: String,
+                required: true
+            },
+            keyIsBlack: {
+                type: Boolean,
+                required: true
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    .key {
+        position: relative;
+        width: 60px;
+        height: 200px;
+        border: 1px solid black;
+        border-right: none;
+        background: #fffff0;
+        border-radius: 5px;
+        box-shadow: 0 3px 5px #666;
+        display: inline-flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 10px;
+        font-weight: bold;
+    }
+    .key:last-child {
+        border-right: 1px solid black;
+    }
+    .black-key {
+        position: absolute;
+        top: -1px;
+        left: 38px;
+        width: 40px;
+        height: 120px;
+        background: black;
+        border-radius: 5px;
+        box-shadow: 0 3px 5px #666;
+        z-index: 999;
+        display: inline-flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 10px;
+        color: white;
+
+    }
+    .pressedKey{
+        background: darkred;
+    }
+</style>

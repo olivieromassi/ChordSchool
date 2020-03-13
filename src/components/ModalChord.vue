@@ -1,5 +1,6 @@
 <template>
-    <div id="chord" :style="{backgroundColor: chordColor}">
+    <div id="chord" :style="{backgroundColor: chordColor}"
+        @mouseover="fingerChord()">
         {{ chordMode }}
         <h1 id="chord-name">{{buildChord()}}{{chordName}}</h1>
         <button id="plus" v-on:click="selectChord">+</button>
@@ -45,6 +46,10 @@
             },
             selectChord() {
                 this.$store.commit('addChordToProgression', this.features);
+            },
+            fingerChord() {
+                this.$store.commit('resetChordFingering')
+                // TO-DO the function that actualy fingers the chord on the piano
             }
         },
         computed: {
