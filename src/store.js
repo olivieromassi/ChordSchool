@@ -47,23 +47,12 @@ export const store = new Vuex.Store({
             {name:'G#3',    pressed: false,  partOfRefScale: false},
             {name:'A3',     pressed: false,  partOfRefScale: false},
             {name:'A#3',    pressed: false,  partOfRefScale: false},
-            {name:'B3',     pressed: false,  partOfRefScale: false},
-            {name:'C4',     pressed: false,  partOfRefScale: false},
-            {name:'C#4',    pressed: false,  partOfRefScale: false},
-            {name:'D4',     pressed: false,  partOfRefScale: false},
-            {name:'D#4',    pressed: false,  partOfRefScale: false},
-            {name:'E4',     pressed: false,  partOfRefScale: false},
-            {name:'F4',     pressed: false,  partOfRefScale: false},
-            {name:'F#4',    pressed: false,  partOfRefScale: false},
-            {name:'G4',     pressed: false,  partOfRefScale: false},
-            {name:'G#4',    pressed: false,  partOfRefScale: false},
-            {name:'A4',     pressed: false,  partOfRefScale: false},
-            {name:'A#4',    pressed: false,  partOfRefScale: false},
-            {name:'B4',     pressed: false,  partOfRefScale: false},
+            {name:'B3',     pressed: false,  partOfRefScale: false}
             ],
 
         /* This variable will reset the keyboard if true */
-        resetKeyboard: true
+        resetKeyboard: true,
+        keysIndexes : [],
     },
     getters: {
         getKeys(state) {
@@ -83,6 +72,12 @@ export const store = new Vuex.Store({
         },
         getProgression(state) {
             return state.progression;
+        },
+        getPressedKeys(state){
+            return state.keyboard.filter( key => {
+                return key.pressed
+                }
+            )
         }
 
     },
@@ -120,10 +115,29 @@ export const store = new Vuex.Store({
 
         /*METHODS RELATED TO KEYBOARD FINGERING*/
         /*This method resets the keyboard state to zero and fingers the chord*/
-        resetChordFingering(state){
+        resetPressedKeys(state){
             for ( const key in state.keyboard){
                 state.keyboard[key].pressed = false
             }
+        },
+        fingerChord(state , features){
+            let noteIndexes =[];
+            const noteNames = state.keyboard.map(key => key.name);
+            for (let key in features) {
+                if (key != "chordQuality"){
+                //Checking if the note name actually exists as the keyboard names, E# is actually F and B# is actually C
+                if (features[key] == "E#")
+                    features[key] = "F";
+                else if (features[key] == "B#")
+                    features[key] = "C";
+                //Based on the chord fingering, create an array with the indexes of keys to be pressed
+                noteIndexes.push(noteNames.findIndex(e => e.includes(features[key])))
+                //noteIndexes.pop();
+                }
+            }
+            // Change the state of the keys to pressed
+            noteIndexes.forEach(element => state.keyboard[element].pressed=true)
+
         }
     }
 });
