@@ -2,12 +2,14 @@
     <div id="chord" :style="{backgroundColor: chordColor}"
         @mouseover="fingerChord()">
         {{ chordMode }}
-        <h1 id="chord-name">{{buildChord()}}{{chordName}}</h1>
+        <h1 id="chord-name" @click="playChord">{{buildChord()}}{{chordName}}</h1>
         <button id="plus" v-on:click="selectChord">+</button>
     </div>
 </template>
 
 <script>
+    import * as Tone from "tone";
+
     export default {
         name: "ModalChord",
         props: {
@@ -50,6 +52,14 @@
             fingerChord() {
                 this.$store.commit('resetChordFingering')
                 // TO-DO the function that actualy fingers the chord on the piano
+            },
+            playChord() {
+                let piano = new Tone.PolySynth(Tone.Synth).toDestination();
+                piano.triggerAttackRelease([this.features.tonic,
+                    this.features.third,
+                    this.features.fifth,
+                    this.features.seventh],
+                    1);
             }
         },
         computed: {
