@@ -1,6 +1,7 @@
 <template>
     <div id="chord" :style="{backgroundColor: chordColor}"
-         @mouseenter="fingerChord()"
+         @mouseenter="fingerChord() "
+         @mousedown="playChord()"
          @mouseleave="resetKeyboard()">
         {{ chordMode }}
         <h1 id="chord-name">{{buildChord()}}{{chordName}}</h1>

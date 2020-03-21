@@ -15,7 +15,7 @@ export const store = new Vuex.Store({
         keyReference: [],
 
         /*This dictionary contains all the possible Ionian scales*/
-        scales: [['C', 'D', 'E', 'F', 'G', 'A', 'B'],
+        scales: [['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3'],
             ['C#', 'D#', 'E#', 'F#', 'G#', 'A#', 'B#'],
             ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'],
             ['Eb', 'F', 'G', 'Ab', 'Bb', 'C', 'D'],
