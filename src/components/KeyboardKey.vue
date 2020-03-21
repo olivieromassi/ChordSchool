@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class = "{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack}">{{ note }}
+    <div v-bind:class = "{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack, 'pressed-key': keyIsPressed}">{{ note }}
     </div>
 </template>
 
@@ -15,7 +15,13 @@
                 type: Boolean,
                 required: true
             }
+        },
+        computed: {
+        keyIsPressed() {
+            return this.$store.getters.getPressedKeys.map(key => key.name).indexOf(this.note) >= 0
+            }
         }
+
     }
 </script>
 
@@ -55,7 +61,7 @@
         color: white;
 
     }
-    .pressedKey{
+    .pressed-key{
         background: darkred;
     }
 </style>
