@@ -36,7 +36,7 @@
 <style scoped>
     #window {
         width: 1000px;
-        height: 500px;
+        height: 300px;
         border: solid black;
         background: lightblue;
     }
