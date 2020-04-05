@@ -53,6 +53,7 @@ export const store = new Vuex.Store({
         /* This variable will reset the keyboard if true */
         resetKeyboard: true,
         keysIndexes : [],
+
     },
     getters: {
         getKeys(state) {
@@ -81,6 +82,15 @@ export const store = new Vuex.Store({
         }
 
     },
+
+    actions: {
+        /*asynchronous commit of the altered chord progression is required
+        *to avoid conflict with relevant getProgression getter  */
+        rearrangeProgression({ commit }, chords) {
+            commit("commitProgression", chords);
+        }
+    },
+
     mutations: {
         /*METHODS RELATED TO THE KEY REFERENCE STATE*/
         /*This method assigns the selected key to the corresponding state's variable*/
@@ -111,6 +121,10 @@ export const store = new Vuex.Store({
         },
         deleteChordFromProgression(state, features) {
             state.progression.splice(state.progression.indexOf(features), 1);
+        },
+
+        commitProgression(state, chords) {
+            state.progression = chords.items;
         },
 
         /*METHODS RELATED TO KEYBOARD FINGERING*/

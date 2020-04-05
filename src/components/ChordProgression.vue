@@ -3,9 +3,11 @@
         <h1> CHORD PROGRESSION LIST: </h1>
         <button id="play" @click="playProgression">PLAY</button>
         <ol>
-            <li id="chords" v-for="chord in progression" v-bind:key="chord.index">
-                <Chord :features="chord"></Chord>
-            </li>
+            <draggable v-model="progression">
+                <li id="chords" v-for="chord in progression" v-bind:key="chord.index">
+                    <Chord :features="chord"></Chord>
+                </li>
+            </draggable>
         </ol>
     </div>
 </template>
@@ -13,11 +15,13 @@
 <script>
 
     import Chord from "@/components/Chord";
+    import draggable from "vuedraggable";
 
     export default {
         name: "ChordProgression",
         components: {
-            Chord
+            Chord,
+            draggable
         },
         methods: {
           playProgression() {
@@ -25,12 +29,19 @@
           }
         },
         computed: {
-            progression() {
-                return this.$store.getters.getProgression;
+            progression: {
+                get() {
+                    return this.$store.getters.getProgression
+                },
+                set(chords) {
+                    this.$store.dispatch('rearrangeProgression', {
+                        items: chords
+                    });
+                }
             }
         }
     }
-    //testing commit by fotis branch
+
 </script>
 
 <style scoped>
