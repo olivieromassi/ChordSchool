@@ -130,7 +130,7 @@ export const store = new Vuex.Store({
         /*METHODS RELATED TO KEYBOARD FINGERING*/
         /*This method resets the keyboard state to zero and fingers the chord*/
         resetPressedKeys(state){
-            for ( const key in state.keyboard){
+            for (let key in state.keyboard){
                 state.keyboard[key].pressed = false
             }
         },
@@ -138,19 +138,19 @@ export const store = new Vuex.Store({
             let noteIndexes =[];
             const noteNames = state.keyboard.map(key => key.name);
             for (let key in features) {
-                if (key != "chordQuality"){
+                if (key !== "chordQuality"){
                 //Checking if the note name actually exists as the keyboard names, E# is actually F and B# is actually C
-                if (features[key] == "E#")
+                if (features[key] === "E#")
                     features[key] = "F";
-                else if (features[key] == "B#")
+                else if (features[key] === "B#")
                     features[key] = "C";
                 //Based on the chord fingering, create an array with the indexes of keys to be pressed
-                noteIndexes.push(noteNames.findIndex(e => e.includes(features[key])))
+                noteIndexes.push(noteNames.findIndex(e => e.includes(features[key])));
                 //noteIndexes.pop();
                 }
             }
             // Change the state of the keys to pressed
-            noteIndexes.forEach(element => state.keyboard[element].pressed=true)
+            noteIndexes.forEach(element => state.keyboard[element].pressed=true);
 
         }
     }
