@@ -170,7 +170,6 @@ export const store = new Vuex.Store({
                 if (key !== "chordQuality") {
                     // checking if the key exists on the keyboard
                     if (noteNames.indexOf(features[key]) < 0) {
-                        console.log(features[key] + " is not found on keyboard");
                         if (features[key].includes("#")) {
                             features[key] = features[key].replace("#", '');
                             features[key] = noteNames[noteNames.findIndex(e => e.includes(features[key])) + 1]
