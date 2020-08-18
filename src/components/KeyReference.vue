@@ -1,28 +1,39 @@
 <template>
-    <div id="window">
+
+    <div>
+
+        <!--
         <label> SELECT A KEY REFERENCE:
             <select v-model="selectedKey" @change="setKey($event)">
                 <option v-for="reference in keys" v-bind:key="reference">{{ reference }}</option>
             </select>
         </label>
+        -->
+        <v-select
+                v-model="selectedKey"
+                :items="keys"
+                @change="setKey"
+                filled
+                label="Key reference"
+        ></v-select>
     </div>
 </template>
 
 <script>
     export default {
         name: "KeyReference",
-        data: function() {
+        data: function () {
             return {
                 selectedKey: String
             }
         },
         methods: {
-          setKey(event) {
-              this.$store.commit('resetModes');
-              this.$store.commit('resetProgression');
-              this.$store.commit('setSelectedKey', event.target.value);
-              this.$store.commit('setSelectedKeyScale');
-          }
+            setKey(value) {
+                this.$store.commit('resetModes');
+                this.$store.commit('resetProgression');
+                this.$store.commit('setSelectedKey', value);
+                this.$store.commit('setSelectedKeyScale');
+            }
         },
         computed: {
             keys() {
@@ -42,5 +53,5 @@
         border: solid black;
         background: lightblue;
     }
-    
+
 </style>

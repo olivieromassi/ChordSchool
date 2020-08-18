@@ -22,6 +22,50 @@
             <KeyboardKey :note="'A#3'" :keyIsBlack="true" ></KeyboardKey>
         </div>
         <KeyboardKey :note="'B3'"  :keyIsBlack="false"></KeyboardKey>
+        <div>
+            <KeyboardKey :note="'C4'" :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'C#4'"  :keyIsBlack="true"></KeyboardKey>
+        </div>
+        <div>
+            <KeyboardKey :note="'D4'"  :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'D#4'"  :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <KeyboardKey :note="'E4'"  :keyIsBlack="false"  ></KeyboardKey>
+        <div>
+            <KeyboardKey :note="'F4'"   :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'F#4'"  :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <div>
+            <KeyboardKey :note="'G4'" :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'G#4'" :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <div>
+            <KeyboardKey :note="'A4'"  :keyIsBlack="false"  ></KeyboardKey>
+            <KeyboardKey :note="'A#4'" :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <KeyboardKey :note="'B4'"  :keyIsBlack="false"></KeyboardKey>
+        <div>
+            <KeyboardKey :note="'C5'" :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'C#5'"  :keyIsBlack="true"></KeyboardKey>
+        </div>
+        <div>
+            <KeyboardKey :note="'D5'"  :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'D#5'"  :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <KeyboardKey :note="'E5'"  :keyIsBlack="false"  ></KeyboardKey>
+        <div>
+            <KeyboardKey :note="'F5'"   :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'F#5'"  :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <div>
+            <KeyboardKey :note="'G5'" :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'G#5'" :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <div>
+            <KeyboardKey :note="'A5'"  :keyIsBlack="false"  ></KeyboardKey>
+            <KeyboardKey :note="'A#5'" :keyIsBlack="true" ></KeyboardKey>
+        </div>
+        <KeyboardKey :note="'B5'"  :keyIsBlack="false"></KeyboardKey>
     </div>
 
 </template>

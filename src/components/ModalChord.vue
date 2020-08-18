@@ -35,14 +35,30 @@
                 this.features.fifth = this.keyReference[(this.degree + 4) % 7];
                 this.features.seventh = this.keyReference[(this.degree + 6) % 7];
                 switch (this.degree) {
-                   case 0 : this.features.chordQuality = '\u0394'; break;
-                   case 1 : this.features.chordQuality = 'mi7'; break;
-                   case 2 : this.features.chordQuality = 'mi7'; break;
-                   case 3 : this.features.chordQuality = '\u0394'; break;
-                   case 4 : this.features.chordQuality = "7"; break;
-                   case 5 : this.features.chordQuality = 'mi7'; break;
-                   case 6 : this.features.chordQuality = '\u00D8'; break;
-                   default: this.features.chordQuality = ''; break;
+                    case 0 :
+                        this.features.chordQuality = '\u0394';
+                        break;
+                    case 1 :
+                        this.features.chordQuality = 'mi7';
+                        break;
+                    case 2 :
+                        this.features.chordQuality = 'mi7';
+                        break;
+                    case 3 :
+                        this.features.chordQuality = '\u0394';
+                        break;
+                    case 4 :
+                        this.features.chordQuality = "7";
+                        break;
+                    case 5 :
+                        this.features.chordQuality = 'mi7';
+                        break;
+                    case 6 :
+                        this.features.chordQuality = '\u00D8';
+                        break;
+                    default:
+                        this.features.chordQuality = '';
+                        break;
                 }
                 // Still need to understand how to add correctly the modes to the state property
                 //this.$store.commit('addChordToModes', this.features);
@@ -51,9 +67,9 @@
                 this.$store.commit('addChordToProgression', this.features);
             },
             fingerChord() {
-                this.$store.commit( 'fingerChord', this.features);
+                this.$store.commit('fingerChord', this.features);
             },
-            resetKeyboard(){
+            resetKeyboard() {
                 this.$store.commit('resetPressedKeys');
             },
             playChord() {
@@ -70,27 +86,43 @@
                 return this.features.tonic + this.features.chordQuality;
             },
             chordColor() {
-                switch(this.degree) {
-                    case 0: return 'orange';
-                    case 1: return 'deepskyblue';
-                    case 2: return 'darkblue';
-                    case 3: return 'yellow';
-                    case 4: return 'red';
-                    case 5: return 'blue';
-                    case 6: return 'purple';
-                    default: return 'dimgrey';
+                switch (this.degree) {
+                    case 0:
+                        return 'orange';
+                    case 1:
+                        return 'deepskyblue';
+                    case 2:
+                        return 'darkblue';
+                    case 3:
+                        return 'yellow';
+                    case 4:
+                        return 'red';
+                    case 5:
+                        return 'blue';
+                    case 6:
+                        return 'purple';
+                    default:
+                        return 'dimgrey';
                 }
             },
             chordMode() {
-                switch(this.degree) {
-                    case 0: return 'Ionian';
-                    case 1: return 'Dorian';
-                    case 2: return 'Phrygian';
-                    case 3: return 'Lydian';
-                    case 4: return 'Mixolydian';
-                    case 5: return 'Aeolian';
-                    case 6: return 'Locrian';
-                    default: return 'Unknown';
+                switch (this.degree) {
+                    case 0:
+                        return 'Ionian 0';
+                    case 1:
+                        return 'Dorian 1';
+                    case 2:
+                        return 'Phrygian 2';
+                    case 3:
+                        return 'Lydian 3';
+                    case 4:
+                        return 'Mixolydian 4';
+                    case 5:
+                        return 'Aeolian 5';
+                    case 6:
+                        return 'Locrian 6';
+                    default:
+                        return 'Unknown';
                 }
             }
         }
@@ -103,6 +135,7 @@
         position: relative;
         margin-left: 50px;
     }
+
     #chord {
         background-color: dimgrey;
         background-image: repeating-linear-gradient(whitesmoke, transparent);
@@ -110,6 +143,7 @@
         height: 120px;
         border: 5px solid black;
     }
+
     #chord-name {
         position: relative;
         margin-left: 5px;

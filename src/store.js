@@ -14,19 +14,23 @@ export const store = new Vuex.Store({
         /*This list contains all the notes of the Ionian Scale corresponding to the chosen key reference*/
         keyReference: [],
 
+
         /*This dictionary contains all the possible Ionian scales*/
+
         scales: [['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3'],
-            ['C#', 'D#', 'E#', 'F#', 'G#', 'A#', 'B#'],
-            ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'],
-            ['Eb', 'F', 'G', 'Ab', 'Bb', 'C', 'D'],
-            ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'],
-            ['F', 'G', 'A', 'Bb', 'C', 'D', 'E'],
-            ['F#', 'G#', 'A#', 'B', 'C#', 'D#', 'E#'],
-            ['G', 'A', 'B', 'C', 'D', 'E', 'F#'],
-            ['Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G'],
-            ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
-            ['Bb', 'C', 'D', 'Eb', 'F', 'G', 'A'],
-            ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#']],
+
+            ['C#3', 'D#3', 'E#3', 'F#3', 'G#3', 'A#3', 'B#3'],
+            ['D3', 'E3', 'F#3', 'G3', 'A3', 'B3', 'C#4'],
+            ['Eb3', 'F3', 'G3', 'Ab3', 'Bb3', 'C4', 'D4'],
+            ['E3', 'F#3', 'G#3', 'A3', 'B3', 'C#4', 'D#4'],
+            ['F3', 'G3', 'A3', 'Bb3', 'C4', 'D4', 'E4'],
+            ['F#3', 'G#3', 'A#3', 'B3', 'C#4', 'D#4', 'E#4'],
+            ['G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F#4'],
+            ['Ab3', 'Bb3', 'C4', 'Db4', 'Eb4', 'F4', 'G4'],
+            ['A3', 'B3', 'C#4', 'D4', 'E4', 'F#4', 'G#4'],
+            ['Bb3', 'C4', 'D4', 'Eb4', 'F4', 'G4', 'A4'],
+            ['B3', 'C#4', 'D#4', 'E4', 'F#4', 'G#4', 'A#4']],
+
 
         /*This list contains the 7 major harmony modes related to the selected key reference*/
         modes: [],
@@ -36,23 +40,47 @@ export const store = new Vuex.Store({
 
         /* This list contains the state of the keyboard keys, that alternate between "pressed-1" or "released-0".*/
         keyboard: [
-            {name:'C3',     pressed: false,  partOfRefScale: false},
-            {name:'C#3',    pressed: false,  partOfRefScale: false},
-            {name:'D3',     pressed: false,  partOfRefScale: false},
-            {name:'D#3',    pressed: false,  partOfRefScale: false},
-            {name:'E3',     pressed: false,  partOfRefScale: false},
-            {name:'F3',     pressed: false,  partOfRefScale: false},
-            {name:'F#3',    pressed: false,  partOfRefScale: false},
-            {name:'G3',     pressed: false,  partOfRefScale: false},
-            {name:'G#3',    pressed: false,  partOfRefScale: false},
-            {name:'A3',     pressed: false,  partOfRefScale: false},
-            {name:'A#3',    pressed: false,  partOfRefScale: false},
-            {name:'B3',     pressed: false,  partOfRefScale: false}
-            ],
+            {name: 'C3', pressed: false, partOfRefScale: false},
+            {name: 'C#3', pressed: false, partOfRefScale: false},
+            {name: 'D3', pressed: false, partOfRefScale: false},
+            {name: 'D#3', pressed: false, partOfRefScale: false},
+            {name: 'E3', pressed: false, partOfRefScale: false},
+            {name: 'F3', pressed: false, partOfRefScale: false},
+            {name: 'F#3', pressed: false, partOfRefScale: false},
+            {name: 'G3', pressed: false, partOfRefScale: false},
+            {name: 'G#3', pressed: false, partOfRefScale: false},
+            {name: 'A3', pressed: false, partOfRefScale: false},
+            {name: 'A#3', pressed: false, partOfRefScale: false},
+            {name: 'B3', pressed: false, partOfRefScale: false},
+            {name: 'C4', pressed: false, partOfRefScale: false},
+            {name: 'C#4', pressed: false, partOfRefScale: false},
+            {name: 'D4', pressed: false, partOfRefScale: false},
+            {name: 'D#4', pressed: false, partOfRefScale: false},
+            {name: 'E4', pressed: false, partOfRefScale: false},
+            {name: 'F4', pressed: false, partOfRefScale: false},
+            {name: 'F#4', pressed: false, partOfRefScale: false},
+            {name: 'G4', pressed: false, partOfRefScale: false},
+            {name: 'G#4', pressed: false, partOfRefScale: false},
+            {name: 'A4', pressed: false, partOfRefScale: false},
+            {name: 'A#4', pressed: false, partOfRefScale: false},
+            {name: 'B4', pressed: false, partOfRefScale: false},
+            {name: 'C5', pressed: false, partOfRefScale: false},
+            {name: 'C#5', pressed: false, partOfRefScale: false},
+            {name: 'D5', pressed: false, partOfRefScale: false},
+            {name: 'D#5', pressed: false, partOfRefScale: false},
+            {name: 'E5', pressed: false, partOfRefScale: false},
+            {name: 'F5', pressed: false, partOfRefScale: false},
+            {name: 'F#5', pressed: false, partOfRefScale: false},
+            {name: 'G5', pressed: false, partOfRefScale: false},
+            {name: 'G#5', pressed: false, partOfRefScale: false},
+            {name: 'A5', pressed: false, partOfRefScale: false},
+            {name: 'A#5', pressed: false, partOfRefScale: false},
+            {name: 'B5', pressed: false, partOfRefScale: false}
+        ],
 
         /* This variable will reset the keyboard if true */
         resetKeyboard: true,
-        keysIndexes : [],
+        keysIndexes: [],
 
     },
     getters: {
@@ -74,8 +102,8 @@ export const store = new Vuex.Store({
         getProgression(state) {
             return state.progression;
         },
-        getPressedKeys(state){
-            return state.keyboard.filter( key => {
+        getPressedKeys(state) {
+            return state.keyboard.filter(key => {
                 return key.pressed
                 }
             )
@@ -86,7 +114,7 @@ export const store = new Vuex.Store({
     actions: {
         /*asynchronous commit of the altered chord progression is required
         *to avoid conflict with relevant getProgression getter  */
-        rearrangeProgression({ commit }, chords) {
+        rearrangeProgression({commit}, chords) {
             commit("commitProgression", chords);
         }
     },
@@ -129,29 +157,42 @@ export const store = new Vuex.Store({
 
         /*METHODS RELATED TO KEYBOARD FINGERING*/
         /*This method resets the keyboard state to zero and fingers the chord*/
-        resetPressedKeys(state){
-            for (let key in state.keyboard){
+        resetPressedKeys(state) {
+            for (let key in state.keyboard) {
                 state.keyboard[key].pressed = false
             }
         },
-        fingerChord(state , features){
-            let noteIndexes =[];
+        fingerChord(state, features) {
+            //Based on the chord fingering, create an array with the indexes of keys to be pressed
+            let noteIndexes = [];
             const noteNames = state.keyboard.map(key => key.name);
             for (let key in features) {
-                if (key !== "chordQuality"){
-                //Checking if the note name actually exists as the keyboard names, E# is actually F and B# is actually C
-                if (features[key] === "E#")
-                    features[key] = "F";
-                else if (features[key] === "B#")
-                    features[key] = "C";
-                //Based on the chord fingering, create an array with the indexes of keys to be pressed
-                noteIndexes.push(noteNames.findIndex(e => e.includes(features[key])));
-                //noteIndexes.pop();
+                if (key !== "chordQuality") {
+                    // checking if the key exists on the keyboard
+                    if (noteNames.indexOf(features[key]) < 0) {
+                        console.log(features[key] + " is not found on keyboard");
+                        if (features[key].includes("#")) {
+                            features[key] = features[key].replace("#", '');
+                            features[key] = noteNames[noteNames.findIndex(e => e.includes(features[key])) + 1]
+                        }
+                        if (features[key].includes("b")) {
+                            features[key] = features[key].replace("b", '');
+                            features[key] = noteNames[noteNames.findIndex(e => e.includes(features[key])) - 1]
+                        }
+                    }
+                    // checking if the key should be pressed an octave above
+                    if (key !== "tonic") {
+                        if (noteNames.indexOf(features["tonic"]) > noteNames.indexOf(features[key])) {
+                            features[key] = noteNames[12 + noteNames.findIndex(e => e.includes(features[key]))]
+                        }
+                    }
+                    noteIndexes.push(noteNames.findIndex(e => e.includes(features[key])));
+                    //noteIndexes.pop();
                 }
             }
             // Change the state of the keys to pressed
-            noteIndexes.forEach(element => state.keyboard[element].pressed=true);
-
+            noteIndexes.forEach(element => state.keyboard[element].pressed = true);
         }
     }
 });
+
