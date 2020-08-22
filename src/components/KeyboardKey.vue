@@ -1,9 +1,13 @@
 <template>
-    <div v-bind:class = "{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack, 'pressed-key': keyIsPressed}">{{ note }}
+    <div v-bind:class="{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack, 'pressed-key': keyIsPressed}">
+        <div>{{keys.map(key => key.noteName)[keys.map(key => key.name).indexOf(note)]}}</div>
+
     </div>
+
 </template>
 
 <script>
+
     export default {
         name: "keyboardKey",
         props: {
@@ -17,12 +21,17 @@
             }
         },
         computed: {
-        keyIsPressed() {
-            return this.$store.getters.getPressedKeys.map(key => key.name).indexOf(this.note) >= 0
+            keyIsPressed() {
+                return this.$store.getters.getPressedKeys.map(key => key.name).indexOf(this.note) >= 0
+            },
+            keys() {
+                return this.$store.getters.getPressedKeys
             }
-        }
+            ,
 
+        }
     }
+
 </script>
 
 <style scoped>
@@ -41,9 +50,11 @@
         padding-bottom: 10px;
         font-weight: bold;
     }
+
     .key:last-child {
         border-right: 1px solid black;
     }
+
     .black-key {
         position: absolute;
         top: -1px;
@@ -61,7 +72,8 @@
         color: white;
 
     }
-    .pressed-key{
+
+    .pressed-key {
         background: darkred;
     }
 </style>

@@ -40,42 +40,42 @@ export const store = new Vuex.Store({
 
         /* This list contains the state of the keyboard keys, that alternate between "pressed-1" or "released-0".*/
         keyboard: [
-            {name: 'C3', pressed: false, partOfRefScale: false},
-            {name: 'C#3', pressed: false, partOfRefScale: false},
-            {name: 'D3', pressed: false, partOfRefScale: false},
-            {name: 'D#3', pressed: false, partOfRefScale: false},
-            {name: 'E3', pressed: false, partOfRefScale: false},
-            {name: 'F3', pressed: false, partOfRefScale: false},
-            {name: 'F#3', pressed: false, partOfRefScale: false},
-            {name: 'G3', pressed: false, partOfRefScale: false},
-            {name: 'G#3', pressed: false, partOfRefScale: false},
-            {name: 'A3', pressed: false, partOfRefScale: false},
-            {name: 'A#3', pressed: false, partOfRefScale: false},
-            {name: 'B3', pressed: false, partOfRefScale: false},
-            {name: 'C4', pressed: false, partOfRefScale: false},
-            {name: 'C#4', pressed: false, partOfRefScale: false},
-            {name: 'D4', pressed: false, partOfRefScale: false},
-            {name: 'D#4', pressed: false, partOfRefScale: false},
-            {name: 'E4', pressed: false, partOfRefScale: false},
-            {name: 'F4', pressed: false, partOfRefScale: false},
-            {name: 'F#4', pressed: false, partOfRefScale: false},
-            {name: 'G4', pressed: false, partOfRefScale: false},
-            {name: 'G#4', pressed: false, partOfRefScale: false},
-            {name: 'A4', pressed: false, partOfRefScale: false},
-            {name: 'A#4', pressed: false, partOfRefScale: false},
-            {name: 'B4', pressed: false, partOfRefScale: false},
-            {name: 'C5', pressed: false, partOfRefScale: false},
-            {name: 'C#5', pressed: false, partOfRefScale: false},
-            {name: 'D5', pressed: false, partOfRefScale: false},
-            {name: 'D#5', pressed: false, partOfRefScale: false},
-            {name: 'E5', pressed: false, partOfRefScale: false},
-            {name: 'F5', pressed: false, partOfRefScale: false},
-            {name: 'F#5', pressed: false, partOfRefScale: false},
-            {name: 'G5', pressed: false, partOfRefScale: false},
-            {name: 'G#5', pressed: false, partOfRefScale: false},
-            {name: 'A5', pressed: false, partOfRefScale: false},
-            {name: 'A#5', pressed: false, partOfRefScale: false},
-            {name: 'B5', pressed: false, partOfRefScale: false}
+            {name: 'C3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'C#3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'D3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'D#3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'E3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'F3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'F#3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'G3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'G#3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'A3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'A#3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'B3', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'C4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'C#4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'D4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'D#4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'E4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'F4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'F#4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'G4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'G#4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'A4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'A#4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'B4', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'C5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'C#5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'D5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'D#5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'E5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'F5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'F#5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'G5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'G#5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'A5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'A#5', pressed: false, partOfRefScale: false, noteName: null},
+            {name: 'B5', pressed: false, partOfRefScale: false, noteName: null}
         ],
 
         /* This variable will reset the keyboard if true */
@@ -104,7 +104,7 @@ export const store = new Vuex.Store({
         },
         getPressedKeys(state) {
             return state.keyboard.filter(key => {
-                return key.pressed
+                    return key.pressed
                 }
             )
         }
@@ -159,38 +159,82 @@ export const store = new Vuex.Store({
         /*This method resets the keyboard state to zero and fingers the chord*/
         resetPressedKeys(state) {
             for (let key in state.keyboard) {
-                state.keyboard[key].pressed = false
+                state.keyboard[key].pressed = false;
+                state.keyboard[key].noteName = '';
             }
         },
         fingerChord(state, features) {
             //Based on the chord fingering, create an array with the indexes of keys to be pressed
             let noteIndexes = [];
             const noteNames = state.keyboard.map(key => key.name);
+
+
+            //The chordNotes will store the original chord notes' names to be shown on the keyboard
+            let chordNotes = [];
+
+            let featuresTonic = '';
             for (let key in features) {
+
                 if (key !== "chordQuality") {
+                    var featuresKey = features[key];
+                    chordNotes.push(featuresKey);
+
+
                     // checking if the key exists on the keyboard
-                    if (noteNames.indexOf(features[key]) < 0) {
-                        if (features[key].includes("#")) {
-                            features[key] = features[key].replace("#", '');
-                            features[key] = noteNames[noteNames.findIndex(e => e.includes(features[key])) + 1]
+                    if (noteNames.indexOf(featuresKey) < 0) {
+                        if (featuresKey.includes("#")) {
+                            featuresKey = featuresKey.replace("#", '');
+                            featuresKey = noteNames[noteNames.findIndex(e => e.includes(featuresKey)) + 1]
                         }
                         if (features[key].includes("b")) {
-                            features[key] = features[key].replace("b", '');
-                            features[key] = noteNames[noteNames.findIndex(e => e.includes(features[key])) - 1]
+                            featuresKey = featuresKey.replace("b", '');
+                            featuresKey = noteNames[noteNames.findIndex(e => e.includes(featuresKey)) - 1]
                         }
                     }
-                    // checking if the key should be pressed an octave above
+
+                    // assigning the tonic
+                    if (key === "tonic") {
+                        featuresTonic = featuresKey;
+                    }
+                    // checking if the key should be pressed above the tonic
                     if (key !== "tonic") {
-                        if (noteNames.indexOf(features["tonic"]) > noteNames.indexOf(features[key])) {
-                            features[key] = noteNames[12 + noteNames.findIndex(e => e.includes(features[key]))]
+                        if (noteNames.indexOf(featuresTonic) > noteNames.indexOf(featuresKey)) {
+                            featuresKey = noteNames[12 + noteNames.findIndex(e => e.includes(featuresKey))]
                         }
                     }
-                    noteIndexes.push(noteNames.findIndex(e => e.includes(features[key])));
+                    noteIndexes.push(noteNames.findIndex(e => e.includes(featuresKey)));
+
                     //noteIndexes.pop();
+
                 }
+
+
             }
             // Change the state of the keys to pressed
-            noteIndexes.forEach(element => state.keyboard[element].pressed = true);
+            noteIndexes.forEach(function (element, index) {
+                    state.keyboard[element].pressed = true;
+                    state.keyboard[element].noteName = chordNotes[index];
+
+                    // If the chord note is played at higher octaves, the correct is assigned
+                    if (parseInt(element) > 22) {
+                        if (state.keyboard[element].noteName.includes("B4")) {
+                            //do nothing
+                        }
+                        if (state.keyboard[element].noteName.includes("B3")) {
+                            state.keyboard[element].noteName = state.keyboard[element].noteName.replace("3", "4");
+                        } else if (state.keyboard[element].noteName.includes("4")) {
+                            state.keyboard[element].noteName = state.keyboard[element].noteName.replace("4", "5");
+                        }
+
+                    } else if (parseInt(element) > 11) {
+                        if (state.keyboard[element].noteName.includes("B3")) {
+                            //do nothing
+                        } else if (state.keyboard[element].noteName.includes("3")) {
+                            state.keyboard[element].noteName = state.keyboard[element].noteName.replace("3", "4");
+                        }
+                    }
+                }
+            );
         }
     }
 });

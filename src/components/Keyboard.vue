@@ -1,7 +1,7 @@
 <template>
     <div id="keyboard">
         <div>
-            <KeyboardKey :note="'C3'" :keyIsBlack="false" ></KeyboardKey>
+            <KeyboardKey :note="'C3'" :keyIsBlack="false"></KeyboardKey>
             <KeyboardKey :note="'C#3'"  :keyIsBlack="true"></KeyboardKey>
         </div>
         <div>
@@ -70,7 +70,10 @@
 
 </template>
 
+
+
 <script>
+    //:noteName = this.$store.state.keyboard.map(key)
     import KeyboardKey from "./KeyboardKey";
     export default {
         name: "Keyboard",
