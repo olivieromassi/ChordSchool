@@ -215,24 +215,15 @@ export const store = new Vuex.Store({
                     state.keyboard[element].pressed = true;
                     state.keyboard[element].noteName = chordNotes[index];
 
-                    // If the chord note is played at higher octaves, the correct is assigned
-                    if (parseInt(element) > 22) {
-                        if (state.keyboard[element].noteName.includes("B4")) {
-                            //do nothing
-                        }
-                        if (state.keyboard[element].noteName.includes("B3")) {
-                            state.keyboard[element].noteName = state.keyboard[element].noteName.replace("3", "4");
-                        } else if (state.keyboard[element].noteName.includes("4")) {
-                            state.keyboard[element].noteName = state.keyboard[element].noteName.replace("4", "5");
-                        }
-
+                    // Assign the correct octave number
+                    if (state.keyboard[element].noteName.includes('B#')) {
+                        //B# is a special case do nothing
+                    } else if (parseInt(element) > 23) {
+                        state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "5")
                     } else if (parseInt(element) > 11) {
-                        if (state.keyboard[element].noteName.includes("B3")) {
-                            //do nothing
-                        } else if (state.keyboard[element].noteName.includes("3")) {
-                            state.keyboard[element].noteName = state.keyboard[element].noteName.replace("3", "4");
-                        }
+                        state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "4")
                     }
+
                 }
             );
         }
