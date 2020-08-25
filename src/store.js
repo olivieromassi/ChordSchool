@@ -141,8 +141,17 @@ export const store = new Vuex.Store({
                 features.degree = index;
                 features.tonic = state.keyReference[(index) % 7];
                 features.third = state.keyReference[(index + 2) % 7];
+                if (((index + 2) / 7) >= 1) {
+                    features.third = features.third.replace(/.$/, parseInt(features.third.charAt(features.third.length - 1)) + 1);
+                }
                 features.fifth = state.keyReference[(index + 4) % 7];
+                if (((index + 4) / 7) >= 1) {
+                    features.fifth = features.fifth.replace(/.$/, parseInt(features.fifth.charAt(features.fifth.length - 1)) + 1);
+                }
                 features.seventh = state.keyReference[(index + 6) % 7];
+                if (((index + 6) / 7) >= 1) {
+                    features.seventh = features.seventh.replace(/.$/, parseInt(features.seventh.charAt(features.seventh.length - 1)) + 1);
+                }
                 switch (index) {
                     case 0 :
                         features.chordQuality = '\u0394';
@@ -222,7 +231,7 @@ export const store = new Vuex.Store({
                             featuresKey = featuresKey.replace("#", '');
                             featuresKey = noteNames[noteNames.findIndex(e => e.includes(featuresKey)) + 1]
                         }
-                        if (features[key].includes("b")) {
+                        if (featuresKey.includes("b")) {
                             featuresKey = featuresKey.replace("b", '');
                             featuresKey = noteNames[noteNames.findIndex(e => e.includes(featuresKey)) - 1]
                         }
@@ -245,17 +254,17 @@ export const store = new Vuex.Store({
             }
             // Change the state of the keys to pressed
             noteIndexes.forEach(function (element, index) {
-                    state.keyboard[element].pressed = true;
-                    state.keyboard[element].noteName = chordNotes[index];
+                state.keyboard[element].pressed = true;
+                state.keyboard[element].noteName = chordNotes[index];
 
-                    // Assign the correct octave number
-                    if (state.keyboard[element].noteName.includes('B#')) {
-                        //B# is a special case do nothing
-                    } else if (parseInt(element) > 23) {
-                        state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "5")
-                    } else if (parseInt(element) > 11) {
-                        state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "4")
-                    }
+                // Assign the correct octave number
+                if (state.keyboard[element].noteName.includes('B#')) {
+                    //B# is a special case do nothing
+                } else if (parseInt(element) > 23) {
+                    state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "5")
+                } else if (parseInt(element) > 11) {
+                    state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "4")
+                }
             });
         }
     }
