@@ -1,16 +1,19 @@
 <template>
-    <div id="chord" :style="{backgroundColor: chordColor}"
-         @mouseenter="fingerChord() "
-         @mousedown="playChord()"
-         @mouseleave="resetKeyboard()">
+    <v-card class="red--text" width="100" :color=chordColor @mouseenter="fingerChord() " @mouseleave="resetKeyboard()">
         {{ chordMode }}
-        <h1 id="chord-name">{{buildChord()}}{{chordName}}</h1>
-        <button id="plus" v-on:click="selectChord">+</button>
-    </div>
+        <h3 class="text-center red--text">{{buildChord()}}{{chordName}}</h3>
+        <v-btn fab x-small  v-on:click="selectChord() , playChord()">
+            <v-icon color="blue" size="medium">mdi-plus</v-icon>
+        </v-btn>
+        <v-btn fab x-small  v-on:click="playChord()">
+            <v-icon color="blue" size="medium">music_note</v-icon>
+        </v-btn>
+    </v-card>
 </template>
 
 <script>
     import * as Tone from "tone";
+
     export default {
         name: "ModalChord",
         props: {
@@ -83,24 +86,24 @@
         },
         computed: {
             chordName() {
-                return this.features.tonic + this.features.chordQuality;
+                return this.features.tonic.slice(0, -1) + this.features.chordQuality;
             },
             chordColor() {
                 switch (this.degree) {
                     case 0:
-                        return 'orange';
+                        return 'blue lighten-4';
                     case 1:
-                        return 'deepskyblue';
-                    case 2:
-                        return 'darkblue';
-                    case 3:
-                        return 'yellow';
-                    case 4:
-                        return 'red';
-                    case 5:
                         return 'blue';
+                    case 2:
+                        return 'blue darken-3';
+                    case 3:
+                        return 'blue lighten-5';
+                    case 4:
+                        return 'blue lighten-2';
+                    case 5:
+                        return 'blue darken-2';
                     case 6:
-                        return 'purple';
+                        return 'blue darken-4';
                     default:
                         return 'dimgrey';
                 }
@@ -108,19 +111,19 @@
             chordMode() {
                 switch (this.degree) {
                     case 0:
-                        return 'Ionian 0';
+                        return 'Ionian';
                     case 1:
-                        return 'Dorian 1';
+                        return 'Dorian';
                     case 2:
-                        return 'Phrygian 2';
+                        return 'Phrygian';
                     case 3:
-                        return 'Lydian 3';
+                        return 'Lydian';
                     case 4:
-                        return 'Mixolydian 4';
+                        return 'Mixolydian';
                     case 5:
-                        return 'Aeolian 5';
+                        return 'Aeolian';
                     case 6:
-                        return 'Locrian 6';
+                        return 'Locrian';
                     default:
                         return 'Unknown';
                 }
@@ -129,24 +132,5 @@
     }
 </script>
 
-<style scoped>
-    #plus {
-        background: grey;
-        position: relative;
-        margin-left: 50px;
-    }
-
-    #chord {
-        background-color: dimgrey;
-        background-image: repeating-linear-gradient(whitesmoke, transparent);
-        width: 120px;
-        height: 120px;
-        border: 5px solid black;
-    }
-
-    #chord-name {
-        position: relative;
-        margin-left: 5px;
-        font-size: 30px;
-    }
+<style>
 </style>

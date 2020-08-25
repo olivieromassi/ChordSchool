@@ -74,6 +74,6 @@
     }
 
     .pressed-key {
-        background: darkred;
+        background: #81D4FA;
     }
 </style>

@@ -1,14 +1,16 @@
 <template>
-    <div id="window">
-        <h1> CHORD PROGRESSION LIST: </h1>
-        <button id="play" @click="playProgression">PLAY</button>
-        <ol>
+    <div>
+        <h2 class="font-weight-light">Chord Progression List</h2>
+        <v-btn v-if="progression.length > 0" @click="playProgression">
+            <v-icon color="blue">play_arrow</v-icon>
+        </v-btn>
+        <v-list>
             <draggable v-model="progression">
-                <li id="chords" v-for="chord in progression" v-bind:key="chord.index">
+                <li v-for="chord in progression" v-bind:key="chord.index">
                     <Chord :features="chord"></Chord>
                 </li>
             </draggable>
-        </ol>
+        </v-list>
     </div>
 </template>
 
@@ -17,6 +19,7 @@
     import Chord from "@/components/Chord";
     import draggable from "vuedraggable";
 
+
     export default {
         name: "ChordProgression",
         components: {
@@ -24,9 +27,9 @@
             draggable
         },
         methods: {
-          playProgression() {
-              //TODO complete the function once defined the strategy to generate sounds
-          }
+            playProgression() {
+                //TODO complete the function once defined the strategy to generate sounds
+            }
         },
         computed: {
             progression: {
@@ -44,18 +47,8 @@
 
 </script>
 
-<style scoped>
-    #window {
-        width: 1000px;
-        height: 300px;
-        border: solid black;
-        background: lightblue;
-    }
-    #chords {
+<style>
+    li {
         display: inline-block;
-    }
-    #play {
-        left: 25px;
-        position: relative;
     }
 </style>

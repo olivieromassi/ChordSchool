@@ -1,19 +1,10 @@
 <template>
-
     <div>
-
-        <!--
-        <label> SELECT A KEY REFERENCE:
-            <select v-model="selectedKey" @change="setKey($event)">
-                <option v-for="reference in keys" v-bind:key="reference">{{ reference }}</option>
-            </select>
-        </label>
-        -->
         <v-select
                 v-model="selectedKey"
                 :items="keys"
                 @change="setKey"
-                filled
+                solo
                 label="Key reference"
         ></v-select>
     </div>
@@ -46,12 +37,5 @@
     }
 </script>
 
-<style scoped>
-    #window {
-        width: 500px;
-        height: 25px;
-        border: solid black;
-        background: lightblue;
-    }
-
+<style>
 </style>

@@ -1,11 +1,28 @@
 <template>
-    <v-app id="app">
+    <v-app id="app" class="red lighten-4">
         <v-main>
-            <v-app-bar> CHORD SCORE </v-app-bar>
-            <KeyReference></KeyReference>
-            <Modes></Modes>
-            <ChordProgression></ChordProgression>
-            <Keyboard></Keyboard>
+
+            <v-container class="fill-height" fluid>
+                <v-container class="hidden-sm-and-down">
+                    <Keyboard></Keyboard>
+                </v-container>
+                <v-row align="center" justify="center">
+
+                    <v-card width="1000">
+                        <v-app-bar app dense class="light-blue lighten-3">
+                            <v-toolbar-title>
+                                <span class="font-weight-light">Chord</span>
+                                <span>Score</span>
+                            </v-toolbar-title>
+                        </v-app-bar>
+                        <KeyReference></KeyReference>
+                        <Modes></Modes>
+                        <ChordProgression></ChordProgression>
+                    </v-card>
+
+
+                </v-row>
+            </v-container>
         </v-main>
     </v-app>
 </template>
@@ -19,6 +36,11 @@
     export default {
 
         name: 'App',
+        data: function () {
+            return {
+                title: "ChordScore"
+            }
+        },
         components: {
             Keyboard,
             ChordProgression,
@@ -29,7 +51,4 @@
 </script>
 
 <style>
-    #app {
-        height: 100%;
-    }
 </style>

@@ -1,11 +1,16 @@
 <template>
-    <div id="window">
-        <h1> MODAL CHORDS: </h1>
-        <ol>
-            <li id="modes" v-for="note in keyReference" v-bind:key="note">
-                <ModalChord :keyReference="keyReference" :degree="keyReference.indexOf(note)"></ModalChord>
+    <div>
+        <h2 class="font-weight-light"> Modal Chords: </h2>
+
+        <v-list>
+            <li v-for="note in keyReference" :key="note">
+                <v-spacer></v-spacer>
+                <ModalChord class="font-weight-light" :keyReference="keyReference" :degree="keyReference.indexOf(note)"></ModalChord>
+                <v-spacer></v-spacer>
             </li>
-        </ol>
+        </v-list>
+
+
     </div>
 </template>
 
@@ -28,15 +33,5 @@
     }
 </script>
 
-<style scoped>
-    #window {
-        width: 1000px;
-        height: 300px;
-        border: solid black;
-        background: lightblue;
-    }
-    #modes {
-        display: inline-block;
-    }
-
+<style>
 </style>
