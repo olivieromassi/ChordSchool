@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         /*This list represents the possible key references*/
-        keys: ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'],
+        keys: ['C', 'C#', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
 
         /*This string represents the name of the key reference chosen by the user*/
         selectedKey: String,
@@ -18,13 +18,14 @@ export const store = new Vuex.Store({
         /*This dictionary contains all the possible Ionian scales*/
 
         scales: [['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3'],
-
             ['C#3', 'D#3', 'E#3', 'F#3', 'G#3', 'A#3', 'B#3'],
+            ['Db3', 'Eb3', 'F3', 'Gb3', 'Ab3', 'Bb3', 'C4'],
             ['D3', 'E3', 'F#3', 'G3', 'A3', 'B3', 'C#4'],
             ['Eb3', 'F3', 'G3', 'Ab3', 'Bb3', 'C4', 'D4'],
             ['E3', 'F#3', 'G#3', 'A3', 'B3', 'C#4', 'D#4'],
             ['F3', 'G3', 'A3', 'Bb3', 'C4', 'D4', 'E4'],
             ['F#3', 'G#3', 'A#3', 'B3', 'C#4', 'D#4', 'E#4'],
+            ['Gb3', 'Ab3', 'Bb3', 'Cb3', 'Db4', 'Eb4', 'F4'],
             ['G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F#4'],
             ['Ab3', 'Bb3', 'C4', 'Db4', 'Eb4', 'F4', 'G4'],
             ['A3', 'B3', 'C#4', 'D4', 'E4', 'F#4', 'G#4'],
@@ -108,7 +109,6 @@ export const store = new Vuex.Store({
                 }
             )
         }
-
     },
 
     actions: {
@@ -216,7 +216,6 @@ export const store = new Vuex.Store({
                     var featuresKey = features[key];
                     chordNotes.push(featuresKey);
 
-
                     // checking if the key exists on the keyboard
                     if (noteNames.indexOf(featuresKey) < 0) {
                         if (featuresKey.includes("#")) {
@@ -242,10 +241,7 @@ export const store = new Vuex.Store({
                     noteIndexes.push(noteNames.findIndex(e => e.includes(featuresKey)));
 
                     //noteIndexes.pop();
-
                 }
-
-
             }
             // Change the state of the keys to pressed
             noteIndexes.forEach(function (element, index) {
@@ -260,9 +256,7 @@ export const store = new Vuex.Store({
                     } else if (parseInt(element) > 11) {
                         state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "4")
                     }
-
-                }
-            );
+            });
         }
     }
 });

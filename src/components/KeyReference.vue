@@ -5,7 +5,7 @@
                 :items="keys"
                 @change="setKey"
                 solo
-                label="Key reference"
+                label="Key Reference"
         ></v-select>
     </div>
 </template>
