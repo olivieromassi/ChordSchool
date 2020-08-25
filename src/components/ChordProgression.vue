@@ -46,8 +46,8 @@
                 const synth = new Tone.PolySynth().toDestination();
                 const part = new Tone.Part(((time, chord) => {
                     synth.triggerAttackRelease( chord, "2n", time);
-                }), y).start();
-                console.log(part);
+                }), y);
+                part.start();
                 Tone.Transport.start();
             }
         },
