@@ -3,9 +3,9 @@
         <h2 class="font-weight-light"> Modal Chords: </h2>
 
         <v-list>
-            <li v-for="note in keyReference" :key="note">
+            <li id="modes" v-for="mode in modes" :key="mode.index">
                 <v-spacer></v-spacer>
-                <ModalChord class="font-weight-light" :keyReference="keyReference" :degree="keyReference.indexOf(note)"></ModalChord>
+                <ModalChord class="font-weight-light" :features="mode" :keyReference="keyReference"></ModalChord>
                 <v-spacer></v-spacer>
             </li>
         </v-list>

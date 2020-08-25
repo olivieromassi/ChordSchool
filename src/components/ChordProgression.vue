@@ -18,6 +18,7 @@
 
     import Chord from "@/components/Chord";
     import draggable from "vuedraggable";
+    import * as Tone from "tone";
 
 
     export default {
@@ -28,7 +29,26 @@
         },
         methods: {
             playProgression() {
-                //TODO complete the function once defined the strategy to generate sounds
+                let i = 0;
+                let x = [];
+                let t = [];
+                let y = [];
+
+                for (i = 0; i < this.progression.length; i++) {
+                    x[i] = [this.progression[i].tonic,
+                        this.progression[i].third,
+                        this.progression[i].fifth,
+                        this.progression[i].seventh];
+                    t[i] = 3 * (i + 1) / 4;
+                    y[i] = [t[i], x[i]] ;
+                }
+
+                const synth = new Tone.PolySynth().toDestination();
+                const part = new Tone.Part(((time, chord) => {
+                    synth.triggerAttackRelease( chord, "2n", time);
+                }), y).start();
+                console.log(part);
+                Tone.Transport.start();
             }
         },
         computed: {

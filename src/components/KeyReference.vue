@@ -24,6 +24,7 @@
                 this.$store.commit('resetProgression');
                 this.$store.commit('setSelectedKey', value);
                 this.$store.commit('setSelectedKeyScale');
+                this.$store.commit('buildModes');
             }
         },
         computed: {

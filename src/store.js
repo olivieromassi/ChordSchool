@@ -135,6 +135,43 @@ export const store = new Vuex.Store({
         resetModes(state) {
             state.modes = [];
         },
+        buildModes(state) {
+            state.keyReference.forEach((value, index) => {
+                let features = {};
+                features.degree = index;
+                features.tonic = state.keyReference[(index) % 7];
+                features.third = state.keyReference[(index + 2) % 7];
+                features.fifth = state.keyReference[(index + 4) % 7];
+                features.seventh = state.keyReference[(index + 6) % 7];
+                switch (index) {
+                    case 0 :
+                        features.chordQuality = '\u0394';
+                        break;
+                    case 1 :
+                        features.chordQuality = 'mi7';
+                        break;
+                    case 2 :
+                        features.chordQuality = 'mi7';
+                        break;
+                    case 3 :
+                        features.chordQuality = '\u0394';
+                        break;
+                    case 4 :
+                        features.chordQuality = "7";
+                        break;
+                    case 5 :
+                        features.chordQuality = 'mi7';
+                        break;
+                    case 6 :
+                        features.chordQuality = '\u00D8';
+                        break;
+                    default:
+                        features.chordQuality = '';
+                        break;
+                }
+                state.modes.push(features);
+            });
+        },
         addChordToModes(state, features) {
             state.modes.push(features);
         },
@@ -175,7 +212,7 @@ export const store = new Vuex.Store({
             let featuresTonic = '';
             for (let key in features) {
 
-                if (key !== "chordQuality") {
+                if (key !== "chordQuality" && key !== "degree") {
                     var featuresKey = features[key];
                     chordNotes.push(featuresKey);
 
