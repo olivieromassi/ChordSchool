@@ -135,6 +135,7 @@ export const store = new Vuex.Store({
         resetModes(state) {
             state.modes = [];
         },
+        /*This method builds the modes corresponding to the selected key reference*/
         buildModes(state) {
             state.keyReference.forEach((value, index) => {
                 let features = {};
