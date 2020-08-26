@@ -22,7 +22,7 @@
         },
         methods: {
             selectChord() {
-                this.$store.commit('addChordToProgression', this.features);
+                this.$store.commit('addChordToProgression', JSON.parse(JSON.stringify(this.features)));
             },
             fingerChord() {
                 this.$store.commit('fingerChord', this.features);
