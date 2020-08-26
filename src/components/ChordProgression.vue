@@ -6,8 +6,8 @@
         </v-btn>
         <v-list>
             <draggable v-model="progression">
-                <li v-for="chord in progression" v-bind:key="chord.index">
-                    <Chord :features="chord"></Chord>
+                <li v-for="(chord, index) in progression" v-bind:key="chord.index">
+                    <Chord :features="chord" :index="index"></Chord>
                 </li>
             </draggable>
         </v-list>

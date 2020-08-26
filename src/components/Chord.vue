@@ -14,7 +14,8 @@
     export default {
         name: "Chord",
         props: {
-            features: {}
+            features: {},
+            index: Number
         },
         methods: {
             deleteChord() {
