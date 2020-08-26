@@ -139,19 +139,28 @@ export const store = new Vuex.Store({
             state.keyReference.forEach((value, index) => {
                 let features = {};
                 features.degree = index;
+
+                //Set the tonic
                 features.tonic = state.keyReference[(index) % 7];
+
+                //Set the third and its octave
                 features.third = state.keyReference[(index + 2) % 7];
                 if (((index + 2) / 7) >= 1) {
                     features.third = features.third.replace(/.$/, parseInt(features.third.charAt(features.third.length - 1)) + 1);
                 }
+
+                //Set the fifth and its octave
                 features.fifth = state.keyReference[(index + 4) % 7];
                 if (((index + 4) / 7) >= 1) {
                     features.fifth = features.fifth.replace(/.$/, parseInt(features.fifth.charAt(features.fifth.length - 1)) + 1);
                 }
+
+                //Set the seventh and its octave
                 features.seventh = state.keyReference[(index + 6) % 7];
                 if (((index + 6) / 7) >= 1) {
                     features.seventh = features.seventh.replace(/.$/, parseInt(features.seventh.charAt(features.seventh.length - 1)) + 1);
                 }
+
                 switch (index) {
                     case 0 :
                         features.chordQuality = '\u0394';
@@ -212,59 +221,39 @@ export const store = new Vuex.Store({
         fingerChord(state, features) {
             //Based on the chord fingering, create an array with the indexes of keys to be pressed
             let noteIndexes = [];
-            const noteNames = state.keyboard.map(key => key.name);
+            const keyNames = state.keyboard.map(key => key.name);
 
 
             //The chordNotes will store the original chord notes' names to be shown on the keyboard
             let chordNotes = [];
 
-            let featuresTonic = '';
+            //let featuresTonic = '';
             for (let key in features) {
 
                 if (key !== "chordQuality" && key !== "degree") {
                     var featuresKey = features[key];
+
                     chordNotes.push(featuresKey);
 
-                    // checking if the key exists on the keyboard
-                    if (noteNames.indexOf(featuresKey) < 0) {
+                    // checking if the keyName exists on the keyboard
+                    if (keyNames.indexOf(featuresKey) < 0) {
                         if (featuresKey.includes("#")) {
                             featuresKey = featuresKey.replace("#", '');
-                            featuresKey = noteNames[noteNames.findIndex(e => e.includes(featuresKey)) + 1]
+                            featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) + 1]
                         }
                         if (featuresKey.includes("b")) {
                             featuresKey = featuresKey.replace("b", '');
-                            featuresKey = noteNames[noteNames.findIndex(e => e.includes(featuresKey)) - 1]
+                            featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) - 1]
                         }
                     }
 
-                    // assigning the tonic
-                    if (key === "tonic") {
-                        featuresTonic = featuresKey;
-                    }
-                    // checking if the key should be pressed above the tonic
-                    if (key !== "tonic") {
-                        if (noteNames.indexOf(featuresTonic) > noteNames.indexOf(featuresKey)) {
-                            featuresKey = noteNames[12 + noteNames.findIndex(e => e.includes(featuresKey))]
-                        }
-                    }
-                    noteIndexes.push(noteNames.findIndex(e => e.includes(featuresKey)));
-
-                    //noteIndexes.pop();
+                    noteIndexes.push(keyNames.findIndex(e => e.includes(featuresKey)))
                 }
             }
             // Change the state of the keys to pressed
             noteIndexes.forEach(function (element, index) {
                 state.keyboard[element].pressed = true;
                 state.keyboard[element].noteName = chordNotes[index];
-
-                // Assign the correct octave number
-                if (state.keyboard[element].noteName.includes('B#')) {
-                    //B# is a special case do nothing
-                } else if (parseInt(element) > 23) {
-                    state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "5")
-                } else if (parseInt(element) > 11) {
-                    state.keyboard[element].noteName = state.keyboard[element].noteName.replace(/.$/, "4")
-                }
             });
         }
     }
