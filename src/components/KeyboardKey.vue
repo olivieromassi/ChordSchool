@@ -41,7 +41,7 @@
         height: 200px;
         border: 1px solid black;
         border-right: none;
-        background: #fffff0;
+        background: blue;
         border-radius: 5px;
         box-shadow: 0 3px 5px #666;
         display: inline-flex;
@@ -61,7 +61,7 @@
         left: 38px;
         width: 40px;
         height: 120px;
-        background: black;
+        background: purple;
         border-radius: 5px;
         box-shadow: 0 3px 5px #666;
         z-index: 999;
@@ -74,6 +74,6 @@
     }
 
     .pressed-key {
-        background: #81D4FA;
+        background: red;
     }
 </style>

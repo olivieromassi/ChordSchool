@@ -143,20 +143,24 @@ export const store = new Vuex.Store({
                 //Set the tonic
                 features.tonic = state.keyReference[(index) % 7];
 
-                //Set the third and its octave
+                //Set the 3rd
                 features.third = state.keyReference[(index + 2) % 7];
+                //and its octave
                 if (((index + 2) / 7) >= 1) {
                     features.third = features.third.replace(/.$/, parseInt(features.third.charAt(features.third.length - 1)) + 1);
                 }
 
-                //Set the fifth and its octave
+                //Set the 5th
                 features.fifth = state.keyReference[(index + 4) % 7];
+
+                //and its octave
                 if (((index + 4) / 7) >= 1) {
                     features.fifth = features.fifth.replace(/.$/, parseInt(features.fifth.charAt(features.fifth.length - 1)) + 1);
                 }
 
-                //Set the seventh and its octave
+                //Set the 7th
                 features.seventh = state.keyReference[(index + 6) % 7];
+                //and its octave
                 if (((index + 6) / 7) >= 1) {
                     features.seventh = features.seventh.replace(/.$/, parseInt(features.seventh.charAt(features.seventh.length - 1)) + 1);
                 }
@@ -231,6 +235,7 @@ export const store = new Vuex.Store({
             for (let key in features) {
 
                 if (key !== "chordQuality" && key !== "degree") {
+
                     var featuresKey = features[key];
 
                     chordNotes.push(featuresKey);
