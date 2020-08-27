@@ -8,6 +8,9 @@ export const store = new Vuex.Store({
         /*This list represents the possible key references*/
         keys: ['C', 'C#', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
 
+        /*This list represents the notes of the chromatic scale*/
+        chromaticScale: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
+
         /*This string represents the name of the key reference chosen by the user*/
         selectedKey: String,
 
@@ -87,6 +90,9 @@ export const store = new Vuex.Store({
     getters: {
         getKeys(state) {
             return state.keys;
+        },
+        getChromaticScale(state) {
+            return state.chromaticScale;
         },
         getSelectedKey(state) {
             return state.selectedKey;
@@ -205,6 +211,7 @@ export const store = new Vuex.Store({
             state.progression = [];
         },
         addChordToProgression(state, features) {
+            features.notes = [features.tonic, features.third, features.fifth, features.seventh];
             state.progression.push(features);
         },
         deleteChordFromProgression(state, features) {
@@ -235,7 +242,7 @@ export const store = new Vuex.Store({
             //let featuresTonic = '';
             for (let key in features) {
 
-                if (key !== "chordQuality" && key !== "degree") {
+                if (key !== "chordQuality" && key !== "degree" && key !== "notes") {
 
                     var featuresKey = features[key];
 
@@ -264,6 +271,28 @@ export const store = new Vuex.Store({
                 state.keyboard[element].pressed = true;
                 state.keyboard[element].noteName = chordNotes[index];
             });
+        },
+
+        /*METHODS TO PERFORM CHORD ALTERATIONS*/
+        /*Still testing functions, not definitive*/
+        chordSubstitution(state, {index, chord}) {
+            state.progression[index].notes = chord.notes;
+            state.progression[index].chordQuality = chord.chordQuality;
+            state.progression[index].tonic = chord.notes[0];
+            state.progression[index].third = chord.notes[1];
+            state.progression[index].fifth = chord.notes[2];
+            state.progression[index].seventh = chord.notes[3];
+        },
+        addChordInPosition(state, {index, chord}) {
+            let newChord = {};
+            newChord.notes = chord.notes;
+            newChord.chordQuality = chord.chordQuality;
+            newChord.degree = chord.degree;
+            newChord.tonic = chord.notes[0];
+            newChord.third = chord.notes[1];
+            newChord.fifth = chord.notes[2];
+            newChord.seventh = chord.notes[3];
+            state.progression.splice(index, 0, newChord);
         }
     }
 });
