@@ -211,7 +211,7 @@ export const store = new Vuex.Store({
             state.progression = [];
         },
         addChordToProgression(state, features) {
-            features.notes = [features.tonic, features.third, features.fifth, features.seventh];
+            features.notes = JSON.parse(JSON.stringify([features.tonic, features.third, features.fifth, features.seventh]));
             state.progression.push(features);
         },
         deleteChordFromProgression(state, features) {

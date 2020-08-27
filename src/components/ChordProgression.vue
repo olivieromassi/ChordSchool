@@ -43,7 +43,7 @@
                 let i_ii_iii_iv = [], i_ii_iii_iv_p = [];
                 let nam, indexNC, nameNC = [];
                 let temp= [];
-                
+
                 for (let i = 0; i < this.progression.length; i++) {
                     chordsTonic[i] = this.progression[i].tonic;
                 }
