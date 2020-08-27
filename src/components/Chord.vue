@@ -173,7 +173,7 @@
             },
             // TODO finish the implementation of the method
             relativeMajorMinorSubstitution() {
-                // if the chord is major, go up 6 degrees over the corresponding major scale
+                // if the chord is major, go up 6 degrees over the corresponding minor scale
                 // if the chord is minor, go down 6 degrees over the corresponding major scale
             },
             // TODO finish the implementation of the method
