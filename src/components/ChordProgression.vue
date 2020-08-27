@@ -134,13 +134,13 @@
                         this.progression[i].third,
                         this.progression[i].fifth,
                         this.progression[i].seventh];
-                    t[i] = 3 * (i + 1) / 4;
+                    t[i] = 3 * i / 4;
                     y[i] = [t[i], x[i]] ;
                 }
 
                 const synth = new Tone.PolySynth().toDestination();
                 const part = new Tone.Part(((time, chord) => {
-                    synth.triggerAttackRelease( chord, "2n", time);
+                    synth.triggerAttackRelease(chord, "4n", time);
                 }), y);
                 part.start();
                 Tone.Transport.start();
