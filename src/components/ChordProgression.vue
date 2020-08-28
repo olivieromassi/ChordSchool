@@ -13,9 +13,9 @@
         <h3 v-else-if="progression.length === 0"> - Add chords to the progression - </h3>
         <v-list>
             <draggable v-model="progression">
-                <v-list-item v-for="chord in progression" v-bind:key="chord.index">
+                <v-list-item v-for="(chord, index) in progression" v-bind:key="chord.index">
                    <!--//{{key}}-->
-                    <Chord :features="chord"></Chord>
+                    <Chord :features="chord" :index="index"></Chord>
                 </v-list-item>
             </draggable>
         </v-list>
