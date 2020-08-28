@@ -17,6 +17,9 @@
         <v-btn fab x-small v-on:click="secondaryDominant">
             <v-icon color="blue" size="medium">mdi-plus</v-icon>
         </v-btn>
+        <v-btn fab x-small v-on:click="chordQualitySubstitution">
+            <v-icon color="blue" size="medium">mdi-plus</v-icon>
+        </v-btn>
 
     </v-card>
 </template>
@@ -124,9 +127,11 @@
                 let scaleIndex = (this.$store.getters.getChromaticScale.indexOf(this.$store.getters.getSelectedKey) + 6) % 12;
                 if (this.$store.getters.getChromaticScale.indexOf(this.$store.getters.getSelectedKey) === -1) {
                     if (this.$store.getters.getSelectedKey === 'C#')
-                        scaleIndex = 5;
-                    else
+                        scaleIndex = 7;
+                    else if (this.$store.getters.getSelectedKey === 'F#')
                         scaleIndex = 0;
+                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                        scaleIndex = 5;
                 }
                 let tritoneScale = this.$store.getters.getScales[this.$store.getters.getKeys.indexOf(this.$store.getters.getChromaticScale[scaleIndex])];
 
@@ -137,14 +142,22 @@
                 this.builtChord.chordQuality = '';
             },
             secondaryDominant() {
-                let scaleIndex = this.$store.getters.getChromaticScale.indexOf(this.features.tonic.slice(0, -1));
-                if (this.$store.getters.getChromaticScale.indexOf(this.features.tonic.slice(0, -1)) === -1) {
-                    if (this.$store.getters.getSelectedKey === 'C#')
-                        scaleIndex = 1;
-                    else
+                let scaleIndex = this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1));
+                if (this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1)) === -1) {
+                    if (this.features.tonic.slice(0, -1) === 'D#')
+                        scaleIndex = 4;
+                    else if (this.features.tonic.slice(0, -1) === 'E#')
                         scaleIndex = 6;
+                    else if (this.features.tonic.slice(0, -1) === 'G#')
+                        scaleIndex = 10;
+                    else if (this.features.tonic.slice(0, -1) === 'A#')
+                        scaleIndex = 12;
+                    else if (this.features.tonic.slice(0, -1) === 'B#')
+                        scaleIndex = 0;
+                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                        scaleIndex = 14;
                 }
-                let scale = this.$store.getters.getScales[this.$store.getters.getKeys.indexOf(this.$store.getters.getChromaticScale[scaleIndex])];
+                let scale = this.$store.getters.getScales[scaleIndex];
 
                 this.buildChord(scale, 4);
                 this.$store.commit('addChordInPosition', {index: this.index, chord: this.builtChord});
@@ -154,14 +167,22 @@
             },
             twoFiveSubstitution() {
                 let degrees = [4, 1];
-                let scaleIndex = this.$store.getters.getChromaticScale.indexOf(this.features.tonic.slice(0, -1));
-                if (this.$store.getters.getChromaticScale.indexOf(this.features.tonic.slice(0, -1)) === -1) {
-                    if (this.$store.getters.getSelectedKey === 'C#')
-                        scaleIndex = 1;
-                    else
+                let scaleIndex = this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1));
+                if (this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1)) === -1) {
+                    if (this.features.tonic.slice(0, -1) === 'D#')
+                        scaleIndex = 4;
+                    else if (this.features.tonic.slice(0, -1) === 'E#')
                         scaleIndex = 6;
+                    else if (this.features.tonic.slice(0, -1) === 'G#')
+                        scaleIndex = 10;
+                    else if (this.features.tonic.slice(0, -1) === 'A#')
+                        scaleIndex = 12;
+                    else if (this.features.tonic.slice(0, -1) === 'B#')
+                        scaleIndex = 0;
+                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                        scaleIndex = 14;
                 }
-                let scale = this.$store.getters.getScales[this.$store.getters.getKeys.indexOf(this.$store.getters.getChromaticScale[scaleIndex])];
+                let scale = this.$store.getters.getScales[scaleIndex];
 
                 degrees.forEach(value => {
                     this.buildChord(scale, value);
@@ -176,9 +197,46 @@
                 // if the chord is major, go up 6 degrees over the corresponding minor scale
                 // if the chord is minor, go down 6 degrees over the corresponding major scale
             },
-            // TODO finish the implementation of the method
             chordQualitySubstitution() {
-                // substitute one pitch with an altered one (e.g. minor sixth in place of major seventh or the major seventh in place of the minor)
+                if (this.features.degree === 0 || this.features.degree === 3) {
+                    if (this.features.tonic.slice(0, -1) === 'Db')
+                        this.features.tonic = 'C#3';
+                    else if (this.features.tonic.slice(0, -1) === 'E#')
+                        this.features.tonic = 'F3';
+                    else if (this.features.tonic.slice(0, -1) === 'Gb')
+                        this.features.tonic = 'F#3';
+                    else if (this.features.tonic.slice(0, -1) === 'B#')
+                        this.features.tonic = 'C3';
+                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                        this.features.tonic = 'B3';
+                    this.$store.getters.getScales.forEach(value => {
+                        if (value[5].slice(0, -1) === this.features.tonic.slice(0, -1)) {
+                            this.buildChord(value, 5);
+                            this.$store.commit('chordSubstitution', {index: this.index, chord: this.builtChord});
+                        }
+                    });
+                } else if (this.features.degree === 1 || this.features.degree === 2 || this.features.degree === 5) {
+                    if (this.features.tonic.slice(0, -1) === 'Db')
+                        this.features.tonic = 'C#3';
+                    else if (this.features.tonic.slice(0, -1) === 'D#')
+                        this.features.tonic = 'E3';
+                    else if (this.features.tonic.slice(0, -1) === 'E#')
+                        this.features.tonic = 'F3';
+                    else if (this.features.tonic.slice(0, -1) === 'G#')
+                        this.features.tonic = 'Ab3';
+                    else if (this.features.tonic.slice(0, -1) === 'B#')
+                        this.features.tonic = 'C3';
+                    else if (this.features.tonic.slice(0, -1) === 'A#')
+                        this.features.tonic = 'Bb3';
+                    this.$store.getters.getScales.forEach(value => {
+                        if (value[0].slice(0, -1) === this.features.tonic.slice(0, -1)) {
+                            this.buildChord(value, 0);
+                            this.$store.commit('chordSubstitution', {index: this.index, chord: this.builtChord});
+                        }
+                    });
+                }
+                this.builtChord.notes = [];
+                this.builtChord.chordQuality = '';
             },
             tonicSubstitution(degree) {
                 let scaleIndex = (this.$store.getters.getKeys.indexOf(this.$store.getters.getSelectedKey));

@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         /*This list represents the possible key references*/
-        keys: ['C', 'C#', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
+        keys: ['C', 'C#', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'Cb'],
 
         /*This list represents the notes of the chromatic scale*/
         chromaticScale: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
@@ -33,7 +33,8 @@ export const store = new Vuex.Store({
             ['Ab3', 'Bb3', 'C4', 'Db4', 'Eb4', 'F4', 'G4'],
             ['A3', 'B3', 'C#4', 'D4', 'E4', 'F#4', 'G#4'],
             ['Bb3', 'C4', 'D4', 'Eb4', 'F4', 'G4', 'A4'],
-            ['B3', 'C#4', 'D#4', 'E4', 'F#4', 'G#4', 'A#4']],
+            ['B3', 'C#4', 'D#4', 'E4', 'F#4', 'G#4', 'A#4'],
+            ['Cb4', 'Db4', 'Eb4', 'Fb4', 'Gb4', 'Ab4', 'Bb4']],
 
 
         /*This list contains the 7 major harmony modes related to the selected key reference*/
