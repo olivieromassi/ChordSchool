@@ -250,7 +250,6 @@ export const store = new Vuex.Store({
 
                     // checking if the keyName exists on the keyboard
                     if (keyNames.indexOf(featuresKey) < 0) {
-                        console.log("index not found for " + featuresKey);
                         if (featuresKey.includes("#")) {
                             featuresKey = featuresKey.replace("#", '');
                             featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) + 1]
@@ -259,8 +258,6 @@ export const store = new Vuex.Store({
                             featuresKey = featuresKey.replace("b", '');
                             featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) - 1]
                         }
-
-                        console.log("New index:" + keyNames.findIndex(e => e.includes(featuresKey)))
                     }
 
                     noteIndexes.push(keyNames.findIndex(e => e.includes(featuresKey)))

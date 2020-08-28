@@ -1,14 +1,22 @@
 <template>
     <div>
-        <h2 class="font-weight-light">Chord Progression List:</h2>
-        <v-btn v-if="progression.length > 0" @click="playProgression">
+        <h2 class="font-weight-thin">Chord Progression</h2>
+        <v-btn class="ma-4" @click="playProgression">
             <v-icon color="blue">play_arrow</v-icon>
+            <span>play</span>
         </v-btn>
+        <v-btn class="ma-4" @click="resetProgression">
+            <v-icon color="blue">settings_backup_restore</v-icon>
+            <span>reset</span>
+        </v-btn>
+        <h3 v-if="progression.length === 0 & this.$store.state.keyReference.length===0"> - Reference key is not selected yet - </h3>
+        <h3 v-else-if="progression.length === 0"> - Add chords to the progression - </h3>
         <v-list>
             <draggable v-model="progression">
-                <li v-for="(chord, index) in progression" v-bind:key="chord.index">
-                    <Chord :features="chord" :index="index"></Chord>
-                </li>
+                <v-list-item v-for="chord in progression" v-bind:key="chord.index">
+                   <!--//{{key}}-->
+                    <Chord :features="chord"></Chord>
+                </v-list-item>
             </draggable>
         </v-list>
         <v-btn @click="notableChords">
@@ -142,8 +150,14 @@
                 const part = new Tone.Part(((time, chord) => {
                     synth.triggerAttackRelease(chord, "4n", time);
                 }), y);
+
+                // this.$store.commit('fingerChord', this.progression[i]);
+
                 part.start();
                 Tone.Transport.start();
+            },
+            resetProgression(){
+                this.$store.commit('resetProgression');
             }
         },
         computed: {

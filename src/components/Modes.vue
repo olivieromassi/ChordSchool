@@ -1,16 +1,12 @@
 <template>
     <div>
-        <h2 class="font-weight-light"> Modal Chords: </h2>
-
+        <h2 class="font-weight-thin">Modal Chords</h2>
+        <h3 v-if="this.$store.state.keyReference.length === 0" > - Choose a reference key - </h3>
         <v-list>
-            <li id="modes" v-for="mode in modes" :key="mode.index">
-                <v-spacer></v-spacer>
-                <ModalChord class="font-weight-light" :features="mode" :keyReference="keyReference"></ModalChord>
-                <v-spacer></v-spacer>
-            </li>
+            <v-list-item v-for="mode in modes" :key="mode.index">
+                <ModalChord :features="mode" :keyReference="keyReference"></ModalChord>
+            </v-list-item>
         </v-list>
-
-
     </div>
 </template>
 
@@ -34,4 +30,7 @@
 </script>
 
 <style>
+    .v-list-item {
+        display: inline-block;
+    }
 </style>

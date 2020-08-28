@@ -1,9 +1,9 @@
 <template>
-    <v-card class="red--text" width="100" :color=chordColor @mouseenter="fingerChord() " @mouseleave="resetKeyboard()">
+    <v-card class="red--text" min-width="100" min-height="70" :color=chordColor @mouseenter="fingerChord() " @mouseleave="resetKeyboard()">
         {{ chordMode }}
-        <h3 class="text-center red--text">{{chordName}}</h3>
-        <v-btn fab x-small  v-on:click="selectChord() , playChord()">
-            <v-icon color="blue" size="medium">mdi-plus</v-icon>
+        <h4 class="text-center red--text">{{chordName}}</h4>
+        <v-btn class="ma-2" fab x-small  v-on:click="selectChord()">
+            <v-icon  color="blue" size="medium">mdi-plus</v-icon>
         </v-btn>
         <v-btn fab x-small  v-on:click="playChord()">
             <v-icon color="blue" size="medium">music_note</v-icon>

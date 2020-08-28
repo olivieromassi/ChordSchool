@@ -1,7 +1,7 @@
 <template>
-    <v-card width="100" :color=chordColor @mouseenter="fingerChord() " @mousedown="playChord()" @mouseleave="resetKeyboard()">
-        <h3 class="font-weight-light text-center">{{ this.features.tonic.slice(0,-1) +  this.features.chordQuality }}</h3>
-        <v-btn fab x-small v-on:click="deleteChord">
+    <v-card min-width="100" min-height="80"  :color=chordColor @mouseenter="fingerChord()" @mouseleave="resetKeyboard()">
+        <h3 class="text-center grey">{{ this.features.tonic.slice(0,-1) +  this.features.chordQuality }}</h3>
+        <v-btn class="ma-2" fab x-small v-on:click="deleteChord() , resetKeyboard() ">
             <v-icon color="blue" size="medium">mdi-minus</v-icon>
         </v-btn>
 
