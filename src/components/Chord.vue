@@ -20,6 +20,9 @@
         <v-btn fab x-small v-on:click="chordQualitySubstitution">
             <v-icon color="blue" size="medium">mdi-plus</v-icon>
         </v-btn>
+        <v-btn fab x-small v-on:click="relativeMajorMinorSubstitution">
+            <v-icon color="blue" size="medium">mdi-plus</v-icon>
+        </v-btn>
 
     </v-card>
 </template>
@@ -192,13 +195,26 @@
                     this.builtChord.chordQuality = '';
                 });
             },
-            // TODO finish the implementation of the method
             relativeMajorMinorSubstitution() {
-                // if the chord is major, go up 6 degrees over the corresponding minor scale
-                // if the chord is minor, go down 6 degrees over the corresponding major scale
-            },
-            chordQualitySubstitution() {
-                if (this.features.degree === 0 || this.features.degree === 3) {
+                if (this.features.chordQuality === '\u0394') {
+                    if (this.features.tonic.slice(0, -1) === 'D#')
+                        this.features.tonic = 'E3';
+                    else if (this.features.tonic.slice(0, -1) === 'E#')
+                        this.features.tonic = 'F3';
+                    else if (this.features.tonic.slice(0, -1) === 'G#')
+                        this.features.tonic = 'Ab3';
+                    else if (this.features.tonic.slice(0, -1) === 'B#')
+                        this.features.tonic = 'C3';
+                    else if (this.features.tonic.slice(0, -1) === 'A#')
+                        this.features.tonic = 'Bb3';
+                    for (const value of this.$store.getters.getScales) {
+                        if (value[0].slice(0, -1) === this.features.tonic.slice(0, -1)) {
+                            this.buildChord(value, 5);
+                            this.$store.commit('chordSubstitution', {index: this.index, chord: this.builtChord});
+                            break;
+                        }
+                    }
+                } else if (this.features.chordQuality === 'mi7') {
                     if (this.features.tonic.slice(0, -1) === 'Db')
                         this.features.tonic = 'C#3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
@@ -209,16 +225,38 @@
                         this.features.tonic = 'C3';
                     else if (this.$store.getters.getSelectedKey === 'Cb')
                         this.features.tonic = 'B3';
-                    this.$store.getters.getScales.forEach(value => {
+                    for (const value of this.$store.getters.getScales) {
+                        if (value[5].slice(0, -1) === this.features.tonic.slice(0, -1)) {
+                            this.buildChord(value, 0);
+                            this.$store.commit('chordSubstitution', {index: this.index, chord: this.builtChord});
+                            break;
+                        }
+                    }
+                }
+                this.builtChord.notes = [];
+                this.builtChord.chordQuality = '';
+            },
+            chordQualitySubstitution() {
+                if (this.features.chordQuality === '\u0394') {
+                    if (this.features.tonic.slice(0, -1) === 'Db')
+                        this.features.tonic = 'C#3';
+                    else if (this.features.tonic.slice(0, -1) === 'E#')
+                        this.features.tonic = 'F3';
+                    else if (this.features.tonic.slice(0, -1) === 'Gb')
+                        this.features.tonic = 'F#3';
+                    else if (this.features.tonic.slice(0, -1) === 'B#')
+                        this.features.tonic = 'C3';
+                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                        this.features.tonic = 'B3';
+                    for (const value of this.$store.getters.getScales) {
                         if (value[5].slice(0, -1) === this.features.tonic.slice(0, -1)) {
                             this.buildChord(value, 5);
                             this.$store.commit('chordSubstitution', {index: this.index, chord: this.builtChord});
+                            break;
                         }
-                    });
-                } else if (this.features.degree === 1 || this.features.degree === 2 || this.features.degree === 5) {
-                    if (this.features.tonic.slice(0, -1) === 'Db')
-                        this.features.tonic = 'C#3';
-                    else if (this.features.tonic.slice(0, -1) === 'D#')
+                    }
+                } else if (this.features.chordQuality === 'mi7') {
+                    if (this.features.tonic.slice(0, -1) === 'D#')
                         this.features.tonic = 'E3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
                         this.features.tonic = 'F3';
@@ -228,12 +266,13 @@
                         this.features.tonic = 'C3';
                     else if (this.features.tonic.slice(0, -1) === 'A#')
                         this.features.tonic = 'Bb3';
-                    this.$store.getters.getScales.forEach(value => {
+                    for (const value of this.$store.getters.getScales) {
                         if (value[0].slice(0, -1) === this.features.tonic.slice(0, -1)) {
                             this.buildChord(value, 0);
                             this.$store.commit('chordSubstitution', {index: this.index, chord: this.builtChord});
+                            break;
                         }
-                    });
+                    }
                 }
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
