@@ -164,7 +164,7 @@
                         scaleIndex = 12;
                     else if (this.features.tonic.slice(0, -1) === 'B#')
                         scaleIndex = 0;
-                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                    else if (this.features.tonic.slice(0, -1) === 'Cb')
                         scaleIndex = 14;
                 }
                 let scale = this.$store.getters.getScales[scaleIndex];
@@ -193,7 +193,7 @@
                         scaleIndex = 12;
                     else if (this.features.tonic.slice(0, -1) === 'B#')
                         scaleIndex = 0;
-                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                    else if (this.features.tonic.slice(0, -1) === 'Cb')
                         scaleIndex = 14;
                 }
                 let scale = this.$store.getters.getScales[scaleIndex];
@@ -241,7 +241,7 @@
                         this.features.tonic = 'F#3';
                     else if (this.features.tonic.slice(0, -1) === 'B#')
                         this.features.tonic = 'C3';
-                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                    else if (this.features.tonic.slice(0, -1) === 'Cb')
                         this.features.tonic = 'B3';
                     for (const value of this.$store.getters.getScales) {
                         if (value[5].slice(0, -1) === this.features.tonic.slice(0, -1)) {
@@ -268,7 +268,7 @@
                         this.features.tonic = 'F#3';
                     else if (this.features.tonic.slice(0, -1) === 'B#')
                         this.features.tonic = 'C3';
-                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                    else if (this.features.tonic.slice(0, -1) === 'Cb')
                         this.features.tonic = 'B3';
                     for (const value of this.$store.getters.getScales) {
                         if (value[5].slice(0, -1) === this.features.tonic.slice(0, -1)) {
