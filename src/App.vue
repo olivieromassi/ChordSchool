@@ -2,20 +2,36 @@
     <v-app id="app">
         <v-main>
             <v-app-bar app dense hide-on-scroll class="primary lighten-1 white--text">
-                <v-toolbar-title @click="reloadPage()" >
+                <v-toolbar-title @click="reloadPage()">
                     <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
                     <span>Score</span>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn x-small depressed text class="primary lighten-1 ">
                     <v-icon>palette</v-icon>
-
                 </v-btn>
-                <template v-slot:activator="{ on, attrs }">
-                <v-btn x-small depressed text class="primary lighten-1" v-bind="attrs" v-on="on">
+
+
+                <v-btn x-small depressed text class="primary lighten-1" @click.stop="dialog = true">
                     <v-icon>help_outline</v-icon>
                 </v-btn>
-                </template>
+                <v-dialog v-model="dialog" width="600px">
+                    <v-card>
+                        <v-card-title>
+                            <span class="headline">How to use chord score</span>
+                        </v-card-title>
+                        <v-card-text>
+                            ChordScore is an app that takes as input a chord progression and provides the user with the
+                            possible substitution and voicings according to the rules of major scale harmony.
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="primary darken-1" text @click="dialog = false">close</v-btn>
+
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+
             </v-app-bar>
             <v-container class="fill-height">
                 <v-layout row wrap>
@@ -54,7 +70,7 @@
         name: 'App',
         data: function () {
             return {
-                title: "ChordScore"
+                dialog: false,
             }
         },
         components: {
@@ -64,7 +80,7 @@
             KeyReference
         },
         methods: {
-            reloadPage(){
+            reloadPage() {
                 window.location.reload()
             }
         }
