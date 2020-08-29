@@ -68,6 +68,7 @@
                 this.builtChord.chordQuality = '';
 
                 this.builtChord.degree = degree;
+                this.builtChord.scale = scale;
                 //Set the tonic
                 this.builtChord.notes.push(scale[(degree) % 7]);
 
@@ -153,6 +154,8 @@
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
                         scaleIndex = 4;
+                    else if (this.features.tonic.slice(0, -1) === 'Fb')
+                        scaleIndex = 5;
                     else if (this.features.tonic.slice(0, -1) === 'E#')
                         scaleIndex = 6;
                     else if (this.features.tonic.slice(0, -1) === 'G#')
@@ -180,6 +183,8 @@
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
                         scaleIndex = 4;
+                    else if (this.features.tonic.slice(0, -1) === 'Fb')
+                        scaleIndex = 5;
                     else if (this.features.tonic.slice(0, -1) === 'E#')
                         scaleIndex = 6;
                     else if (this.features.tonic.slice(0, -1) === 'G#')
@@ -207,6 +212,8 @@
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
                         this.features.tonic = 'E3';
+                    else if (this.features.tonic.slice(0, -1) === 'Fb')
+                        this.features.tonic = 'E3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
                         this.features.tonic = 'F3';
                     else if (this.features.tonic.slice(0, -1) === 'G#')
@@ -226,6 +233,8 @@
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'Db')
                         this.features.tonic = 'C#3';
+                    else if (this.features.tonic.slice(0, -1) === 'Fb')
+                        this.features.tonic = 'E3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
                         this.features.tonic = 'F3';
                     else if (this.features.tonic.slice(0, -1) === 'Gb')
@@ -251,6 +260,8 @@
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'Db')
                         this.features.tonic = 'C#3';
+                    else if (this.features.tonic.slice(0, -1) === 'Fb')
+                        this.features.tonic = 'E3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
                         this.features.tonic = 'F3';
                     else if (this.features.tonic.slice(0, -1) === 'Gb')
@@ -269,6 +280,8 @@
                 } else if (this.features.chordQuality === 'mi7') {
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
+                        this.features.tonic = 'E3';
+                    else if (this.features.tonic.slice(0, -1) === 'Fb')
                         this.features.tonic = 'E3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
                         this.features.tonic = 'F3';

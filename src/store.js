@@ -213,6 +213,7 @@ export const store = new Vuex.Store({
         },
         addChordToProgression(state, features) {
             features.notes = JSON.parse(JSON.stringify([features.tonic, features.third, features.fifth, features.seventh]));
+            features.scale = JSON.parse(JSON.stringify(state.keyReference));
             state.progression.push(features);
         },
         deleteChordFromProgression(state, features) {
@@ -243,7 +244,7 @@ export const store = new Vuex.Store({
             //let featuresTonic = '';
             for (let key in features) {
 
-                if (key !== "chordQuality" && key !== "degree" && key !== "notes") {
+                if (key !== "chordQuality" && key !== "degree" && key !== "notes" && key !== "scale") {
 
                     var featuresKey = features[key];
 
@@ -275,6 +276,7 @@ export const store = new Vuex.Store({
         /*Still testing functions, not definitive*/
         chordSubstitution(state, {index, chord}) {
             state.progression[index].notes = chord.notes;
+            state.progression[index].scale = chord.scale;
             state.progression[index].chordQuality = chord.chordQuality;
             state.progression[index].tonic = chord.notes[0];
             state.progression[index].third = chord.notes[1];
@@ -284,6 +286,7 @@ export const store = new Vuex.Store({
         addChordInPosition(state, {index, chord}) {
             let newChord = {};
             newChord.notes = chord.notes;
+            newChord.scale = chord.scale;
             newChord.chordQuality = chord.chordQuality;
             newChord.degree = chord.degree;
             newChord.tonic = chord.notes[0];
