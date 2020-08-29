@@ -30,7 +30,7 @@
         <v-chip large style="font-size: 40px" :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`" @mouseenter="fingerChord()"
                 @mouseleave="resetKeyboard()">
             <span  :class="`mdi mdi-roman-numeral-${this.features.degree +1}`"></span>
-            <v-btn fab x-small v-on:click="tritoneSubstitution">
+            <v-btn fab x-small v-on:click="addNinthNoFifth">
                 <v-icon color="blue" size="medium">mdi-plus</v-icon>
             </v-btn>
         </v-chip>
@@ -75,6 +75,7 @@
                         this.features.seventh],
                     1);
             },
+            /*Chord Substitution Methods*/
             buildChord(scale, degree) {
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
@@ -300,6 +301,23 @@
 
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
+            },
+            /*Voicings Methods*/
+            dropTwo() {
+                this.$store.commit('dropElement', {index: this.index, amount: 2});
+            },
+            dropThree() {
+                this.$store.commit('dropElement', {index: this.index, amount: 3});
+            },
+            dropTwoAndFour() {
+                [2, 3].forEach(value => {this.$store.commit('dropElement', {index: this.index, amount: value})});
+            },
+            addNinth() {
+                this.$store.commit('addNinth', this.index);
+            },
+            addNinthNoFifth() {
+                this.$store.commit('addNinth', this.index);
+                this.$store.commit('deleteFifth', this.index);
             }
         },
         computed: {
