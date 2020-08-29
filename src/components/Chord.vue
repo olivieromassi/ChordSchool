@@ -126,9 +126,11 @@
                         break;
                 }
             },
+            /*This method substitutes a dominant chord with its tritone substitution, which shares the same tritone*/
             tritoneSubstitution() {
                 let scaleIndex = (this.$store.getters.getChromaticScale.indexOf(this.$store.getters.getSelectedKey) + 6) % 12;
                 if (this.$store.getters.getChromaticScale.indexOf(this.$store.getters.getSelectedKey) === -1) {
+                    /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.$store.getters.getSelectedKey === 'C#')
                         scaleIndex = 7;
                     else if (this.$store.getters.getSelectedKey === 'F#')
@@ -144,9 +146,11 @@
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
             },
+            /*This method adds a dominant chord (V degree) before the selected chord*/
             secondaryDominant() {
                 let scaleIndex = this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1));
                 if (this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1)) === -1) {
+                    /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
                         scaleIndex = 4;
                     else if (this.features.tonic.slice(0, -1) === 'E#')
@@ -168,10 +172,12 @@
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
             },
+            /*This method adds a super-tonic chord (II degree) and a dominant chord (V degree) before the selected chord*/
             twoFiveSubstitution() {
                 let degrees = [4, 1];
                 let scaleIndex = this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1));
                 if (this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1)) === -1) {
+                    /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
                         scaleIndex = 4;
                     else if (this.features.tonic.slice(0, -1) === 'E#')
@@ -195,8 +201,10 @@
                     this.builtChord.chordQuality = '';
                 });
             },
+            /*This method substitutes a given chord with its relative major or minor*/
             relativeMajorMinorSubstitution() {
                 if (this.features.chordQuality === '\u0394') {
+                    /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
                         this.features.tonic = 'E3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
@@ -215,6 +223,7 @@
                         }
                     }
                 } else if (this.features.chordQuality === 'mi7') {
+                    /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'Db')
                         this.features.tonic = 'C#3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
@@ -236,8 +245,10 @@
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
             },
+            /*This method changes the quality of a chord making it minor if major and vice-versa*/
             chordQualitySubstitution() {
                 if (this.features.chordQuality === '\u0394') {
+                    /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'Db')
                         this.features.tonic = 'C#3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
@@ -256,6 +267,7 @@
                         }
                     }
                 } else if (this.features.chordQuality === 'mi7') {
+                    /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
                     if (this.features.tonic.slice(0, -1) === 'D#')
                         this.features.tonic = 'E3';
                     else if (this.features.tonic.slice(0, -1) === 'E#')
@@ -277,6 +289,7 @@
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
             },
+            /*This method substitutes the Ionian chord (I degree) with either the Aeolian (VI degree) or the Phrygian (III degree)*/
             tonicSubstitution(degree) {
                 let scaleIndex = (this.$store.getters.getKeys.indexOf(this.$store.getters.getSelectedKey));
                 let scale = this.$store.getters.getScales[this.$store.getters.getKeys.indexOf(this.$store.getters.getKeys[scaleIndex])];
