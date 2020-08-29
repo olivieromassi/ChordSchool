@@ -1,5 +1,5 @@
 <template>
-    <v-card :class="`mb-2 text--secondary caption primary ${chordShade}`"
+    <v-card :class="`mb-4 text--secondary caption primary ${chordShade}`"
             @mouseenter="fingerChord() " @mouseleave="resetKeyboard()">
         <v-card-text class="ma-n2">
         <v-layout row wrap>

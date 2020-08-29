@@ -38,7 +38,7 @@
             <div class="ma-4" v-else-if="progression.length === 0">
                 <v-icon color="warning">music_note</v-icon>
                 Add chords to the progression using the
-                <v-btn fab x-small flat depressed>
+                <v-btn fab x-small text depressed>
                     <v-icon color="primary">mdi-plus</v-icon>
                 </v-btn>
                 icon
@@ -165,7 +165,7 @@
                         nameNC[k]=nam;
                     }
                 }
-                console.log(k)
+                console.log(temp);
                 console.log(nameNC)
             },
             playProgression() {

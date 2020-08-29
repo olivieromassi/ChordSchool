@@ -30,6 +30,9 @@
         <v-chip large style="font-size: 40px" :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`" @mouseenter="fingerChord()"
                 @mouseleave="resetKeyboard()">
             <span  :class="`mdi mdi-roman-numeral-${this.features.degree +1}`"></span>
+            <v-btn fab x-small v-on:click="tritoneSubstitution">
+                <v-icon color="blue" size="medium">mdi-plus</v-icon>
+            </v-btn>
         </v-chip>
         <v-icon  large class="pl-4" >keyboard_arrow_right</v-icon>
     </div>

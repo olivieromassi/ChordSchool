@@ -11,9 +11,11 @@
                     <v-icon>palette</v-icon>
 
                 </v-btn>
-                <v-btn x-small depressed text class="primary lighten-1 ">
+                <template v-slot:activator="{ on, attrs }">
+                <v-btn x-small depressed text class="primary lighten-1" v-bind="attrs" v-on="on">
                     <v-icon>help_outline</v-icon>
                 </v-btn>
+                </template>
             </v-app-bar>
             <v-container class="fill-height">
                 <v-layout row wrap>
