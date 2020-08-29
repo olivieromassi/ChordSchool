@@ -273,7 +273,7 @@ export const store = new Vuex.Store({
         },
 
         /*METHODS TO PERFORM CHORD ALTERATIONS*/
-        /*Still testing functions, not definitive*/
+        /*This method updates the progression substituting a given chord with the newly computed one*/
         chordSubstitution(state, {index, chord}) {
             state.progression[index].notes = chord.notes;
             state.progression[index].scale = chord.scale;
@@ -283,6 +283,7 @@ export const store = new Vuex.Store({
             state.progression[index].fifth = chord.notes[2];
             state.progression[index].seventh = chord.notes[3];
         },
+        /*This method updates the progression adding the newly computed chord to a specific position*/
         addChordInPosition(state, {index, chord}) {
             let newChord = {};
             newChord.notes = chord.notes;
@@ -295,6 +296,8 @@ export const store = new Vuex.Store({
             newChord.seventh = chord.notes[3];
             state.progression.splice(index, 0, newChord);
         }
+
+        /*METHODS TO PERFORM VOICINGS*/
     }
 });
 
