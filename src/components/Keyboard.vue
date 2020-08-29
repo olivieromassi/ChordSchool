@@ -67,7 +67,6 @@
         </div>
         <KeyboardKey :note="'B5'"  :keyIsBlack="false"></KeyboardKey>
     </div>
-
 </template>
 
 
@@ -89,9 +88,10 @@
         position: relative;
         list-style: none;
         display: inline-flex;
+        z-index: 1;
     }
     #keyboard:last-child {
-        border-right: 1px solid black;
+        border-right: 1px solid transparent;
     }
 
 </style>

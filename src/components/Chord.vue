@@ -1,4 +1,5 @@
 <template>
+    <!--
     <v-card min-width="100" min-height="80"  :color=chordColor @mouseenter="fingerChord()" @mouseleave="resetKeyboard()">
         <h3 class="text-center grey">{{ this.features.tonic.slice(0,-1) +  this.features.chordQuality }}</h3>
         <v-btn class="ma-2" fab x-small v-on:click="deleteChord() , resetKeyboard() ">
@@ -23,8 +24,16 @@
         <v-btn fab x-small v-on:click="relativeMajorMinorSubstitution">
             <v-icon color="blue" size="medium">mdi-plus</v-icon>
         </v-btn>
+      </v-card>
+        -->
+    <div>
+        <v-chip large style="font-size: 40px" :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`" @mouseenter="fingerChord()"
+                @mouseleave="resetKeyboard()">
+            <span  :class="`mdi mdi-roman-numeral-${this.features.degree +1}`"></span>
+        </v-chip>
+        <v-icon  large class="pl-4" >keyboard_arrow_right</v-icon>
+    </div>
 
-    </v-card>
 </template>
 
 <script>
@@ -100,32 +109,8 @@
                             .charAt(this.builtChord.notes[this.builtChord.notes.length - 1].length - 1)) + 1);
                 }
 
-                switch (degree) {
-                    case 0 :
-                        this.builtChord.chordQuality = '\u0394';
-                        break;
-                    case 1 :
-                        this.builtChord.chordQuality = 'mi7';
-                        break;
-                    case 2 :
-                        this.builtChord.chordQuality = 'mi7';
-                        break;
-                    case 3 :
-                        this.builtChord.chordQuality = '\u0394';
-                        break;
-                    case 4 :
-                        this.builtChord.chordQuality = "7";
-                        break;
-                    case 5 :
-                        this.builtChord.chordQuality = 'mi7';
-                        break;
-                    case 6 :
-                        this.builtChord.chordQuality = '\u00D8';
-                        break;
-                    default:
-                        this.builtChord.chordQuality = '';
-                        break;
-                }
+                this.builtChord.chordQuality = this.chordDetails[this.chordDetails.findIndex(e => e.degree === degree)].chordQuality
+
             },
             /*This method substitutes a dominant chord with its tritone substitution, which shares the same tritone*/
             tritoneSubstitution() {
@@ -314,11 +299,19 @@
                 this.builtChord.chordQuality = '';
             }
         },
-        computed:{
-            chordColor() {
-                // the color should be modified according to Chord Score
-                return "grey"
+        computed: {
+            chordShade() {
+                return this.$store.state.chordDetails[this.$store.state.chordDetails.findIndex(e => e.degree === this.features.degree)].shade
             },
+            chordMode() {
+                return this.$store.state.chordDetails[this.$store.state.chordDetails.findIndex(e => e.degree === this.features.degree)].mode
+            },
+            chordDetails() {
+                return this.$store.getters.getChordDetails;
+            },
+            chordName() {
+                return this.features.tonic.slice(0, -1) + this.features.chordQuality
+            }
         }
     }
 </script>

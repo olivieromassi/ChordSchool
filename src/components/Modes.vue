@@ -1,7 +1,10 @@
 <template>
     <div>
         <h2 class="font-weight-thin">Modal Chords</h2>
-        <h3 v-if="this.$store.state.keyReference.length === 0" > - Choose a reference key - </h3>
+        <div v-if="this.$store.state.keyReference.length === 0">
+            <v-icon>music_note</v-icon>
+            Choose a reference key
+        </div>
         <v-list>
             <v-list-item v-for="mode in modes" :key="mode.index">
                 <ModalChord :features="mode" :keyReference="keyReference"></ModalChord>

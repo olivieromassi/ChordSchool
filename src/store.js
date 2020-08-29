@@ -87,6 +87,14 @@ export const store = new Vuex.Store({
         resetKeyboard: true,
         keysIndexes: [],
 
+        // This matrix is sorted from the Brightest to the Darkest chord and holds the details of chord degrees
+        chordDetails: [{degree: 3, shade: 'lighten-5', chordQuality: '\u0394', mode: 'Lydian'},
+            {degree: 0, shade: 'lighten-4', chordQuality: '\u0394', mode: 'Ionian'},
+            {degree: 4, shade: 'lighten-2', chordQuality: '7', mode: 'Mixolydian'},
+            {degree: 1, shade: '', chordQuality: 'mi7', mode: 'Dorian'},
+            {degree: 5, shade: 'darken-2', chordQuality: 'mi7', mode: 'Aeolian'},
+            {degree: 2, shade: 'darken-3', chordQuality: 'mi7', mode: 'Phrygian'},
+            {degree: 6, shade: 'darken-4', chordQuality: '\u00D8', mode: 'Locrian'}]
     },
     getters: {
         getKeys(state) {
@@ -115,6 +123,9 @@ export const store = new Vuex.Store({
                     return key.pressed
                 }
             )
+        },
+        getChordDetails(state) {
+            return state.chordDetails;
         }
     },
 
@@ -173,32 +184,7 @@ export const store = new Vuex.Store({
                     features.seventh = features.seventh.replace(/.$/, parseInt(features.seventh.charAt(features.seventh.length - 1)) + 1);
                 }
 
-                switch (index) {
-                    case 0 :
-                        features.chordQuality = '\u0394';
-                        break;
-                    case 1 :
-                        features.chordQuality = 'mi7';
-                        break;
-                    case 2 :
-                        features.chordQuality = 'mi7';
-                        break;
-                    case 3 :
-                        features.chordQuality = '\u0394';
-                        break;
-                    case 4 :
-                        features.chordQuality = "7";
-                        break;
-                    case 5 :
-                        features.chordQuality = 'mi7';
-                        break;
-                    case 6 :
-                        features.chordQuality = '\u00D8';
-                        break;
-                    default:
-                        features.chordQuality = '';
-                        break;
-                }
+                features.chordQuality = state.chordDetails[state.chordDetails.findIndex(e => e.degree === index)].chordQuality;
                 state.modes.push(features);
             });
         },

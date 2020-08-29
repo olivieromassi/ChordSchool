@@ -1,6 +1,7 @@
 <template>
     <div>
-        <v-select v-model="selectedKey" :items="keys" @change="setKey" solo label="Key Reference" class="headline">
+        <v-select slot="activator" height="5" v-model="selectedKey" :items="keys" @change="setKey" solo
+                  label="Key Reference" background-color="primary lighten-1" class="subtitle-1">
         </v-select>
     </div>
 </template>

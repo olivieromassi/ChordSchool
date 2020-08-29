@@ -1,34 +1,40 @@
 <template>
     <v-app id="app">
         <v-main>
-            <v-app-bar app dense class="light-blue lighten-3">
-                <v-toolbar-title>
-                    <span class="font-weight-light">Chord</span>
+            <v-app-bar app dense hide-on-scroll class="primary lighten-1 white--text">
+                <v-toolbar-title @click="reloadPage()" >
+                    <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
                     <span>Score</span>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
-                <v-btn x-small depressed text class="light-blue lighten-3">
-                    <v-icon>help</v-icon>
-                    <span>help</span>
+                <v-btn x-small depressed text class="primary lighten-1 ">
+                    <v-icon>palette</v-icon>
+
+                </v-btn>
+                <v-btn x-small depressed text class="primary lighten-1 ">
+                    <v-icon>help_outline</v-icon>
                 </v-btn>
             </v-app-bar>
-            <v-container class="fill-height mt-0" fluid>
-                <v-row class="pt-0 mt-0">
-                    <v-spacer></v-spacer>
-                    <Keyboard class="hidden-sm-and-down"></Keyboard>
-                    <v-spacer></v-spacer>
-                </v-row>
-                <v-row id="card" align="center" justify="center" class="mt-5">
-                    <v-flex md10>
+            <v-container class="fill-height">
+                <v-layout row wrap>
+                    <v-flex xs12 md12 lg12>
+                        <v-row>
+                            <v-spacer></v-spacer>
+                            <Keyboard class="hidden-md-and-down"></Keyboard>
+                            <v-spacer></v-spacer>
+                        </v-row>
+                    </v-flex>
+                    <v-flex xs12 md12 lg12 class="ma-4" align-self-start>
                         <v-card>
-                            <v-main class="mx-4 pt-1">
-                                <KeyReference class="mt-2"></KeyReference>
+                            <v-main class="mx-3 pt-3">
+                                <KeyReference></KeyReference>
                                 <Modes></Modes>
                                 <ChordProgression></ChordProgression>
                             </v-main>
                         </v-card>
                     </v-flex>
-                </v-row>
+
+                </v-layout>
             </v-container>
         </v-main>
     </v-app>
@@ -54,16 +60,26 @@
             ChordProgression,
             Modes,
             KeyReference
+        },
+        methods: {
+            reloadPage(){
+                window.location.reload()
+            }
         }
     }
 </script>
 
 <style>
-    /*body {
+    /*
+    body {
         overflow: hidden;
         height: 100vh;
-    }*/
-    #card{
+    }
+
+     */
+
+
+    #card {
         padding-top: -10px;
     }
 </style>

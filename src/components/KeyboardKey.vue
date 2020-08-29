@@ -1,9 +1,7 @@
 <template>
     <div v-bind:class="{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack, 'pressed-key': keyIsPressed}">
         <div>{{keys.map(key => key.noteName)[keys.map(key => key.name).indexOf(note)]}}</div>
-
     </div>
-
 </template>
 
 <script>
@@ -35,11 +33,12 @@
 </script>
 
 <style scoped>
+
     .key {
         position: relative;
         width: 60px;
         height: 200px;
-        border: 1px solid black;
+        border: 2px solid transparent;
         border-right: none;
         background: papayawhip;
         border-radius: 5px;
@@ -49,10 +48,12 @@
         align-items: flex-end;
         padding-bottom: 10px;
         font-weight: bold;
+        /*noinspection CssUnresolvedCustomProperty*/
+        color: var(--v-secondary-base);
     }
 
     .key:last-child {
-        border-right: 1px solid black;
+        border-right: 1px solid transparent;
     }
 
     .black-key {
@@ -69,11 +70,12 @@
         justify-content: center;
         align-items: flex-end;
         padding-bottom: 10px;
-        color: white;
-
+        /*noinspection CssUnresolvedCustomProperty*/
+        color: var(--v-secondary-base);
     }
 
     .pressed-key {
-        background: #81D4FA;
+        /*noinspection CssUnresolvedCustomProperty*/
+        background: var(--v-primary-base);
     }
 </style>
