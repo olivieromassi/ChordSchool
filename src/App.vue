@@ -2,10 +2,13 @@
     <v-app id="app">
         <v-main>
             <v-app-bar app dense hide-on-scroll class="primary lighten-1 white--text">
-                <v-toolbar-title @click="reloadPage()">
-                    <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
-                    <span>Score</span>
-                </v-toolbar-title>
+                <v-hover disabled>
+                    <v-toolbar-title style="cursor: pointer" @click="reloadPage()">
+                        <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
+                        <span>Score</span>
+                    </v-toolbar-title>
+                </v-hover>
+
                 <v-spacer></v-spacer>
                 <v-btn x-small depressed text class="primary lighten-1 ">
                     <v-icon>palette</v-icon>
@@ -95,10 +98,5 @@
     }
 
      */
-
-
-    #card {
-        padding-top: -10px;
-    }
 </style>
 
