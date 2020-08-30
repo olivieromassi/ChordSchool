@@ -29,24 +29,75 @@
     <div>
         <v-menu
                 v-model="menu"
+                top
                 transition="scale-transition"
-                :offset-x="true">
-            <template v-slot:activator="{ on }">
+                :offset-x="true"
+                :offset-y="true">
+            <template v-slot:activator="{ on ,attrs }">
                 <v-chip
-                        large style="font-size: 40px" :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`" @mouseenter="fingerChord()"
+                        large style="font-size: 40px"
+                        :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`"
+                        @mouseenter="fingerChord()"
                         @mouseleave="resetKeyboard()"
                         v-on="on"
-                >
-                    <span  :class="`mdi mdi-roman-numeral-${features.degree +1}`"></span>
+                        v-bind="attrs">
+                    <span :class="`mdi mdi-roman-numeral-${features.degree +1}`"></span>
                 </v-chip>
             </template>
-                <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index">
-                        <v-list-item-content>
-                            {{ item.title }}
-                        </v-list-item-content>
-                    </v-list-item>
-                </v-list>
+            <v-list>
+                <v-list-item
+                        @click="menu = false , deleteChord() , resetKeyboard()">
+                    <v-list-item-content class="sub">
+                        <p class="text-center">Delete</p>
+                        <v-icon>delete</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item
+                        @click="menu = false , deleteChord() , resetKeyboard()">
+                    <v-list-item-content>
+                        <p class="text-center">Tonic</p>
+                        <v-icon>swap_horiz</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item
+                        @click="menu = false , tritoneSubstitution">
+                    <v-list-item-content>
+                        <p class="text-center">Tritone</p>
+                        <v-icon>swap_horiz</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item
+                        @click="menu = false , twoFiveSubstitution">
+                    <v-list-item-content>
+                        <p class="text-center">II - V</p>
+                        <v-icon>swap_horiz</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-list-item
+                        @click="menu = false , secondaryDominant">
+                    <v-list-item-content>
+                        <p class="text-center">Secondary Dominant</p>
+                        <v-icon>swap_horiz</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-list-item
+                        @click="menu = false , chordQualitySubstitution">
+                    <v-list-item-content>
+                        <p class="text-center">Quality</p>
+                        <v-icon>swap_horiz</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-list-item
+                        @click="menu = false , relativeMajorMinorSubstitution">
+                    <v-list-item-content>
+                        <p class="text-center">Relative Maj min</p>
+                        <v-icon>swap_horiz</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
         </v-menu>
 
     </div>
@@ -71,11 +122,12 @@
                     chordQuality: ''
                 },
                 items: [
-                    { title: 'Click Me' },
-                    { title: 'Click Me' },
-                    { title: 'Click Me' },
-                    { title: 'Click Me 2' },
-                ]
+                    {title: 'Click Me'},
+                    {title: 'Click Me'},
+                    {title: 'Click Me'},
+                    {title: 'Click Me 2'},
+                ],
+                menu: false
             }
         },
         methods: {
@@ -341,4 +393,11 @@
 </script>
 
 <style>
+    .p {
+        text-align: center;
+    }
+    .sub{
+        cursor:pointer;
+        color:red
+    }
 </style>

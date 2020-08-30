@@ -18,10 +18,11 @@
                 <v-btn x-small depressed text class="primary lighten-1" @click.stop="dialog = true">
                     <v-icon>help_outline</v-icon>
                 </v-btn>
-                <v-dialog v-model="dialog" width="600px">
+                <v-dialog dark v-model="dialog">
                     <v-card>
                         <v-card-title>
-                            <span class="headline">How to use chord score</span>
+                            <span class="headline">How to use <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
+                                <span>Score</span></span>
                         </v-card-title>
                         <v-card-text>
                             ChordScore is an app that takes as input a chord progression and provides the user with the
@@ -29,7 +30,7 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="primary darken-1" text @click="dialog = false">close</v-btn>
+                            <v-btn color="secondary darken-1" text @click="dialog = false">close</v-btn>
 
                         </v-card-actions>
                     </v-card>
