@@ -102,7 +102,6 @@
 
     </div>
 
-
 </template>
 
 <script>
@@ -120,14 +119,7 @@
                     degree: '',
                     notes: [],
                     chordQuality: ''
-                },
-                items: [
-                    {title: 'Click Me'},
-                    {title: 'Click Me'},
-                    {title: 'Click Me'},
-                    {title: 'Click Me 2'},
-                ],
-                menu: false
+                }
             }
         },
         methods: {
@@ -148,6 +140,7 @@
                         this.features.seventh],
                     1);
             },
+            /*Chord Substitution Methods*/
             buildChord(scale, degree) {
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
@@ -373,6 +366,23 @@
 
                 this.builtChord.notes = [];
                 this.builtChord.chordQuality = '';
+            },
+            /*Voicings Methods*/
+            dropTwo() {
+                this.$store.commit('dropElement', {index: this.index, amount: 2});
+            },
+            dropThree() {
+                this.$store.commit('dropElement', {index: this.index, amount: 3});
+            },
+            dropTwoAndFour() {
+                [2, 3].forEach(value => {this.$store.commit('dropElement', {index: this.index, amount: value})});
+            },
+            addNinth() {
+                this.$store.commit('addNinth', this.index);
+            },
+            addNinthNoFifth() {
+                this.$store.commit('addNinth', this.index);
+                this.$store.commit('deleteFifth', this.index);
             }
         },
         computed: {

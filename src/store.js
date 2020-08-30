@@ -281,9 +281,42 @@ export const store = new Vuex.Store({
             newChord.fifth = chord.notes[2];
             newChord.seventh = chord.notes[3];
             state.progression.splice(index, 0, newChord);
-        }
+        },
 
         /*METHODS TO PERFORM VOICINGS*/
+        dropElement(state, {index, amount}) {
+            let chord = state.progression[index].notes;
+            let octave = chord[state.progression[index].notes.length - amount].slice(-1);
+            let note = chord[state.progression[index].notes.length - amount].slice(0, -1);
+            if (octave > 3 && octave <= 5) {
+                octave = octave - 1;
+                note = note + octave;
+                for (index in chord) {
+                    if (chord[index].slice(-1) >= octave) {
+                        chord.splice(chord.length - amount, 1);
+                        chord.splice(index, 0, note);
+                        break;
+                    }
+                }
+            }
+        },
+        addNinth(state, index) {
+            let chord = state.progression[index].notes;
+            let noteIndex = state.progression[index].scale.indexOf(state.progression[index].tonic) + 1;
+            let note = state.progression[index].scale[noteIndex];
+            let octave = note.slice(-1);
+            octave = octave - (-1);
+            if (octave <= 5)
+                chord.push(note.slice(0, -1) + octave);
+        },
+        deleteFifth(state, index) {
+            let chord = state.progression[index].notes;
+            let fifth = state.progression[index].fifth.slice(0, -1);
+            chord.forEach((value, index) => {
+                if (value.includes(fifth))
+                    chord.splice(index, 1);
+            })
+        }
     }
 });
 
