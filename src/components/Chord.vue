@@ -119,7 +119,8 @@
                     degree: '',
                     notes: [],
                     chordQuality: ''
-                }
+                },
+                menu:false
             }
         },
         methods: {
