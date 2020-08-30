@@ -15,7 +15,9 @@
                         v-on="on"
                         v-bind="attrs">
                     <span :class="`mdi mdi-roman-numeral-${features.degree +1}`"></span>
+
                 </v-chip>
+
             </template>
             <v-list>
                 <!-- TODO move the delete to a chip on hover-->
@@ -81,6 +83,7 @@
                 </v-list-item>
             </v-list>
         </v-menu>
+        <v-icon v-if="progression.length - 1 > index" class="ma-0 pl-3 pb-3">mdi-forward</v-icon>
 
     </div>
 
@@ -186,7 +189,6 @@
             },
             /*This method adds a dominant chord (V degree) before the selected chord*/
             secondaryDominant() {
-                console.log("clicked!");
                 let scaleIndex = this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1));
                 if (this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1)) === -1) {
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
@@ -381,6 +383,11 @@
             },
             chordName() {
                 return this.features.tonic.slice(0, -1) + this.features.chordQuality
+            },
+            progression: {
+                get() {
+                    return this.$store.getters.getProgression
+                }
             }
         }
     }

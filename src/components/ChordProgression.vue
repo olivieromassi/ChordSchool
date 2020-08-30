@@ -48,7 +48,7 @@
             <draggable v-model="progression">
                 <v-list-item v-for="(chord, index) in progression" v-bind:key="chord.index">
                     <!--//{{key}}-->
-                    <Chord :features="chord" :index="index"></Chord>
+                    <Chord class="ma-n3" :features="chord" :index="index"></Chord>
                 </v-list-item>
             </draggable>
         </v-list>
@@ -197,7 +197,7 @@
                         this.$store.commit('resetPressedKeys');
                         this.$store.commit('fingerChord', TP[propertyName]);
                     }.bind(this, propertyName), z++ * 1000*(60/this.tempo));
-                    if(this.progression.length ==  propertyName+1){
+                    if(this.progression.length ===  propertyName+1){
                         this.$store.commit('resetPressedKeys');
                     }
                 }
