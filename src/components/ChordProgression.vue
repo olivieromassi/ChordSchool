@@ -174,15 +174,12 @@
                 let y = [];
 
                 for (let i = 0; i < this.progression.length; i++) {
-                    x[i] = [this.progression[i].tonic,
-                        this.progression[i].third,
-                        this.progression[i].fifth,
-                        this.progression[i].seventh];
+                    x[i] = this.progression[i].notes;
                     t[i] = i*60/this.tempo;
                     y[i] = [t[i], x[i]] ;
                 }
 // play chord progression
-                let TP =this.progression;
+                let TP = this.progression;
 
                 let z = 0;
                 const synth = new Tone.PolySynth().toDestination();
@@ -195,7 +192,7 @@
                 for (let propertyName in TP) {
                     setTimeout(function(propertyName) {
                         this.$store.commit('resetPressedKeys');
-                        this.$store.commit('fingerChord', TP[propertyName]);
+                        this.$store.commit('fingerChord', TP[propertyName].notes);
                     }.bind(this, propertyName), z++ * 1000*(60/this.tempo));
                     if(this.progression.length ===  propertyName+1){
                         this.$store.commit('resetPressedKeys');

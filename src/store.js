@@ -229,27 +229,23 @@ export const store = new Vuex.Store({
 
             //let featuresTonic = '';
             for (let key in features) {
+                var featuresKey = features[key];
 
-                if (key !== "chordQuality" && key !== "degree" && key !== "notes" && key !== "scale") {
+                chordNotes.push(featuresKey);
 
-                    var featuresKey = features[key];
-
-                    chordNotes.push(featuresKey);
-
-                    // checking if the keyName exists on the keyboard
-                    if (keyNames.indexOf(featuresKey) < 0) {
-                        if (featuresKey.includes("#")) {
-                            featuresKey = featuresKey.replace("#", '');
-                            featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) + 1]
-                        }
-                        if (featuresKey.includes("b")) {
-                            featuresKey = featuresKey.replace("b", '');
-                            featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) - 1]
-                        }
+                // checking if the keyName exists on the keyboard
+                if (keyNames.indexOf(featuresKey) < 0) {
+                    if (featuresKey.includes("#")) {
+                        featuresKey = featuresKey.replace("#", '');
+                        featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) + 1]
                     }
-
-                    noteIndexes.push(keyNames.findIndex(e => e.includes(featuresKey)))
+                    if (featuresKey.includes("b")) {
+                        featuresKey = featuresKey.replace("b", '');
+                        featuresKey = keyNames[keyNames.findIndex(e => e.includes(featuresKey)) - 1]
+                    }
                 }
+
+                noteIndexes.push(keyNames.findIndex(e => e.includes(featuresKey)))
             }
             // Change the state of the keys to pressed
             noteIndexes.forEach(function (element, index) {

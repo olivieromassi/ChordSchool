@@ -49,7 +49,10 @@
                 this.$store.commit('addChordToProgression', JSON.parse(JSON.stringify(this.features)));
             },
             fingerChord() {
-                this.$store.commit('fingerChord', this.features);
+                this.$store.commit('fingerChord',[this.features.tonic,
+                    this.features.third,
+                    this.features.fifth,
+                    this.features.seventh]);
             },
             resetKeyboard() {
                 this.$store.commit('resetPressedKeys');

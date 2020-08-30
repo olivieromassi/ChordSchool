@@ -113,17 +113,14 @@
                 this.$store.commit('deleteChordFromProgression', this.features);
             },
             fingerChord() {
-                this.$store.commit('fingerChord', this.features);
+                this.$store.commit('fingerChord', this.features.notes);
             },
             resetKeyboard() {
                 this.$store.commit('resetPressedKeys');
             },
             playChord() {
                 let piano = new Tone.PolySynth(Tone.Synth).toDestination();
-                piano.triggerAttackRelease([this.features.tonic,
-                        this.features.third,
-                        this.features.fifth,
-                        this.features.seventh],
+                piano.triggerAttackRelease(this.features.notes,
                     1);
             },
             /*Chord Substitution Methods*/
