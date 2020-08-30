@@ -52,9 +52,12 @@
                 </v-list-item>
             </draggable>
         </v-list>
+
+        <!--
         <v-btn color="primary lighten-1" @click="notableChords">
             <v-icon color="blue">chords</v-icon>
         </v-btn>
+        -->
 
     </div>
 </template>

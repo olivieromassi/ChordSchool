@@ -9,7 +9,7 @@
             <template v-slot:activator="{ on ,attrs }">
                 <v-chip
                         close
-                        large style="font-size: 40px"
+                        x-large style="font-size: 40px"
                         :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`"
                         @mouseenter="fingerChord()"
                         @mouseleave="resetKeyboard()"

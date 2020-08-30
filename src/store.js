@@ -94,7 +94,8 @@ export const store = new Vuex.Store({
             {degree: 1, shade: '', chordQuality: 'mi7', mode: 'Dorian'},
             {degree: 5, shade: 'darken-2', chordQuality: 'mi7', mode: 'Aeolian'},
             {degree: 2, shade: 'darken-3', chordQuality: 'mi7', mode: 'Phrygian'},
-            {degree: 6, shade: 'darken-4', chordQuality: '\u00D8', mode: 'Locrian'}]
+            {degree: 6, shade: 'darken-4', chordQuality: '\u00D8', mode: 'Locrian'}],
+
     },
     getters: {
         getKeys(state) {
