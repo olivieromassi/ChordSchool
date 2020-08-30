@@ -313,6 +313,19 @@ export const store = new Vuex.Store({
                 if (value.includes(fifth))
                     chord.splice(index, 1);
             })
+        },
+        shapeOctave(state, {index, direction}) {
+            let chord = state.progression[index].notes;
+            let octave, note;
+            if ((direction === 1 && chord[chord.length - 1].slice(-1) <= 4)
+                || (direction === -1 && chord[0].slice(-1) >= 4)) {
+                for (index in chord) {
+                    note = chord[index];
+                    octave = note.slice(-1);
+                    octave = parseInt(octave) + parseInt(direction);
+                    chord.splice(index, 1, note.slice(0, -1) + octave);
+                }
+            }
         }
     }
 });
