@@ -178,7 +178,7 @@
                     t[i] = i*60/this.tempo;
                     y[i] = [t[i], x[i]] ;
                 }
-// play chord progression
+                // play chord progression
                 let TP = this.progression;
 
                 let z = 0;
@@ -188,7 +188,7 @@
                 }), y);
                 part.start();
                 Tone.Transport.start();
-// fingering
+                // fingering
                 for (let propertyName in TP) {
                     setTimeout(function(propertyName) {
                         this.$store.commit('resetPressedKeys');
@@ -200,7 +200,6 @@
                 }
 
             },
- ////////////////
             resetProgression(){
                 this.$store.commit('resetProgression');
             }
