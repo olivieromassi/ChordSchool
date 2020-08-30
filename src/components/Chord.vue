@@ -360,6 +360,9 @@
             addNinthNoFifth() {
                 this.$store.commit('addNinth', this.index);
                 this.$store.commit('deleteFifth', this.index);
+            },
+            shapeOctave(direction) {
+                this.$store.commit('shapeOctave', {index: this.index, direction: direction});
             }
         },
         computed: {
