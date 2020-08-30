@@ -48,7 +48,7 @@
             <draggable v-model="progression">
                 <v-list-item v-for="(chord, index) in progression" v-bind:key="chord.index">
                     <!--//{{key}}-->
-                    <Chord class="ma-n3" :features="chord" :index="index"></Chord>
+                    <Chord class="mr-n5" :features="chord" :index="index"></Chord>
                 </v-list-item>
             </draggable>
         </v-list>

@@ -8,10 +8,12 @@
                 :offset-y="true">
             <template v-slot:activator="{ on ,attrs }">
                 <v-chip
+                        close
                         large style="font-size: 40px"
                         :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`"
                         @mouseenter="fingerChord()"
                         @mouseleave="resetKeyboard()"
+                        @click:close="close, deleteChord() , resetKeyboard()"
                         v-on="on"
                         v-bind="attrs">
                     <span :class="`mdi mdi-roman-numeral-${features.degree +1}`"></span>
@@ -20,15 +22,6 @@
 
             </template>
             <v-list>
-                <!-- TODO move the delete to a chip on hover-->
-                <v-list-item
-                        @click="menu = false , deleteChord() , resetKeyboard()">
-                    <v-list-item-content class="sub">
-                        <p class="text-center">Delete</p>
-                        <v-icon>delete</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
-
                 <v-list-item v-if="features.degree===0"
                         @click="menu = false , tonicSubstitution(5)">
                     <v-list-item-content>
@@ -105,7 +98,8 @@
                     notes: [],
                     chordQuality: ''
                 },
-                menu:false
+                menu:false,
+                close:false
             }
         },
         methods: {
@@ -391,8 +385,5 @@
 </script>
 
 <style>
-    .sub{
-        cursor:pointer;
-        color:red
-    }
+
 </style>
