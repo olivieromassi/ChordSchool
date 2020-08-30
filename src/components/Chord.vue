@@ -1,31 +1,4 @@
 <template>
-    <!--
-    <v-card min-width="100" min-height="80"  :color=chordColor @mouseenter="fingerChord()" @mouseleave="resetKeyboard()">
-        <h3 class="text-center grey">{{ this.features.tonic.slice(0,-1) +  this.features.chordQuality }}</h3>
-        <v-btn class="ma-2" fab x-small v-on:click="deleteChord() , resetKeyboard() ">
-            <v-icon color="blue" size="medium">mdi-minus</v-icon>
-        </v-btn>
-
-        <v-btn fab x-small v-on:click="tonicSubstitution(5)">
-            <v-icon color="blue" size="medium">mdi-plus</v-icon>
-        </v-btn>
-        <v-btn fab x-small v-on:click="tritoneSubstitution">
-            <v-icon color="blue" size="medium">mdi-plus</v-icon>
-        </v-btn>
-        <v-btn fab x-small v-on:click="twoFiveSubstitution">
-            <v-icon color="blue" size="medium">mdi-plus</v-icon>
-        </v-btn>
-        <v-btn fab x-small v-on:click="secondaryDominant">
-            <v-icon color="blue" size="medium">mdi-plus</v-icon>
-        </v-btn>
-        <v-btn fab x-small v-on:click="chordQualitySubstitution">
-            <v-icon color="blue" size="medium">mdi-plus</v-icon>
-        </v-btn>
-        <v-btn fab x-small v-on:click="relativeMajorMinorSubstitution">
-            <v-icon color="blue" size="medium">mdi-plus</v-icon>
-        </v-btn>
-      </v-card>
-        -->
     <div>
         <v-menu
                 v-model="menu"
@@ -45,6 +18,7 @@
                 </v-chip>
             </template>
             <v-list>
+                <!-- TODO move the delete to a chip on hover-->
                 <v-list-item
                         @click="menu = false , deleteChord() , resetKeyboard()">
                     <v-list-item-content class="sub">
@@ -53,16 +27,24 @@
                     </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item
-                        @click="menu = false , deleteChord() , resetKeyboard()">
+                <v-list-item v-if="features.degree===0"
+                        @click="menu = false , tonicSubstitution(5)">
                     <v-list-item-content>
-                        <p class="text-center">Tonic</p>
+                        <p class="text-center">Tonic w/ VI</p>
                         <v-icon>swap_horiz</v-icon>
                     </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item
-                        @click="menu = false , tritoneSubstitution">
+                <v-list-item v-if="features.degree===0"
+                             @click="menu = false , tonicSubstitution(2)">
+                    <v-list-item-content>
+                        <p class="text-center">Tonic w/ III</p>
+                        <v-icon>swap_horiz</v-icon>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item v-if="features.degree===4"
+                        @click="menu = false , tritoneSubstitution()">
                     <v-list-item-content>
                         <p class="text-center">Tritone</p>
                         <v-icon>swap_horiz</v-icon>
@@ -70,28 +52,28 @@
                 </v-list-item>
 
                 <v-list-item
-                        @click="menu = false , twoFiveSubstitution">
+                        @click="menu = false , twoFiveSubstitution()">
                     <v-list-item-content>
                         <p class="text-center">II - V</p>
                         <v-icon>swap_horiz</v-icon>
                     </v-list-item-content>
                 </v-list-item>
                 <v-list-item
-                        @click="menu = false , secondaryDominant">
+                        @click="menu = false , secondaryDominant()">
                     <v-list-item-content>
                         <p class="text-center">Secondary Dominant</p>
                         <v-icon>swap_horiz</v-icon>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                        @click="menu = false , chordQualitySubstitution">
+                <v-list-item v-if="features.degree!== 4 && features.degree!==6"
+                        @click="menu = false , chordQualitySubstitution()">
                     <v-list-item-content>
                         <p class="text-center">Quality</p>
                         <v-icon>swap_horiz</v-icon>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                        @click="menu = false , relativeMajorMinorSubstitution">
+                <v-list-item v-if="features.degree!== 4 && features.degree!==6"
+                        @click="menu = false , relativeMajorMinorSubstitution()">
                     <v-list-item-content>
                         <p class="text-center">Relative Maj min</p>
                         <v-icon>swap_horiz</v-icon>
@@ -204,6 +186,7 @@
             },
             /*This method adds a dominant chord (V degree) before the selected chord*/
             secondaryDominant() {
+                console.log("clicked!");
                 let scaleIndex = this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1));
                 if (this.$store.getters.getKeys.indexOf(this.features.tonic.slice(0, -1)) === -1) {
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
@@ -404,9 +387,6 @@
 </script>
 
 <style>
-    .p {
-        text-align: center;
-    }
     .sub{
         cursor:pointer;
         color:red
