@@ -306,6 +306,26 @@ export const store = new Vuex.Store({
             if (octave <= 5)
                 chord.push(note.slice(0, -1) + octave);
         },
+        score(state, originalScale ,updatedScale) {
+
+            let firstChar,secChar,k,numb=0;
+            let o =originalScale.toString();
+            function isCharDigit(n){
+                return !!n.trim() && !isNaN(+n);
+            }
+            for (let i = 0; i < updatedScale.length; i++) {
+                firstChar=updatedScale[i].charAt(0);
+                secChar=updatedScale[i].charAt(1);
+                k= o.search(q);
+                if(isCharDigit(secChar) == true && isCharDigit(o[k+1]) == true){
+                    numb++;
+                }
+                if(secChar == o[k+1]){
+                    numb++;
+                }
+            }
+          return originalScale.length - numb;
+        },
         deleteFifth(state, index) {
             let chord = state.progression[index].notes;
             let fifth = state.progression[index].fifth.slice(0, -1);
