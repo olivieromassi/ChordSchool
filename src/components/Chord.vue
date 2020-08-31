@@ -1,12 +1,12 @@
 <template>
     <div>
-        <v-menu
-                v-model="menu"
+        <v-menu :close-on-content-click=false
+                v-model="menuDetailed"
+                offset-x
                 top
-                transition="scale-transition"
-                :offset-x="true"
-                :offset-y="true">
-            <template v-slot:activator="{ on ,attrs }">
+                offset-y
+        >
+            <template v-slot:activator="{ on, attrs }">
                 <v-chip
                         close
                         x-large style="font-size: 40px"
@@ -17,69 +17,142 @@
                         v-on="on"
                         v-bind="attrs">
                     <span :class="`mdi mdi-roman-numeral-${features.degree +1}`"></span>
-
                 </v-chip>
-
             </template>
-            <v-list>
-                <v-list-item v-if="features.degree===0"
-                        @click="menu = false , tonicSubstitution(5)">
-                    <v-list-item-content>
-                        <p class="text-center">Tonic w/ VI</p>
-                        <v-icon>swap_horiz</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
+            <v-card max-width="200" :class="`text--secondary caption primary ${chordShade}`">
+                <v-card-text class="ma-n2">
+                    <v-layout row wrap>
+                        <v-flex class="secondary--text text--lighten-1  text-center xs12 md12 lg12">
+                            <span>
+                                <v-icon color="grey">mdi-music-clef-treble</v-icon>{{chordKeyRefScale}} - </span>
+                            <span> {{ chordMode }}</span>
+                        </v-flex>
+                        <v-flex class="text-center secondary--text text--lighten-1 headline xs12 md12 lg12">
+                            {{chordName}}
+                        </v-flex>
+                    </v-layout>
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-expansion-panels hover>
+                    <v-expansion-panel>
+                        <v-expansion-panel-header class="align-self-start">
+                            Substitutions
+                        </v-expansion-panel-header>
+                        <v-expansion-panel-content>
+                            <v-list>
+                                <v-row>
+                                    <v-list-item class="text-center caption" v-if="features.degree===0"
+                                                 @click="menuSub = false , tonicSubstitution(5)">
+                                        <v-list-item-content>
+                                            <p class="text-center">Tonic w/ VI</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
 
-                <v-list-item v-if="features.degree===0"
-                             @click="menu = false , tonicSubstitution(2)">
-                    <v-list-item-content>
-                        <p class="text-center">Tonic w/ III</p>
-                        <v-icon>swap_horiz</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item v-if="features.degree===0"
+                                                 @click="menuSub = false , tonicSubstitution(2)">
+                                        <v-list-item-content>
+                                            <p class="text-center">Tonic w/ III</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
 
-                <v-list-item v-if="features.degree===4"
-                        @click="menu = false , tritoneSubstitution()">
-                    <v-list-item-content>
-                        <p class="text-center">Tritone</p>
-                        <v-icon>swap_horiz</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
+                                <v-row>
+                                    <v-list-item v-if="features.degree===4"
+                                                 @click="menuSub = false , tritoneSubstitution()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Tritone</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item
+                                            @click="menuSub = false , twoFiveSubstitution()">
+                                        <v-list-item-content>
+                                            <p class="text-center">II - V</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item
+                                            @click="menuSub = false , secondaryDominant()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Secondary Dominant</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item v-if="features.degree!== 4 && features.degree!==6"
+                                                 @click="menuSub = false , chordQualitySubstitution()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Quality</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item v-if="features.degree!== 4 && features.degree!==6"
+                                                 @click="menuSubSub = false , relativeMajorMinorSubstitution()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Relative Maj min</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                            </v-list>
+                        </v-expansion-panel-content>
+                    </v-expansion-panel>
+                    <v-divider></v-divider>
+                    <v-expansion-panel>
+                        <v-expansion-panel-header>Voicings</v-expansion-panel-header>
+                        <v-expansion-panel-content>
+                            <v-list>
+                                <v-row>
+                                    <v-list-item @click="menuSub = false , dropTwo()">
+                                        <v-list-item-content>
+                                            <p class="text-center"> Drop 2</p>
+                                            <v-icon></v-icon>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item @click="menuSub = false , dropThree()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Drop 3</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item @click="menuSub = false , dropTwoAndFour()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Drop 2 & 4</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item
+                                            @click="menuSub = false , addNinth()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Add 9th</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                                <v-row>
+                                    <v-list-item
+                                            @click="menuSub = false , addNinthNoFifth()">
+                                        <v-list-item-content>
+                                            <p class="text-center">Add 9th - No 5th</p>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-row>
+                            </v-list>
+                        </v-expansion-panel-content>
+                    </v-expansion-panel>
+                </v-expansion-panels>
+            </v-card>
 
-                <v-list-item
-                        @click="menu = false , twoFiveSubstitution()">
-                    <v-list-item-content>
-                        <p class="text-center">II - V</p>
-                        <v-icon>swap_horiz</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                        @click="menu = false , secondaryDominant()">
-                    <v-list-item-content>
-                        <p class="text-center">Secondary Dominant</p>
-                        <v-icon>swap_horiz</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
-                <v-list-item v-if="features.degree!== 4 && features.degree!==6"
-                        @click="menu = false , chordQualitySubstitution()">
-                    <v-list-item-content>
-                        <p class="text-center">Quality</p>
-                        <v-icon>swap_horiz</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
-                <v-list-item v-if="features.degree!== 4 && features.degree!==6"
-                        @click="menu = false , relativeMajorMinorSubstitution()">
-                    <v-list-item-content>
-                        <p class="text-center">Relative Maj min</p>
-                        <v-icon>swap_horiz</v-icon>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-list>
         </v-menu>
         <v-icon v-if="progression.length - 1 > index" class="ma-0 pl-3 pb-3">mdi-forward</v-icon>
-
     </div>
-
 </template>
 
 <script>
@@ -98,11 +171,12 @@
                     notes: [],
                     chordQuality: ''
                 },
-                menu:false,
-                close:false
+                menuDetailed: false,
+                close: false,
             }
         },
         methods: {
+
             deleteChord() {
                 this.$store.commit('deleteChordFromProgression', this.features);
             },
@@ -352,7 +426,9 @@
                 this.$store.commit('dropElement', {index: this.index, amount: 3});
             },
             dropTwoAndFour() {
-                [2, 3].forEach(value => {this.$store.commit('dropElement', {index: this.index, amount: value})});
+                [2, 3].forEach(value => {
+                    this.$store.commit('dropElement', {index: this.index, amount: value})
+                });
             },
             addNinth() {
                 this.$store.commit('addNinth', this.index);
@@ -382,6 +458,9 @@
                 get() {
                     return this.$store.getters.getProgression
                 }
+            },
+            chordKeyRefScale() {
+                return this.features.scale[0].slice(0, -1)
             }
         }
     }

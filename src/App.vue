@@ -17,6 +17,7 @@
                         :nudge-width="200"
                         offset-x>
                     <template v-slot:activator="{ on, attrs }">
+                        <!-- TODO: add tooltip -->
                         <v-btn x-small depressed text class="primary lighten-1"
                                v-bind="attrs"
                                v-on="on">

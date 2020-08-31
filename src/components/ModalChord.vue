@@ -3,13 +3,12 @@
             @mouseenter="fingerChord() " @mouseleave="resetKeyboard()">
         <v-card-text class="ma-n2">
         <v-layout row wrap>
-                <v-flex class="text--secondary text-center xs12 md12 lg12 mx-1"> {{ chordMode }}</v-flex>
+                <v-flex class="secondary--text text--lighten-1 text-center xs12 md12 lg12 mx-1"> {{ chordMode }}</v-flex>
                 <v-flex class="text-center secondary--text text--lighten-1 headline xs12 md12 lg12 mx-1">{{chordName}}</v-flex>
         </v-layout>
         </v-card-text>
         <v-card-actions>
         <v-layout row wrap class="mx-2">
-
             <v-flex class="xs3 md3 lg3 xs12 mx-2 pb-2">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
@@ -20,7 +19,7 @@
                     <span>Add {{chordMode}} to the progression</span>
                 </v-tooltip>
             </v-flex>
-            <v-flex class="block xs3 md3 lg3 mx-2">
+            <v-flex class="xs3 md3 lg3 mx-2">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn block fab x-small md1 v-on:click="playChord()" v-bind="attrs" v-on="on">
