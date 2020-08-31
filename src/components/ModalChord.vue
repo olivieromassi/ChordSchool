@@ -57,12 +57,25 @@
                 this.$store.commit('resetPressedKeys');
             },
             playChord() {
+                const synth = new Tone.Synth().toDestination();
+                setTimeout(this.soundChord, 2100);
+                /*Part plays the single notes of the chord*/
+                const part = new Tone.Part(((time, note) => {
+                    synth.triggerAttackRelease(note, "8n", time);
+                }), [[0, this.features.tonic],
+                    [0.5, this.features.third],
+                    [1, this.features.fifth],
+                    [1.5, this.features.seventh]]);
+                part.start();
+                Tone.Transport.start();
+            },
+            soundChord() {
                 let piano = new Tone.PolySynth(Tone.Synth).toDestination();
                 piano.triggerAttackRelease([this.features.tonic,
-                        this.features.third,
-                        this.features.fifth,
-                        this.features.seventh],
-                    1);
+                    this.features.third,
+                    this.features.fifth,
+                    this.features.seventh],
+                  '4n');
             }
         },
         computed: {
