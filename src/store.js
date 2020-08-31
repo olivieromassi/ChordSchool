@@ -316,7 +316,7 @@ export const store = new Vuex.Store({
             for (let i = 0; i < updatedScale.length; i++) {
                 firstChar=updatedScale[i].charAt(0);
                 secChar=updatedScale[i].charAt(1);
-                k= o.search(q);
+                k= o.search(firstChar);
                 if(isCharDigit(secChar) == true && isCharDigit(o[k+1]) == true){
                     numb++;
                 }
