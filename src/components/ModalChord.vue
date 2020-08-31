@@ -58,9 +58,9 @@
                 this.$store.commit('resetPressedKeys');
             },
             playChord() {
-                /*Add also the notes all together*/
                 const synth = new Tone.Synth().toDestination();
                 setTimeout(this.soundChord, 2100);
+                /*Part plays the single notes of the chord*/
                 const part = new Tone.Part(((time, note) => {
                     synth.triggerAttackRelease(note, "8n", time);
                 }), [[0, this.features.tonic],
