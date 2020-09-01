@@ -234,14 +234,14 @@
             },
             /*This method substitutes a dominant chord with its tritone substitution, which shares the same tritone*/
             tritoneSubstitution() {
-                let scaleIndex = (this.$store.getters.getChromaticScale.indexOf(this.$store.getters.getSelectedKey) + 6) % 12;
-                if (this.$store.getters.getChromaticScale.indexOf(this.$store.getters.getSelectedKey) === -1) {
+                let scaleIndex = (this.$store.getters.getChromaticScale.indexOf(this.features.scale[0].slice(0, -1)) + 6) % 12;
+                if (this.$store.getters.getChromaticScale.indexOf(this.features.scale[0].slice(0, -1)) === -1) {
                     /*Checking for possible inconsistencies between the available keys and the notes of the chords*/
-                    if (this.$store.getters.getSelectedKey === 'C#')
+                    if (this.features.scale[0].slice(0, -1) === 'C#')
                         scaleIndex = 7;
-                    else if (this.$store.getters.getSelectedKey === 'F#')
+                    else if (this.features.scale[0].slice(0, -1) === 'F#')
                         scaleIndex = 0;
-                    else if (this.$store.getters.getSelectedKey === 'Cb')
+                    else if (this.features.scale[0].slice(0, -1) === 'Cb')
                         scaleIndex = 5;
                 }
                 let tritoneScale = this.$store.getters.getScales[this.$store.getters.getKeys.indexOf(this.$store.getters.getChromaticScale[scaleIndex])];
