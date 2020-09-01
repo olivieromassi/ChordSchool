@@ -475,6 +475,16 @@
             },
             chordKeyRefScale() {
                 return this.features.scale[0].slice(0, -1)
+            },
+            distanceFromReference() {
+                let distance = 0;
+                let keys = this.$store.getters.getKeyReference.map(e => e.slice(0, -1))
+                this.features.scale.forEach(value => {
+                    if (!keys.includes(value.slice(0, -1))) {
+                      distance++;
+                    }
+                });
+                return distance;
             }
         }
     }
