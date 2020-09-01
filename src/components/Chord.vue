@@ -38,8 +38,7 @@
                     <v-layout row wrap>
                         <v-flex class="secondary--text text--lighten-1  text-center xs12 md12 lg12">
                             <span>
-                                <v-icon color="grey">mdi-music-clef-treble</v-icon>{{chordKeyRefScale}} - </span>
-                            <span> {{ chordMode }}</span>
+                                <v-icon color="grey">mdi-music-clef-treble</v-icon>{{chordKeyRefScale}} </span>
                         </v-flex>
                         <v-flex class="text-center secondary--text text--lighten-1 headline xs12 md12 lg12">
                             {{chordName}}
@@ -187,6 +186,7 @@
                 },
                 menuDetailed: false,
                 close: false,
+                score:2
             }
         },
         methods: {

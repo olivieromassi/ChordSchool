@@ -45,42 +45,42 @@ export const store = new Vuex.Store({
 
         /* This list contains the state of the keyboard keys, that alternate between "pressed-1" or "released-0".*/
         keyboard: [
-            {name: 'C3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'C#3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'D3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'D#3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'E3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'F3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'F#3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'G3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'G#3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'A3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'A#3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'B3', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'C4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'C#4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'D4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'D#4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'E4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'F4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'F#4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'G4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'G#4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'A4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'A#4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'B4', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'C5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'C#5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'D5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'D#5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'E5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'F5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'F#5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'G5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'G#5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'A5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'A#5', pressed: false, partOfRefScale: false, noteName: null},
-            {name: 'B5', pressed: false, partOfRefScale: false, noteName: null}
+            {name: 'C3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'C#3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'D3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'D#3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'E3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'F3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'F#3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'G3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'G#3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'A3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'A#3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'B3', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'C4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'C#4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'D4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'D#4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'E4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'F4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'F#4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'G4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'G#4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'A4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'A#4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'B4', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'C5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'C#5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'D5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'D#5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'E5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'F5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'F#5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'G5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'G#5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'A5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'A#5', pressed: false, partOfRefScale: null, noteName: null},
+            {name: 'B5', pressed: false, partOfRefScale: null, noteName: null}
         ],
 
         /* This variable will reset the keyboard if true */
@@ -122,6 +122,12 @@ export const store = new Vuex.Store({
         getPressedKeys(state) {
             return state.keyboard.filter(key => {
                     return key.pressed
+                }
+            )
+        },
+        getRefScaleKeys(state) {
+            return state.keyboard.filter(key => {
+                    return key.partOfRefScale
                 }
             )
         },
@@ -219,6 +225,13 @@ export const store = new Vuex.Store({
                 state.keyboard[key].noteName = '';
             }
         },
+
+        resetRefScaleKeys(state) {
+            for (let key in state.keyboard) {
+                state.keyboard[key].partOfRefScale = null;
+            }
+        },
+
         fingerChord(state, features) {
             //Based on the chord fingering, create an array with the indexes of keys to be pressed
             let noteIndexes = [];
@@ -252,6 +265,30 @@ export const store = new Vuex.Store({
             noteIndexes.forEach(function (element, index) {
                 state.keyboard[element].pressed = true;
                 state.keyboard[element].noteName = chordNotes[index];
+            });
+        },
+
+        setPartOfKeyReference(state){
+            const keyNames = state.keyboard.map(key => key.name);
+            let keyRefNotes = [];
+            state.keyReference.forEach(value => {
+                let keyValue = value;
+                // checking if the keyValue exists on the keyboard
+                if (keyNames.indexOf(keyValue) < 0) {
+                    if (keyValue.includes("#")) {
+                        keyValue = keyValue.replace("#", '');
+                        keyValue = keyNames[keyNames.findIndex(e => e.includes(keyValue)) + 1]
+                    }
+                    if (keyValue.includes("b")) {
+                        keyValue = keyValue.replace("b", '');
+                        keyValue = keyNames[keyNames.findIndex(e => e.includes(keyValue)) - 1]
+                    }
+                }
+                if (keyNames.indexOf(keyValue) >= 0){
+                    state.keyboard[keyNames.indexOf(keyValue)].partOfRefScale = value ;
+                }
+
+                keyRefNotes.push(keyNames.findIndex(e => e.includes(keyValue)))
             });
         },
 
@@ -316,6 +353,8 @@ export const store = new Vuex.Store({
                     chord.splice(index, 1);
             })
         },
+
+        /*METHODS TO MODIFY THE CHORD OCTAVE*/
         shapeOctave(state, {index, direction}) {
             let chord = state.progression[index].notes;
             let octave, note;

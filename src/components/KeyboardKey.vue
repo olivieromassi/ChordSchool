@@ -1,6 +1,7 @@
 <template>
-    <div v-bind:class="{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack, 'pressed-key': keyIsPressed}">
+    <div v-bind:class="{ 'key' : !keyIsBlack , 'black-key' : keyIsBlack, 'pressed-key': keyIsPressed }">
         <div>{{keys.map(key => key.noteName)[keys.map(key => key.name).indexOf(note)]}}</div>
+        <div v-if="!keyIsPressed">{{keyOfRefScale.map(key => key.partOfRefScale)[keyOfRefScale.map(key => key.name).indexOf(note)]}}</div>
     </div>
 </template>
 
@@ -24,9 +25,10 @@
             },
             keys() {
                 return this.$store.getters.getPressedKeys
+            },
+            keyOfRefScale() {
+                return this.$store.getters.getRefScaleKeys
             }
-            ,
-
         }
     }
 
@@ -77,5 +79,9 @@
     .pressed-key {
         /*noinspection CssUnresolvedCustomProperty*/
         background: var(--v-primary-base);
+        /*noinspection CssUnresolvedCustomProperty*/
+        box-shadow: 0 6px 10px var(--v-primary-darken2);
     }
+
+
 </style>

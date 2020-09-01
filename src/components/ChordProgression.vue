@@ -23,12 +23,12 @@
                     <template v-slot:activator="{ on: bpmMenu, attrs }">
                         <v-tooltip bottom>
                             <template v-slot:activator="{on: tooltip}">
-                                <v-btn block class="ma-4" v-bind="attrs" v-on="{ ...tooltip, ...bpmMenu }">
-                                    <v-icon>mdi-metronome-tick</v-icon>
-                                    <span v-text="bpm"></span>
+                                <v-btn  block class="text-center ma-4" v-bind="attrs" v-on="{ ...tooltip, ...bpmMenu }">
+                                    <v-icon color="primary">mdi-metronome-tick</v-icon>
+                                    <span  v-text="bpm"></span>
                                 </v-btn>
                             </template>
-                            <span> Change the {{bpm}} BPM playback</span>
+                            <span> Playback speed is {{bpm}} BPM</span>
                         </v-tooltip>
                     </template>
                     <v-card>

@@ -18,9 +18,11 @@
             setKey(value) {
                 this.$store.commit('resetModes');
                 this.$store.commit('resetProgression');
+                this.$store.commit('resetRefScaleKeys');
                 this.$store.commit('setSelectedKey', value);
                 this.$store.commit('setSelectedKeyScale');
                 this.$store.commit('buildModes');
+                this.$store.commit('setPartOfKeyReference');
             }
         },
         computed: {
