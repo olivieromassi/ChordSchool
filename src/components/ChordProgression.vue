@@ -5,7 +5,7 @@
             <v-flex md2 lg1 mx-4>
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn class="ma-4" @click="playProgression" v-bind="attrs" v-on="on">
+                        <v-btn block @click="playProgression" class="ma-4" v-bind="attrs" v-on="on">
                             <v-icon color="primary">play_arrow</v-icon>
                             <span>play</span>
                         </v-btn>
@@ -13,10 +13,51 @@
                     <span>Hear your chord progression!</span>
                 </v-tooltip>
             </v-flex>
+
+            <v-flex md2 lg1 mx-4>
+                <v-menu :close-on-content-click=false
+                        open-on-click
+                        top
+                        v-model="bpmMenu"
+                        offset-y>
+                    <template v-slot:activator="{ on: bpmMenu, attrs }">
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{on: tooltip}">
+                                <v-btn block class="ma-4" v-bind="attrs" v-on="{ ...tooltip, ...bpmMenu }">
+                                    <v-icon>mdi-metronome-tick</v-icon>
+                                    <span v-text="bpm"></span>
+                                </v-btn>
+                            </template>
+                            <span> Change the {{bpm}} BPM playback</span>
+                        </v-tooltip>
+                    </template>
+                    <v-card>
+                        <v-card-text>
+                        <v-slider
+                                append-icon="mdi-plus"
+                                prepend-icon="mdi-minus"
+                                @click:append="increment"
+                                @click:prepend="decrement"
+                                vertical
+                                color="primary"
+                                dense
+                                max="120"
+                                min="60"
+                                track-color="secondary"
+                                v-model="bpm">
+                        </v-slider>
+                        </v-card-text>
+                    </v-card>
+                </v-menu>
+            </v-flex>
+
+
+            <!--<v-flex md2 lg1 mx-4> -->
+
             <v-flex md2 lg1 mx-4>
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn class="ma-4" @click="resetProgression" v-bind="attrs" v-on="on">
+                        <v-btn block @click="resetProgression" class="ma-4" v-bind="attrs" v-on="on">
                             <v-icon color="primary">settings_backup_restore</v-icon>
                             <span>reset</span>
                         </v-btn>
@@ -25,7 +66,7 @@
                 </v-tooltip>
             </v-flex>
 
-            <v-flex md6 lg6 ma-4 v-if="this.progression.length>0">
+            <v-flex lg6 ma-4 md6 v-if="this.progression.length>0">
                 <v-icon color="primary lighten-1">drag_indicator</v-icon>
                 Drag and rearrange the chords
             </v-flex>
@@ -38,7 +79,7 @@
             <div class="ma-4" v-else-if="progression.length === 0">
                 <v-icon color="warning">music_note</v-icon>
                 Add chords to the progression using the
-                <v-btn fab x-small text depressed>
+                <v-btn depressed fab text x-small>
                     <v-icon color="primary">mdi-plus</v-icon>
                 </v-btn>
                 icon
@@ -46,9 +87,9 @@
         </v-layout>
         <v-list>
             <draggable v-model="progression">
-                <v-list-item v-for="(chord, index) in progression" v-bind:key="chord.index">
+                <v-list-item v-bind:key="chord.index" v-for="(chord, index) in progression">
                     <!--//{{key}}-->
-                    <Chord class="mr-n5" :features="chord" :index="index"></Chord>
+                    <Chord :features="chord" :index="index" class="mr-n5"></Chord>
                 </v-list-item>
             </draggable>
         </v-list>
@@ -74,7 +115,8 @@
 
         data: function () {
             return {
-                tempo: 60,
+                bpm: 60,
+                bpmMenu: false
             }
         },
         components: {
@@ -110,62 +152,62 @@
                 for (let n = 0; n < this.progression.length - 1; n++) {
 
                     //"III_VI_II_V"
-                    if(n+4 <= this.progression.length){
-                        iii_vi_ii_v_p = [chordsTonic[n],chordsTonic[n+1],chordsTonic[n+2],chordsTonic[n+3]];
-                        if(iii_vi_ii_v_p.toString() === iii_vi_ii_v.toString()){
-                            k=k+1;
-                            indexNC=[n,n+1,n+2,n+3];
-                            nam="III_VI_II_V";
-                            n=n+3;
+                    if (n + 4 <= this.progression.length) {
+                        iii_vi_ii_v_p = [chordsTonic[n], chordsTonic[n + 1], chordsTonic[n + 2], chordsTonic[n + 3]];
+                        if (iii_vi_ii_v_p.toString() === iii_vi_ii_v.toString()) {
+                            k = k + 1;
+                            indexNC = [n, n + 1, n + 2, n + 3];
+                            nam = "III_VI_II_V";
+                            n = n + 3;
                         }
                     }
 
                     //I_VI_II_V
-                    if(n+4 <= this.progression.length){
-                        i_vi_ii_v_p = [chordsTonic[n],chordsTonic[n+1],chordsTonic[n+2],chordsTonic[n+3]];
-                        if(i_vi_ii_v_p.toString() === i_vi_ii_v.toString()){
-                            k=k+1;
-                            indexNC=[n,n+1,n+2,n+3];
-                            nam="I_VI_II_V";
-                            n=n+3;
+                    if (n + 4 <= this.progression.length) {
+                        i_vi_ii_v_p = [chordsTonic[n], chordsTonic[n + 1], chordsTonic[n + 2], chordsTonic[n + 3]];
+                        if (i_vi_ii_v_p.toString() === i_vi_ii_v.toString()) {
+                            k = k + 1;
+                            indexNC = [n, n + 1, n + 2, n + 3];
+                            nam = "I_VI_II_V";
+                            n = n + 3;
                         }
                     }
 
                     //I_II_III_IV
-                    if(n+4 <= this.progression.length){
-                        i_ii_iii_iv_p= [chordsTonic[n],chordsTonic[n+1],chordsTonic[n+2],chordsTonic[n+3]];
-                        if(i_ii_iii_iv_p.toString() === i_ii_iii_iv.toString()){
-                            k=k+1;
-                            indexNC=[n,n+1,n+2,n+3];
-                            nam="I_II_III_IV";
-                            n=n+3;
+                    if (n + 4 <= this.progression.length) {
+                        i_ii_iii_iv_p = [chordsTonic[n], chordsTonic[n + 1], chordsTonic[n + 2], chordsTonic[n + 3]];
+                        if (i_ii_iii_iv_p.toString() === i_ii_iii_iv.toString()) {
+                            k = k + 1;
+                            indexNC = [n, n + 1, n + 2, n + 3];
+                            nam = "I_II_III_IV";
+                            n = n + 3;
 
                         }
                     }
 
                     //II_V
-                    ii_v_p=[chordsTonic[n],chordsTonic[n+1]];
+                    ii_v_p = [chordsTonic[n], chordsTonic[n + 1]];
                     if (ii_v_p.toString() === ii_v.toString()) {
-                        k=k+1;
-                        if(n+3 > this.progression.length || (n+3 <= this.progression.length && (chordsTonic[n+2].toString() !== ii_v_i[2].toString()))){
-                            indexNC=[n,n+1];
-                            nam="II_V";
-                            n=n+1;
+                        k = k + 1;
+                        if (n + 3 > this.progression.length || (n + 3 <= this.progression.length && (chordsTonic[n + 2].toString() !== ii_v_i[2].toString()))) {
+                            indexNC = [n, n + 1];
+                            nam = "II_V";
+                            n = n + 1;
                         }
 
                         //II_V_I
-                        if(n+3 <= this.progression.length){
-                            ii_v_i_p = [chordsTonic[n],chordsTonic[n+1],chordsTonic[n+2]];
-                            if(ii_v_i_p.toString() === ii_v_i.toString()){
-                                indexNC=[n,n+1,n+2];
-                                nam="II_V_I";
-                                n=n+2;
+                        if (n + 3 <= this.progression.length) {
+                            ii_v_i_p = [chordsTonic[n], chordsTonic[n + 1], chordsTonic[n + 2]];
+                            if (ii_v_i_p.toString() === ii_v_i.toString()) {
+                                indexNC = [n, n + 1, n + 2];
+                                nam = "II_V_I";
+                                n = n + 2;
                             }
                         }
                     }
-                    if (k >= 0){
-                        temp[k]=indexNC;
-                        nameNC[k]=nam;
+                    if (k >= 0) {
+                        temp[k] = indexNC;
+                        nameNC[k] = nam;
                     }
                 }
                 console.log(temp);
@@ -178,8 +220,8 @@
 
                 for (let i = 0; i < this.progression.length; i++) {
                     x[i] = this.progression[i].notes;
-                    t[i] = i*60/this.tempo;
-                    y[i] = [t[i], x[i]] ;
+                    t[i] = i * 60 / this.bpm;
+                    y[i] = [t[i], x[i]];
                 }
                 // play chord progression
                 let TP = this.progression;
@@ -193,18 +235,24 @@
                 Tone.Transport.start();
                 // fingering
                 for (let propertyName in TP) {
-                    setTimeout(function(propertyName) {
+                    setTimeout(function (propertyName) {
                         this.$store.commit('resetPressedKeys');
                         this.$store.commit('fingerChord', TP[propertyName].notes);
-                    }.bind(this, propertyName), z++ * 1000*(60/this.tempo));
-                    if(this.progression.length ===  propertyName+1){
+                    }.bind(this, propertyName), z++ * 1000 * (60 / this.bpm));
+                    if (this.progression.length === propertyName + 1) {
                         this.$store.commit('resetPressedKeys');
                     }
                 }
 
             },
-            resetProgression(){
+            resetProgression() {
                 this.$store.commit('resetProgression');
+            },
+            decrement() {
+                this.bpm--
+            },
+            increment() {
+                this.bpm++
             }
         },
         computed: {

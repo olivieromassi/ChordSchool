@@ -12,7 +12,7 @@
             <v-flex class="xs3 md3 lg3 xs12 mx-2 pb-2">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn block fab x-small md1 v-on:click="selectChord()" v-bind="attrs" v-on="on">
+                        <v-btn block fab x-small v-on:click="selectChord()" v-bind="attrs" v-on="on">
                             <v-icon color="primary" size="medium">mdi-plus</v-icon>
                         </v-btn>
                     </template>
@@ -22,7 +22,7 @@
             <v-flex class="xs3 md3 lg3 mx-2">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn block fab x-small md1 v-on:click="playChord()" v-bind="attrs" v-on="on">
+                        <v-btn block fab x-small v-on:click="playChord()" v-bind="attrs" v-on="on">
                             <v-icon color="primary" size="medium">volume_up</v-icon>
                         </v-btn>
                     </template>

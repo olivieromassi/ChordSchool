@@ -17,6 +17,20 @@
                         v-on="on"
                         v-bind="attrs">
                     <span :class="`mdi mdi-roman-numeral-${features.degree +1}`"></span>
+
+                    <!-- todo button should appear on hover -->
+                    <v-btn
+                            fab
+                            x-small
+                            @click="resetKeyboard(), shapeOctave(1), fingerChord()">
+                        <v-icon>mdi-plus</v-icon>
+                    </v-btn>
+                    <v-btn
+                            fab
+                            x-small
+                            @click="resetKeyboard(), shapeOctave(-1), fingerChord()">
+                        <v-icon>mdi-minus</v-icon>
+                    </v-btn>
                 </v-chip>
             </template>
             <v-card max-width="200" :class="`text--secondary caption primary ${chordShade}`">
