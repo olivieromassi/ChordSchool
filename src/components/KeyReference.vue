@@ -23,6 +23,7 @@
                 this.$store.commit('setSelectedKeyScale');
                 this.$store.commit('buildModes');
                 this.$store.commit('setPartOfKeyReference');
+                this.$vuetify.theme.themes.light.primary = this.$store.state.keys[this.$store.state.keys.findIndex(key => key.name === value)].color
             }
         },
         computed: {

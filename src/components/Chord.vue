@@ -5,12 +5,13 @@
                 offset-x
                 top
                 offset-y
+
         >
             <template v-slot:activator="{ on, attrs }">
                 <v-chip
                         close
-                        x-large style="font-size: 40px"
-                        :class="`mb-3 secondary--text text--lighten-1 primary ${chordShade}`"
+                        x-large :style="`font-size: 40px;box-shadow: 0 6px 10px var(--v-warning-darken${distanceFromReference});`"
+                        :class="[distanceFromReference > 0 ? distanceChord + ' ' + chordColor + ' ' + chordShade : normalChord + ' ' +  chordShade] "
                         @mouseenter="fingerChord()"
                         @mouseleave="resetKeyboard()"
                         @click:close="close, deleteChord() , resetKeyboard()"
@@ -33,7 +34,8 @@
                     </v-btn>
                 </v-chip>
             </template>
-            <v-card max-width="200" :class="`text--secondary caption primary ${chordShade}`">
+            <v-card max-width="200"
+                    :class="[distanceFromReference > 0 ? distanceChordDetails + ' ' + chordColor + ' ' + chordShade : normalChordDetails + ' ' +  chordShade] " >
                 <v-card-text class="ma-n2">
                     <v-layout row wrap>
                         <v-flex class="secondary--text text--lighten-1  text-center xs12 md12 lg12">
@@ -162,7 +164,6 @@
                     </v-expansion-panel>
                 </v-expansion-panels>
             </v-card>
-
         </v-menu>
         <v-icon v-if="progression.length - 1 > index" class="ma-0 pl-3 pb-3">mdi-forward</v-icon>
     </div>
@@ -186,7 +187,10 @@
                 },
                 menuDetailed: false,
                 close: false,
-                score:2
+                normalChord: 'mb-3 secondary--text text--lighten-1 primary',
+                distanceChord: 'mb-3 secondary--text text--lighten-1',
+                normalChordDetails: 'text--secondary caption primary',
+                distanceChordDetails: 'text--secondary caption'
             }
         },
         methods: {
@@ -454,8 +458,13 @@
             shapeOctave(direction) {
                 this.$store.commit('shapeOctave', {index: this.index, direction: direction});
             }
+
         },
         computed: {
+            chordColor(){
+                return this.$store.state.keys[this.$store.state.keys.findIndex(key => key.name === this.features.scale[0].slice(0,-1))].colorText
+            },
+
             chordShade() {
                 return this.$store.state.chordDetails[this.$store.state.chordDetails.findIndex(e => e.degree === this.features.degree)].shade
             },
@@ -478,7 +487,7 @@
             },
             distanceFromReference() {
                 let distance = 0;
-                let keys = this.$store.getters.getKeyReference.map(e => e.slice(0, -1))
+                let keys = this.$store.getters.getKeyReference.map(e => e.slice(0, -1));
                 this.features.scale.forEach(value => {
                     if (!keys.includes(value.slice(0, -1))) {
                       distance++;
@@ -491,5 +500,4 @@
 </script>
 
 <style>
-
 </style>

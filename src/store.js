@@ -1,12 +1,27 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import colors from 'vuetify/lib/util/colors'
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
         /*This list represents the possible key references*/
-        keys: ['C', 'C#', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'Cb'],
+        keys: [{name: 'C', color: colors.red, colorText: 'red'},
+            {name: 'C#', color: colors.teal, colorText: 'teal'},
+            {name: 'Db', color: colors.teal, colorText: 'teal'},
+            {name: 'D', color: colors.orange, colorText: 'orange'},
+            {name: 'Eb', color: colors.blue, colorText: 'blue'},
+            {name: 'E', color: colors.yellow, colorText: 'yellow'},
+            {name: 'F', color: colors.purple, colorText: 'purple'},
+            {name: 'F#', color: colors.green, colorText: 'green'},
+            {name: 'Gb', color: colors.green, colorText: 'green'},
+            {name: 'G', color: colors.deepOrange, colorText: 'deep-orange'},
+            {name: 'Ab', color: colors.lightBlue, colorText: 'light-blue'},
+            {name: 'A', color: colors.amber, colorText: 'amber'},
+            {name: 'Bb', color: colors.indigo, colorText: 'indigo'},
+            {name: 'B', color: colors.lightGreen, colorText: 'light-green'},
+            {name: 'Cb', color: colors.lightGreen, colorText: 'light-green'}],
 
         /*This list represents the notes of the chromatic scale*/
         chromaticScale: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
@@ -99,7 +114,7 @@ export const store = new Vuex.Store({
     },
     getters: {
         getKeys(state) {
-            return state.keys;
+            return state.keys.map(key => key.name);
         },
         getChromaticScale(state) {
             return state.chromaticScale;
@@ -152,7 +167,7 @@ export const store = new Vuex.Store({
         },
         /*This method extracts from all the possible scales the one related to the chosen key reference*/
         setSelectedKeyScale(state) {
-            state.keyReference = state.scales[state.keys.indexOf(state.selectedKey)];
+            state.keyReference = state.scales[state.keys.map(key => key.name).indexOf(state.selectedKey)];
         },
 
         /*METHODS RELATED TO THE MODES STATE*/
@@ -268,9 +283,8 @@ export const store = new Vuex.Store({
             });
         },
 
-        setPartOfKeyReference(state){
+        setPartOfKeyReference(state) {
             const keyNames = state.keyboard.map(key => key.name);
-            let keyRefNotes = [];
             state.keyReference.forEach(value => {
                 let keyValue = value;
                 // checking if the keyValue exists on the keyboard
@@ -284,11 +298,9 @@ export const store = new Vuex.Store({
                         keyValue = keyNames[keyNames.findIndex(e => e.includes(keyValue)) - 1]
                     }
                 }
-                if (keyNames.indexOf(keyValue) >= 0){
-                    state.keyboard[keyNames.indexOf(keyValue)].partOfRefScale = value ;
+                if (keyNames.indexOf(keyValue) >= 0) {
+                    state.keyboard[keyNames.indexOf(keyValue)].partOfRefScale = value;
                 }
-
-                keyRefNotes.push(keyNames.findIndex(e => e.includes(keyValue)))
             });
         },
 

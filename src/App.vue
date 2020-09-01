@@ -20,40 +20,23 @@
                                     <v-icon>palette</v-icon>
                                 </v-btn>
                             </template>
-                            <span> Palette </span>
+                            <span> Settings </span>
                         </v-tooltip>
                     </template>
 
-                    <v-card max-width="350">
+                    <v-card max-width="300">
                         <v-card-title primary-title class="justify-center">
                             <span class="pr-1">Customize</span>
                             <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span><span>Score</span>
                         </v-card-title>
                         <v-card-text class="mx-2">
-                            <span>Choose which color you would like to customize and then use the palette to pick it.</span>
+                            <span>Choose the text color using the palette.</span>
                         </v-card-text>
                         <v-divider></v-divider>
                         <v-card-text>
-                            <v-radio-group v-model="colorType" row class="ma-2">
-                                <v-radio id="colorPickerRadio"
-                                         v-for="color in Object.getOwnPropertyNames(this.$vuetify.theme.themes.light).slice(0,2)"
-                                         :key="color"
-                                         :label="color"
-                                         :value="color"
-                                ></v-radio>
-                            </v-radio-group>
-
-                            <v-color-picker class="ma-2"
-                                            canvas-height="150"
-                                            hide-inputs
-                                            v-if="colorType==='primary'"
-                                            v-model=$vuetify.theme.themes.light.primary>
-                            </v-color-picker>
-                            <v-color-picker class="ma-2"
-                                            canvas-height="150"
-                                            hide-inputs
-                                            v-if="colorType==='secondary'"
-                                            v-model=$vuetify.theme.themes.light.secondary>
+                            <v-color-picker  class="ma-2"
+                                    hide-inputs
+                                    v-model=$vuetify.theme.themes.light.secondary>
                             </v-color-picker>
                         </v-card-text>
                         <v-divider></v-divider>
@@ -63,7 +46,6 @@
                             <v-btn color="primary" text @click="menuColor = false , setColors()">Save</v-btn>
                         </v-card-actions>
                     </v-card>
-
                 </v-menu>
 
                 <v-tooltip bottom>
@@ -136,7 +118,6 @@
             return {
                 dialog: false,
                 menuColor: false,
-                colorType: 'primary'
             }
         },
         components: {
@@ -150,24 +131,19 @@
                 window.location.reload()
             },
             setColors() {
-                localStorage.setItem("theme_primary", this.$vuetify.theme.themes.light.primary);
                 localStorage.setItem("theme_secondary", this.$vuetify.theme.themes.light.secondary);
             },
             getColors() {
-                let theme_primary = localStorage.getItem("theme_primary");
                 let theme_secondary = localStorage.getItem("theme_secondary");
-                if (theme_primary !== null && theme_secondary !== null) {
-                    this.$vuetify.theme.themes.light.primary = theme_primary;
+                if (theme_secondary !== null) {
                     this.$vuetify.theme.themes.light.secondary = theme_secondary;
                 }
             }
         },
 
         mounted() {
-            const theme_primary = localStorage.getItem("theme_primary");
             const theme_secondary = localStorage.getItem("theme_secondary");
-            if (theme_primary !== null && theme_secondary !== null) {
-                this.$vuetify.theme.themes.light.primary = theme_primary;
+            if (theme_secondary !== null) {
                 this.$vuetify.theme.themes.light.secondary = theme_secondary;
             }
         }
