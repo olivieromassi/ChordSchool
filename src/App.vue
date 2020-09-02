@@ -17,7 +17,7 @@
                                 <v-btn x-small depressed text class="primary lighten-1"
                                        v-bind="attrs"
                                        v-on="{ ...tooltip, ...menuColor }">
-                                    <v-icon>palette</v-icon>
+                                    <v-icon>settings</v-icon>
                                 </v-btn>
                             </template>
                             <span> Settings </span>
@@ -29,22 +29,53 @@
                             <span class="pr-1">Customize</span>
                             <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span><span>Score</span>
                         </v-card-title>
-                        <v-card-text class="mx-2">
-                            <span>Choose the text color using the palette.</span>
-                        </v-card-text>
                         <v-divider></v-divider>
-                        <v-card-text>
-                            <v-color-picker  class="ma-2"
-                                    hide-inputs
-                                    v-model=$vuetify.theme.themes.light.secondary>
-                            </v-color-picker>
-                        </v-card-text>
-                        <v-divider></v-divider>
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn text @click="menuColor = false, getColors()">Cancel</v-btn>
-                            <v-btn color="primary" text @click="menuColor = false , setColors()">Save</v-btn>
-                        </v-card-actions>
+
+                        <v-expansion-panels hover>
+                            <v-expansion-panel>
+                                <v-expansion-panel-header class="align-self-start">
+                                    Select Sound
+                                </v-expansion-panel-header>
+                                <v-expansion-panel-content>
+
+                                    <v-radio-group
+                                            v-model="instrumentSelected"
+                                            row
+                                            mandatory>
+                                        <v-radio
+                                                v-for="(instrument, i) in instruments"
+                                                :key="i"
+                                                :label="`${instrument}`"
+                                                :value="i"
+                                                v-on:click="setInstrument(instrumentSelected)">
+                                        </v-radio>
+                                    </v-radio-group>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                            <v-divider></v-divider>
+                            <v-expansion-panel>
+                                <v-expansion-panel-header>Select Color</v-expansion-panel-header>
+                                <v-expansion-panel-content>
+                                    <v-card-text class="mx-2">
+                                        <span>Choose the text color using the palette.</span>
+                                    </v-card-text>
+                                    <v-divider></v-divider>
+                                    <v-card-text>
+                                        <v-color-picker class="ma-2"
+                                                        hide-inputs
+                                                        v-model=$vuetify.theme.themes.light.secondary>
+                                        </v-color-picker>
+                                    </v-card-text>
+                                    <v-divider></v-divider>
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn text @click="menuColor = false, getColors()">Cancel</v-btn>
+                                        <v-btn color="primary" text @click="menuColor = false , setColors()">Save
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
                     </v-card>
                 </v-menu>
 
@@ -79,7 +110,7 @@
                 </v-dialog>
 
             </v-app-bar>
-            <v-container class="fill-height">
+            <v-container class="fill-height" align="center" justify="center">
                 <v-layout row wrap>
                     <v-flex xs12 md12 lg12>
                         <v-row>
@@ -118,6 +149,7 @@
             return {
                 dialog: false,
                 menuColor: false,
+                instrumentSelected: 0
             }
         },
         components: {
@@ -138,7 +170,10 @@
                 if (theme_secondary !== null) {
                     this.$vuetify.theme.themes.light.secondary = theme_secondary;
                 }
-            }
+            },
+            setInstrument(instrumentSelected) {
+                this.$store.commit('setInstrument', instrumentSelected);
+            },
         },
 
         mounted() {
@@ -146,6 +181,12 @@
             if (theme_secondary !== null) {
                 this.$vuetify.theme.themes.light.secondary = theme_secondary;
             }
+        },
+
+        computed: {
+            instruments() {
+                return this.$store.getters.getInstruments
+            },
         }
     }
 </script>

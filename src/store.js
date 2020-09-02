@@ -115,6 +115,8 @@ export const store = new Vuex.Store({
         /*Variable used as the selector for the different available sounds*/
         instrument: 0,
 
+        instruments:['piano' , 'synth'],
+
         /*This variable defines the sound of a piano starting from samples*/
         sampler: new Tone.Sampler({
             urls: {
@@ -182,6 +184,9 @@ export const store = new Vuex.Store({
         },
         getInstrument(state) {
             return state.instrument;
+        },
+        getInstruments(state) {
+            return state.instruments;
         }
     },
 
@@ -202,6 +207,10 @@ export const store = new Vuex.Store({
         /*This method extracts from all the possible scales the one related to the chosen key reference*/
         setSelectedKeyScale(state) {
             state.keyReference = state.scales[state.keys.map(key => key.name).indexOf(state.selectedKey)];
+        },
+
+        setInstrument(state, instrument){
+            state.instrument = instrument;
         },
 
         /*METHODS RELATED TO THE MODES STATE*/

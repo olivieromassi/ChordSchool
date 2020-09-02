@@ -1,215 +1,235 @@
 <template>
     <div>
         <v-row class="mx-1">
-            <v-menu :close-on-content-click=false
-                    v-model="menuDetailed"
-                    offset-x
-                    top
-                    offset-y
-            >
+            <v-hover v-slot:default="{ hover }">
+                <v-card
+                        :elevation="hover ? 12 : 2"
+                        :style="`font-size: 40px;box-shadow: ${distanceFromReference}px ${distanceFromReference}px ${distanceFromReference}px var(--v-secondary-base) !important;`"
+                        :class="[distanceFromReference > 0 ? chordClass + ' ' + chordColor + ' ' + chordShade : chordClass + ' ' + 'primary' + ' ' + chordShade] "
+                        @mouseenter="fingerChord()"
+                        @mouseleave="resetKeyboard()">
+                    <v-card-actions>
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                    :class="{ 'show-btns': hover }"
+                                    color="transparent"
+                                    fab
+                                    icon
+                                    x-small
+                                    v-on:click="deleteChord() , resetKeyboard()" v-bind="attrs"
+                                    v-on="on">
+                                <v-icon
+                                        :class="{ 'show-btns': hover }"
+                                        size="medium">close
+                                </v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Remove the {{chordMode}} </span>
+                    </v-tooltip>
+                    <v-menu
+                            :close-on-content-click=false
+                            v-model="menuDetailed"
+                            offset-x
+                            top
+                            offset-y>
+                        <template v-slot:activator="{ on: menuDetailed, attrs }">
+                            <v-tooltip bottom>
+                                <template v-slot:activator="{ on: tooltip }">
+                                    <v-btn
+                                            :class="{ 'show-btns': hover }"
+                                            color="transparent"
+                                            fab
+                                            icon
+                                            x-small
+                                            v-on="{ ...tooltip, ...menuDetailed }"
+                                            v-bind="attrs">
+                                        <v-icon
+                                                :class="{ 'show-btns': hover }"
+                                                size="medium">mdi-dots-vertical
+                                        </v-icon>
+                                    </v-btn>
+                                </template>
+                                <span>Modify the {{chordMode}} </span>
+                            </v-tooltip>
+                        </template>
+                        <v-card max-width="200"
+                                :class="[distanceFromReference > 0 ? chordDetailsClass + ' ' + chordColor + ' ' + chordShade : chordDetailsClass + ' ' + 'primary' + ' ' + chordShade] ">
+                            <v-card-text>
+                                <v-row align="center" justify="center">
 
-                <template v-slot:activator="{ on: menuDetailed, attrs }">
-                    <v-hover v-slot:default="{ hover }">
-                        <v-card
-                                :elevation="hover ? 12 : 2"
-                                :style="`font-size: 40px;box-shadow: ${distanceFromReference}px ${distanceFromReference}px ${distanceFromReference}px var(--v-secondary-base) !important;`"
-                                :class="[distanceFromReference > 0 ? chordClass + ' ' + chordColor + ' ' + chordShade : chordClass + ' ' + 'primary' + ' ' + chordShade] "
-                                @mouseenter="fingerChord()"
-                                @mouseleave="resetKeyboard()"
-                                v-on="{ ...menuDetailed }"
-                                v-bind="attrs">
-                            <v-card-title style="font-size: 40px">
-                                <span :class="`mdi mdi-roman-numeral-${features.degree +1}`"></span>
-                            </v-card-title>
-                            <v-card-actions>
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn
-                                                        :class="{ 'show-btns': hover }"
-                                                        color="transparent"
-                                                        fab
-                                                        icon
-                                                        x-small
-                                                        v-on:click="resetKeyboard(), shapeOctave(1), fingerChord()"
-                                                        v-bind="attrs" v-on="on">
-                                                    <v-icon :class="{ 'show-btns': hover }"
-                                                            size="medium">mdi-arrow-up
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Move {{chordMode}} up an octave</span>
-                                        </v-tooltip>
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn
-                                                        :class="{ 'show-btns': hover }"
-                                                        color="transparent"
-                                                        fab
-                                                        icon
-                                                        x-small
-                                                        v-on:click="resetKeyboard(), shapeOctave(-1), fingerChord()"
-                                                        v-bind="attrs" v-on="on">
-                                                    <v-icon :class="{ 'show-btns': hover }"
-                                                            size="medium">mdi-arrow-down
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Move {{chordMode}} down an octave</span>
-                                        </v-tooltip>
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn
-                                                        :class="{ 'show-btns': hover }"
-                                                        color="transparent"
-                                                        fab
-                                                        icon
-                                                        x-small
-                                                        v-on:click="deleteChord() , resetKeyboard()" v-bind="attrs"
-                                                        v-on="on">
-                                                    <v-icon
-                                                            :class="{ 'show-btns': hover }"
-                                                            size="medium">close
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Remove the {{chordMode}} </span>
-                                        </v-tooltip>
-                            </v-card-actions>
+                                    Key Reference: {{chordKeyRefScale}}
+                                </v-row>
+                                <v-row class=" secondary--text text--lighten-1 headline" align="center"
+                                       justify="center">
+                                    {{chordName}}
+                                </v-row>
+                            </v-card-text>
+                            <v-divider></v-divider>
+                            <v-expansion-panels hover>
+                                <v-expansion-panel>
+                                    <v-expansion-panel-header class="align-self-start">
+                                        Substitutions
+                                    </v-expansion-panel-header>
+                                    <v-expansion-panel-content>
+                                        <v-list>
+                                            <v-row>
+                                                <v-list-item v-if="features.degree===0"
+                                                             @click="menuSub = false , tonicSubstitution(5)">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Tonic w/ VI</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item v-if="features.degree===0"
+                                                             @click="menuSub = false , tonicSubstitution(2)">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Tonic w/ III</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+
+                                            <v-row>
+                                                <v-list-item v-if="features.degree===4"
+                                                             @click="menuSub = false , tritoneSubstitution()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Tritone</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item
+                                                        @click="menuSub = false , twoFiveSubstitution()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">II - V</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item
+                                                        @click="menuSub = false , secondaryDominant()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Secondary Dominant</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item v-if="features.degree!== 4 && features.degree!==6"
+                                                             @click="menuSub = false , chordQualitySubstitution()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Quality</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item v-if="features.degree!== 4 && features.degree!==6"
+                                                             @click="menuSubSub = false , relativeMajorMinorSubstitution()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Relative Maj min</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                        </v-list>
+                                    </v-expansion-panel-content>
+                                </v-expansion-panel>
+                                <v-divider></v-divider>
+                                <v-expansion-panel>
+                                    <v-expansion-panel-header>Voicings</v-expansion-panel-header>
+                                    <v-expansion-panel-content>
+                                        <v-list>
+                                            <v-row>
+                                                <v-list-item @click="menuSub = false , dropTwo()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center"> Drop 2</p>
+                                                        <v-icon></v-icon>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item @click="menuSub = false , dropThree()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Drop 3</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item @click="menuSub = false , dropTwoAndFour()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Drop 2 & 4</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item
+                                                        @click="menuSub = false , addNinth()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Add 9th</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                            <v-row>
+                                                <v-list-item
+                                                        @click="menuSub = false , addNinthNoFifth()">
+                                                    <v-list-item-content>
+                                                        <p class="text-center">Add 9th - No 5th</p>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-row>
+                                        </v-list>
+                                    </v-expansion-panel-content>
+                                </v-expansion-panel>
+                            </v-expansion-panels>
                         </v-card>
-                    </v-hover>
-                </template>
-                <v-card max-width="200"
-                        :class="[distanceFromReference > 0 ? chordDetailsClass + ' ' + chordColor + ' ' + chordShade : chordDetailsClass + ' ' + 'primary' + ' ' + chordShade] ">
-                    <v-card-text class="ma-n2">
-                        <v-layout row wrap>
-                            <v-flex class="secondary--text text--lighten-1  text-center xs12 md12 lg12">
-                            <span>
-                                Key Reference: {{chordKeyRefScale}} </span>
-                            </v-flex>
-                            <v-flex class="text-center secondary--text text--lighten-1 headline xs12 md12 lg12">
-                                {{chordName}}
-                            </v-flex>
-                        </v-layout>
+                    </v-menu>
+                    </v-card-actions>
+                    <v-row class="ma-n5">
+                    <v-card-text align="center" justify="center" style="font-size: 40px">
+                        <span :class="` secondary--text mdi mdi-roman-numeral-${features.degree +1}`"></span>
                     </v-card-text>
-                    <v-divider></v-divider>
-                    <v-expansion-panels hover>
-                        <v-expansion-panel>
-                            <v-expansion-panel-header class="align-self-start">
-                                Substitutions
-                            </v-expansion-panel-header>
-                            <v-expansion-panel-content>
-                                <v-list>
-                                    <v-row>
-                                        <v-list-item v-if="features.degree===0"
-                                                     @click="menuSub = false , tonicSubstitution(5)">
-                                            <v-list-item-content>
-                                                <p class="text-center">Tonic w/ VI</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item v-if="features.degree===0"
-                                                     @click="menuSub = false , tonicSubstitution(2)">
-                                            <v-list-item-content>
-                                                <p class="text-center">Tonic w/ III</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-
-                                    <v-row>
-                                        <v-list-item v-if="features.degree===4"
-                                                     @click="menuSub = false , tritoneSubstitution()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Tritone</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item
-                                                @click="menuSub = false , twoFiveSubstitution()">
-                                            <v-list-item-content>
-                                                <p class="text-center">II - V</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item
-                                                @click="menuSub = false , secondaryDominant()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Secondary Dominant</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item v-if="features.degree!== 4 && features.degree!==6"
-                                                     @click="menuSub = false , chordQualitySubstitution()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Quality</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item v-if="features.degree!== 4 && features.degree!==6"
-                                                     @click="menuSubSub = false , relativeMajorMinorSubstitution()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Relative Maj min</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                </v-list>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
-                        <v-divider></v-divider>
-                        <v-expansion-panel>
-                            <v-expansion-panel-header>Voicings</v-expansion-panel-header>
-                            <v-expansion-panel-content>
-                                <v-list>
-                                    <v-row>
-                                        <v-list-item @click="menuSub = false , dropTwo()">
-                                            <v-list-item-content>
-                                                <p class="text-center"> Drop 2</p>
-                                                <v-icon></v-icon>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item @click="menuSub = false , dropThree()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Drop 3</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item @click="menuSub = false , dropTwoAndFour()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Drop 2 & 4</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item
-                                                @click="menuSub = false , addNinth()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Add 9th</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                    <v-row>
-                                        <v-list-item
-                                                @click="menuSub = false , addNinthNoFifth()">
-                                            <v-list-item-content>
-                                                <p class="text-center">Add 9th - No 5th</p>
-                                            </v-list-item-content>
-                                        </v-list-item>
-                                    </v-row>
-                                </v-list>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
-                    </v-expansion-panels>
+                    </v-row>
+                    <v-card-actions>
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn
+                                        :class="{ 'show-btns': hover }"
+                                        color="transparent"
+                                        fab
+                                        icon
+                                        x-small
+                                        v-on:click="resetKeyboard(), shapeOctave(1), fingerChord()"
+                                        v-bind="attrs" v-on="on">
+                                    <v-icon :class="{ 'show-btns': hover }"
+                                            size="medium">mdi-arrow-up
+                                    </v-icon>
+                                </v-btn>
+                            </template>
+                            <span>Move {{chordMode}} up an octave</span>
+                        </v-tooltip>
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn
+                                        :class="{ 'show-btns': hover }"
+                                        color="transparent"
+                                        fab
+                                        icon
+                                        x-small
+                                        v-on:click="resetKeyboard(), shapeOctave(-1), fingerChord()"
+                                        v-bind="attrs" v-on="on">
+                                    <v-icon :class="{ 'show-btns': hover }"
+                                            size="medium">mdi-arrow-down
+                                    </v-icon>
+                                </v-btn>
+                            </template>
+                            <span>Move {{chordMode}} down an octave</span>
+                        </v-tooltip>
+                    </v-card-actions>
                 </v-card>
-            </v-menu>
-            <v-icon v-if="progression.length - 1 > index" class="ma-0 pl-3 pb-3">mdi-forward</v-icon>
+            </v-hover>
+
+
+            <v-icon v-if="progression.length - 1 > index" class="mx-n3 pl-4 pb-3">mdi-forward</v-icon>
         </v-row>
     </div>
 </template>
@@ -234,7 +254,7 @@
                 close: false,
                 chordClass: '{ \'on-hover\': hover } mb-3 secondary--text text--lighten-1',
                 chordDetailsClass: 'text--secondary caption',
-                buttons:['mdi-plus','mdi-minus','mdi-close-circle','mdi-dots-vertical']
+                buttons: ['mdi-plus', 'mdi-minus', 'mdi-close-circle', 'mdi-dots-vertical']
             }
         },
         methods: {
