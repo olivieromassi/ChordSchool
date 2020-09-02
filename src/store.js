@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import colors from 'vuetify/lib/util/colors'
+import * as Tone from "tone";
 
 Vue.use(Vuex);
 
@@ -111,6 +112,30 @@ export const store = new Vuex.Store({
             {degree: 2, shade: 'darken-2', chordQuality: 'mi7', mode: 'Phrygian'},
             {degree: 6, shade: 'darken-4', chordQuality: '\u00D8', mode: 'Locrian'}],
 
+        /*Variable used as the selector for the different available sounds*/
+        instrument: 0,
+
+        /*This variable defines the sound of a piano starting from samples*/
+        sampler: new Tone.Sampler({
+            urls: {
+                "C3": "C3.mp3",
+                "D#3": "Ds3.mp3",
+                "F#3": "Fs3.mp3",
+                A3: "A3.mp3",
+                C4: "C4.mp3",
+                "D#4": "Ds4.mp3",
+                "F#4": "Fs4.mp3",
+                A4: "A4.mp3",
+                C5: "C5.mp3",
+                "D#5": "Ds5.mp3",
+                "F#5": "Fs5.mp3",
+                A5: "A5.mp3",
+            },
+            baseUrl: "https://tonejs.github.io/audio/salamander/",
+        }).toDestination(),
+
+        /*This variable defines the sound of a sinusoidal synthesizer*/
+        synth: new Tone.PolySynth().toDestination()
     },
     getters: {
         getKeys(state) {
@@ -148,6 +173,15 @@ export const store = new Vuex.Store({
         },
         getChordDetails(state) {
             return state.chordDetails;
+        },
+        getSampler(state) {
+            return state.sampler;
+        },
+        getSynth(state) {
+            return state.synth;
+        },
+        getInstrument(state) {
+            return state.instrument;
         }
     },
 
