@@ -132,7 +132,7 @@ export const store = new Vuex.Store({
         /*Variable used as the selector for the different available sounds*/
         instrument: 0,
 
-        instruments: ['piano', 'synth'],
+        instruments:['piano' , 'sine-synth', 'saw-synth'],
 
         /*This variable defines the sound of a piano starting from samples*/
         sampler: new Tone.Sampler({
@@ -154,7 +154,20 @@ export const store = new Vuex.Store({
         }).toDestination(),
 
         /*This variable defines the sound of a sinusoidal synthesizer*/
-        synth: new Tone.PolySynth().toDestination()
+        synth1: new Tone.PolySynth(Tone.Synth, {
+            oscillator : {
+                type : "sine"
+            },
+            volume: -5
+        }).toDestination(),
+
+        /*This variable defines the sound of a sawtooth synthesizer*/
+        synth2: new Tone.PolySynth(Tone.Synth, {
+            oscillator : {
+                type : "sawtooth"
+            },
+            volume: -5
+        }).toDestination(),
     },
     getters: {
         getKeys(state) {
@@ -199,8 +212,11 @@ export const store = new Vuex.Store({
         getSampler(state) {
             return state.sampler;
         },
-        getSynth(state) {
-            return state.synth;
+        getSynth1(state) {
+            return state.synth1;
+        },
+        getSynth2(state) {
+            return state.synth2;
         },
         getInstrument(state) {
             return state.instrument;

@@ -218,7 +218,9 @@
                 switch (this.instrument) {
                     case 0: synth = this.$store.getters.getSampler;
                         break;
-                    case 1: synth = this.$store.getters.getSynth;
+                    case 1: synth = this.$store.getters.getSynth1;
+                        break;
+                    case 2: synth = this.$store.getters.getSynth2;
                         break;
                     default: synth = this.$store.getters.getSampler;
                         break;
