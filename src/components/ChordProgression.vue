@@ -88,18 +88,10 @@
         <v-list>
             <draggable v-model="progression">
                 <v-list-item v-bind:key="chord.index" v-for="(chord, index) in progression">
-                    <!--//{{key}}-->
                     <Chord :features="chord" :index="index" class="mr-n5"></Chord>
                 </v-list-item>
             </draggable>
         </v-list>
-
-        <!--
-        <v-btn color="primary lighten-1" @click="notableChords">
-            <v-icon color="blue">chords</v-icon>
-        </v-btn>
-        -->
-
     </div>
 </template>
 

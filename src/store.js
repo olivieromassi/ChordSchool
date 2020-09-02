@@ -103,12 +103,12 @@ export const store = new Vuex.Store({
         keysIndexes: [],
 
         // This matrix is sorted from the Brightest to the Darkest chord and holds the details of chord degrees
-        chordDetails: [{degree: 3, shade: 'lighten-5', chordQuality: '\u0394', mode: 'Lydian'},
-            {degree: 0, shade: 'lighten-4', chordQuality: '\u0394', mode: 'Ionian'},
+        chordDetails: [{degree: 3, shade: 'lighten-4', chordQuality: '\u0394', mode: 'Lydian'},
+            {degree: 0, shade: 'lighten-3', chordQuality: '\u0394', mode: 'Ionian'},
             {degree: 4, shade: 'lighten-2', chordQuality: '7', mode: 'Mixolydian'},
             {degree: 1, shade: '', chordQuality: 'mi7', mode: 'Dorian'},
-            {degree: 5, shade: 'darken-2', chordQuality: 'mi7', mode: 'Aeolian'},
-            {degree: 2, shade: 'darken-3', chordQuality: 'mi7', mode: 'Phrygian'},
+            {degree: 5, shade: 'darken-1', chordQuality: 'mi7', mode: 'Aeolian'},
+            {degree: 2, shade: 'darken-2', chordQuality: 'mi7', mode: 'Phrygian'},
             {degree: 6, shade: 'darken-4', chordQuality: '\u00D8', mode: 'Locrian'}],
 
     },
