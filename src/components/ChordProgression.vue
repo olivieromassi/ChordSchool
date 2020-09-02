@@ -2,7 +2,7 @@
     <div>
         <h2 class="font-weight-thin">Chord Progression</h2>
         <v-layout row wrap>
-            <v-flex md2 lg1 mx-4>
+            <v-flex xs4 md2 lg1 mx-4>
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn block @click="playProgression" class="ma-4" v-bind="attrs" v-on="on">
@@ -13,8 +13,7 @@
                     <span>Hear your chord progression!</span>
                 </v-tooltip>
             </v-flex>
-
-            <v-flex md2 lg1 mx-4>
+            <v-flex xs4 md2 lg1 mx-4>
                 <v-menu :close-on-content-click=false
                         open-on-click
                         top
@@ -50,11 +49,7 @@
                     </v-card>
                 </v-menu>
             </v-flex>
-
-
-            <!--<v-flex md2 lg1 mx-4> -->
-
-            <v-flex md2 lg1 mx-4>
+            <v-flex xs4 md2 lg1 mx-4>
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn block @click="resetProgression" class="ma-4" v-bind="attrs" v-on="on">
@@ -239,7 +234,7 @@
                         this.$store.commit('resetPressedKeys');
                         this.$store.commit('fingerChord', TP[propertyName].notes);
                     }.bind(this, propertyName), z++ * 1000 * (60 / this.bpm));
-                    if (this.progression.length === propertyName + 1) {
+                    if ((this.progression.length -1 ) === parseInt(propertyName) ) {
                         this.$store.commit('resetPressedKeys');
                     }
                 }

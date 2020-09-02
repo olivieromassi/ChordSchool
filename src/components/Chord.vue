@@ -55,15 +55,20 @@
                         </template>
                         <v-card max-width="200"
                                 :class="[distanceFromReference > 0 ? chordDetailsClass + ' ' + chordColor + ' ' + chordShade : chordDetailsClass + ' ' + 'primary' + ' ' + chordShade] ">
-                            <v-card-text>
-                                <v-row align="center" justify="center">
+                            <v-card-text class="secondary--text">
 
-                                    Key Reference: {{chordKeyRefScale}}
+                                <v-row align="center" justify="center">
+                                    <v-icon color="secondary">mdi-music-clef-treble</v-icon> Key Reference: {{chordKeyRefScale}}
                                 </v-row>
                                 <v-row class=" secondary--text text--lighten-1 headline" align="center"
                                        justify="center">
                                     {{chordName}}
                                 </v-row>
+                                <v-row align="center" justify="center" class="font-weight-bold text--darken-1">
+                                    Distance in <v-icon small color="secondary"> mdi-music-accidental-sharp</v-icon>/<v-icon small color="secondary">mdi-music-accidental-flat</v-icon>:
+                                    {{distanceFromReference}}
+                                </v-row>
+
                             </v-card-text>
                             <v-divider></v-divider>
                             <v-expansion-panels hover>
@@ -258,10 +263,6 @@
             }
         },
         methods: {
-
-            consoleme() {
-                console.log("fotaras")
-            },
 
             deleteChord() {
                 this.$store.commit('deleteChordFromProgression', this.features);

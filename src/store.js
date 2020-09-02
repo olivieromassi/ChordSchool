@@ -24,6 +24,23 @@ export const store = new Vuex.Store({
             {name: 'B', color: colors.lightGreen, colorText: 'light-green'},
             {name: 'Cb', color: colors.lightGreen, colorText: 'light-green'}],
 
+        circleOfFifths:
+            [{name: 'C', colorText: 'red'},
+                {name: 'G', colorText: 'deep-orange'},
+                {name: 'D', colorText: 'orange'},
+                {name: 'A', colorText: 'amber'},
+                {name: 'E', colorText: 'yellow'},
+                {name: 'B', colorText: 'light-green'},
+                {name: 'Cb', colorText: 'light-green'},
+                {name: 'F#', colorText: 'green'},
+                {name: 'Gb', colorText: 'green'},
+                {name: 'C#', colorText: 'teal'},
+                {name: 'Db', colorText: 'teal'},
+                {name: 'Ab', colorText: 'light-blue'},
+                {name: 'Eb', colorText: 'blue'},
+                {name: 'Bb', colorText: 'indigo'},
+                {name: 'F', colorText: 'purple'}],
+
         /*This list represents the notes of the chromatic scale*/
         chromaticScale: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
 
@@ -115,7 +132,7 @@ export const store = new Vuex.Store({
         /*Variable used as the selector for the different available sounds*/
         instrument: 0,
 
-        instruments:['piano' , 'synth'],
+        instruments: ['piano', 'synth'],
 
         /*This variable defines the sound of a piano starting from samples*/
         sampler: new Tone.Sampler({
@@ -142,6 +159,9 @@ export const store = new Vuex.Store({
     getters: {
         getKeys(state) {
             return state.keys.map(key => key.name);
+        },
+        getKeysNameColor(state) {
+            return state.circleOfFifths;
         },
         getChromaticScale(state) {
             return state.chromaticScale;
@@ -209,7 +229,7 @@ export const store = new Vuex.Store({
             state.keyReference = state.scales[state.keys.map(key => key.name).indexOf(state.selectedKey)];
         },
 
-        setInstrument(state, instrument){
+        setInstrument(state, instrument) {
             state.instrument = instrument;
         },
 

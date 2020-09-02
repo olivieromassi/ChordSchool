@@ -78,7 +78,6 @@
                         </v-expansion-panels>
                     </v-card>
                 </v-menu>
-
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn v-bind="attrs"
@@ -110,25 +109,41 @@
                 </v-dialog>
 
             </v-app-bar>
-            <v-container class="fill-height" align="center" justify="center">
+            <v-container fluid class="px-16">
                 <v-layout row wrap>
-                    <v-flex xs12 md12 lg12>
+                    <v-flex xs12 md12 lg12 xl12>
                         <v-row>
                             <v-spacer></v-spacer>
                             <Keyboard class="hidden-md-and-down"></Keyboard>
                             <v-spacer></v-spacer>
                         </v-row>
                     </v-flex>
-                    <v-flex xs12 md12 lg12 class="ma-4" align-self-start>
+                    <v-flex xs12 md12 lg12 xl12 class="mt-4">
                         <v-card>
                             <v-main class="mx-3 pt-3">
-                                <KeyReference></KeyReference>
-                                <Modes></Modes>
-                                <ChordProgression></ChordProgression>
+                                <v-row no-gutters>
+                                    <v-col
+                                            cols="12"
+                                            sm="11">
+                                        <KeyReference></KeyReference>
+                                        <Modes></Modes>
+                                        <ChordProgression></ChordProgression>
+                                    </v-col>
+                                    <v-col class="pl-5"
+                                           cols="12"
+                                           sm="1">
+                                        <div id="palette" v-for="key in keys"
+                                             :key="key.name"
+                                             :style="`height:6.5%; width:100%`"
+                                             :class="`${key.colorText} lighten-1  secondary--text`"
+                                             align="center">
+                                            {{key.name}}
+                                        </div>
+                                    </v-col>
+                                </v-row>
                             </v-main>
                         </v-card>
                     </v-flex>
-
                 </v-layout>
             </v-container>
         </v-main>
@@ -187,17 +202,25 @@
             instruments() {
                 return this.$store.getters.getInstruments
             },
+            keys() {
+                return this.$store.getters.getKeysNameColor
+            }
         }
     }
 </script>
 
 <style>
-    /*
-    body {
-        overflow: hidden;
-        height: 100vh;
+    #palette {
+        position: relative;
+        width: auto;
+        height: auto;
+        border: 2px solid transparent;
+        border-right: none;
+        border-radius: 5px;
+        box-shadow: 0 3px 5px #666;
+        justify-content: center;
+        align-items: flex-end;
+        font-weight: bold;
     }
-
-     */
 </style>
 
