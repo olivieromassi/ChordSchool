@@ -227,7 +227,15 @@
                 let TP = this.progression;
 
                 let z = 0;
-                const synth = new Tone.PolySynth().toDestination();
+                let synth;
+                switch (this.instrument) {
+                    case 0: synth = this.$store.getters.getSampler;
+                        break;
+                    case 1: synth = this.$store.getters.getSynth;
+                        break;
+                    default: synth = this.$store.getters.getSampler;
+                        break;
+                }
                 const part = new Tone.Part(((time, chord) => {
                     synth.triggerAttackRelease(chord, "4n", time);
                 }), y);
@@ -270,6 +278,9 @@
                         items: chords
                     });
                 }
+            },
+            instrument() {
+                return this.$store.getters.getInstrument;
             }
         }
     }

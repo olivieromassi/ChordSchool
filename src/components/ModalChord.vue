@@ -57,7 +57,15 @@
                 this.$store.commit('resetPressedKeys');
             },
             playChord() {
-                const synth = new Tone.Synth().toDestination();
+                let synth;
+                switch (this.instrument) {
+                      case 0: synth = this.$store.getters.getSampler;
+                      break;
+                      case 1: synth = this.$store.getters.getSynth;
+                      break;
+                      default: synth = this.$store.getters.getSampler;
+                      break;
+                }
                 setTimeout(this.soundChord, 2100);
                 /*Part plays the single notes of the chord*/
                 const part = new Tone.Part(((time, note) => {
@@ -70,13 +78,21 @@
                 Tone.Transport.start();
             },
             soundChord() {
-                let piano = new Tone.PolySynth(Tone.Synth).toDestination();
-                piano.triggerAttackRelease([this.features.tonic,
+                let synth;
+                switch (this.instrument) {
+                    case 0: synth = this.$store.getters.getSampler;
+                    break;
+                    case 1: synth = this.$store.getters.getSynth;
+                    break;
+                    default: synth = this.$store.getters.getSampler;
+                    break;
+                }
+                synth.triggerAttackRelease([this.features.tonic,
                     this.features.third,
                     this.features.fifth,
                     this.features.seventh],
-                  '4n');
-            }
+                    '4n');
+                }
         },
         computed: {
             chordName() {
@@ -87,6 +103,9 @@
             },
             chordMode() {
                 return this.$store.state.chordDetails[this.$store.state.chordDetails.findIndex(e => e.degree === this.features.degree)].mode
+            },
+            instrument() {
+                return this.$store.getters.getInstrument;
             }
         }
     }
