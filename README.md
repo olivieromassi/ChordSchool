@@ -180,6 +180,6 @@ npm run build
 ```
 
 Developed by
-- Massi Oliviero (mail: oliviero.massi@mail.polimi.it)
+- Oliviero Massi (mail: oliviero.massi@mail.polimi.it)
 - Fotios Koutsoukos (mail: fotios.koutsoukos@mail.polimi.it)
 - Soroush Jamali (mail: soroush.jamali@mail.polimi.it)
