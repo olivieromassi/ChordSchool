@@ -110,7 +110,19 @@ The above described chord alterations are accessible to the user in the Chord De
 
 ![Screenshot](screenshots/detailedMenu.png)
 
-1. **Key Reference** Displays the key reference of the chord, dynamically updated when a specific substitution is applied
+1. **Key Reference**: Dynamically updated to display the key reference of the altered chord when a specific substitution is applied. In the example shown above, after applying a ii-V substitution on the V degree chord in the key of F, the ii degree chord and the a V degree chord are added, both in the key of C. 
+The presence of this new key reference inside the progression can be heard using the PLAY button and moreover is visually highlighted by the change of the color of the chords according to the circle of 5ths color coding.
+
+2. **Chord Name**
+
+3. **Distance in semitones from the reference scale**: The chords that are in a different key from the reference scale show the distance from their key reference in semitones. Additionally, this distance is higlight as an elavation of the chord with respect to the other elements of the progression. The elevation height is proportional to the distance metric.
+
+4. **Available Substitutions**: Contains a list of the possible substitutions to be applied on the chord, based on their degree. The result is displayed both on the progression and on the keyboard fingering.
+
+5. **Voicings**: Contains a list of the voicings to be applied on the chord.The result is displayed on the keyboard fingering.
+
+
+
 
 
 
