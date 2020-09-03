@@ -106,7 +106,11 @@ We focused our implementation to the vertical spacing of notes inside a single c
 * **Add 9th - No 5th**
 
 
-The above described chord alterations are accessible in the Chord Detailed menu along with other useful information
+The above described chord alterations are accessible to the user in the Chord Details Menu along with the following information:
+
+![Screenshot](screenshots/detailedMenu.png)
+
+1. **Key Reference** Displays the key reference of the chord, dynamically updated when a specific substitution is applied
 
 
 
