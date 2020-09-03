@@ -38,7 +38,7 @@ The selected Key position is highlighted in the palette and the name of the note
 
 3. The hovering action reveals the fingering over the keyboard and the action buttons:
     * **Add** the chord to Chord Progression section.
-    * **Listen** to the chord over in its first position fingering over the scale.
+    * **Listen** to the chord over in its first position on the keyboard.
 
 ![Screenshot](screenshots/fingeringAndActions.png)
  
