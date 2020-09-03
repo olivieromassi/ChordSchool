@@ -1,4 +1,4 @@
-# ACTAM Project 
+# ChordSchool Project
 
 ## Web-based Educational application to visualize Major Scale harmony chords and scales 
 
@@ -6,9 +6,12 @@
 
 ## Introduction
 
-As a project for the Advanced Coding Tools and Methodologies course we developed a Vue.js desktop application that allows the user to build chord progressions and allows him to experiment with possible substitutions and voicings according to the rules of major scale harmony and hear the result. The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
+This application is a combined project between Advanced Coding Tools and Methodologies & Computer Music - Representations and Models courses.
+ChordSchool is a Vue.js desktop application allowing the user to build chord progressions and experiment with the possible substitutions and voicings according to the rules of major scale harmony. 
 
-Our application is focused on the educational aspect of Major Scale harmony, thus we chose to visually represent the key references, the relative chords and modes as colors as well as notes over the keyboard so to help the user visualise the relevant music theory.
+Our application is focused on the educational aspect of Major Scale harmony, therefore we are visually representing the user choices in key references, relative chords and modes as colors as well as notes over the keyboard, so to help him visualise the relevant music theory aside from hearing the result.
+
+The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
 
 ## User Interface
 
@@ -35,7 +38,7 @@ The selected Key position is highlighted in the palette and the name of the note
 
 3. The hovering action reveals the fingering over the keyboard and the action buttons:
     * **Add** the chord to Chord Progression section.
-    * **Listen** to the chord over in its first position fingering over the scale.
+    * **Listen** to the chord over in its first position on the keyboard.
 
 ![Screenshot](screenshots/fingeringAndActions.png)
  
@@ -52,11 +55,18 @@ The selected Key position is highlighted in the palette and the name of the note
     
 ![Screenshot](screenshots/experimentChord.png)
 
-7. In the Chord Progression section the user can: 
+6. In the Chord Progression section the user can: 
 
     * **Play** the progression and view the fingering of the chords as the playout is moving forward in time,using the relative PLAY button
-    + **Adjust** the BPM ** of the playout speed using the relative BPM button. 
+    * **Adjust** the BPM of the playout speed using the relative BPM button. 
     * **Reset** the current progression and delete all the selected chords using the RESET Button.
+
+7. In the Settings menu the user has the ability to customize the application:
+
+   * **Sound Settings** allowing the user to choose the sound of the playout between different instruments.
+   * **Color Settings** allowing the user to set the color of the text and make it discernible in all color combinations.
+   
+   ![Screenshot](screenshots/settings.png)
 
 ## Chord Alterations
 
@@ -121,55 +131,55 @@ The presence of this new key reference inside the progression can be heard using
 
 5. **Voicings**: Contains a list of the voicings to be applied on the chord.The result is displayed on the keyboard fingering.
 
-
-
-
-
-
-
-
-The keyboard is displaying
-
 ## Technologies Used
 
-### Vue
+### Vue with Vuex
 
-### Vuex
+ChordSchool code is built on HTML, CSS and JavaScript exploting the Vue.js combined with Vuex State Management. Vue.js is an open-source model–view–viewmodel JavaScript framework for building user interfaces and single-page applications. Because Vuex is written with Vue, Vuex State is reactive similar to the the Vue instance’s data. When one component updates the Vuex State, other components can be listening for when that State changes, then they can reactively respond based off that state-change (and the new State value they receive).
+
+The Vue.js library is available at https://vuejs.org/
+
 
 ### Vuetify
+The UI of ChordSchool is built on Vuetify UI library combined with Vue and Vuex framework.  Vuetify is a reusable semantic component framework for Vue.js that follows the Material Design standard used by Google. This choice has offered us the option to apply style standardization and reusable components like buttons, menus etc with ease and with a visually satisfactory result.
+
+The Vuetify library is available at https://vuetifyjs.com/en/
+
 
 ### ToneJS
 
+Tone.js is a Web Audio framework for creating interactive music in the browser, it provides high-performance building blocks to create your own synthesizers, effects, and schedule events so to guarantee a higher level of abstraction over the Web Audio API. The sounds of the playback instruments have been designed using the PolySynth and Sampler Objects of this library.
+
+The ToneJS library is available at https://tonejs.github.io/
+
+### WebStorm IDE
+
+The JetBrains WebStorm IDE allowed us to have full management of the node.js features (installation of libraries, building of the application) and full integration with the VCS. 
+
+The JetBrain WebsStorm IDE is available at https://www.jetbrains.com/webstorm/
 
 
 ## Video Demo
 Here's a short demo of our project --> [Demo]()
 
 
-## Project setup
+## Building the project:
+#### Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 ```
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 Developed by
-- Massi Oliviero (mail: oliviero.massi@mail.polimi.it)
+- Oliviero Massi (mail: oliviero.massi@mail.polimi.it)
 - Fotios Koutsoukos (mail: fotios.koutsoukos@mail.polimi.it)
 - Soroush Jamali (mail: soroush.jamali@mail.polimi.it)
