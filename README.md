@@ -19,27 +19,32 @@ The ChordSchool user interfaces consists of the following  main components:
 
 The ChordSchool app workflow can be summarized by the following steps:
 
-1. Select the key reference using the selector
+1. Select the key reference using the selector. Each key is assigned a color 
+according to their positioning on the circle of 5ths, which is displayed in the palette on the right section of the control panel.  
+
 ![Screenshot](screenshots/referenceKey.png)
 
-2. The modes of the reference scale are displayed in the Modal Chords section. 
-The selected Key is highlighted in the circle of 5ths palette on the right section of the control panel  
+2. The modes of the selected reference scale are displayed in the Modal Chords section. 
+Each mode is assigned a specific background color variant, according to the brightness or darkness of the mode.
+For example the Lydian mode is assigned the brightest variant while Locrian mode the darkest.
+The selected Key position is highlighted in the palette and the name of the notes relative to the scale are placed on the keyboard. 
 
 ![Screenshot](screenshots/modalChords.png)
 
-3. The hovering action reveals the fingering over the keyboard and action buttons to add or listen to the modal chord.
-![Screenshot](screenshots/fingeringAndActions.png)
-  
-4. Add the modal chords to the progression list using the "add" button.
+3. The hovering action reveals the fingering over the keyboard and the action buttons:
+    a. **Add** the chord to Chord Progression section.
+    b. **Listen** to the chord over in its first position fingering over the scale
 
-5. The added chords appear in the Chord Progression section
+![Screenshot](screenshots/fingeringAndActions.png)
+ 
+4. The added chords appear in the Chord Progression section, in the order of selection.
 
 ![Screenshot](screenshots/chordProgressionSimple.png)
 
-6. The hovering action reveals the fingering over the keyboard board and action buttons
+5. Hovering over the progression list chords reveals the fingering over the keyboard board and additional action buttons
 
     a. **Drag** the chord within the Chord Progression section to rearrange it as needed.
-    b. **Move** the chord over the keyboard up or down an octave(5)
+    b. **Move** the chord over the keyboard up or down an octave
     c. **View** the chord Details menu using the Experiment on the chord by applying the possible substitutions 
     or voicings on the selected chord. 
     d. **Remove** the chord if it is not needed
