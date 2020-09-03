@@ -240,7 +240,6 @@
 </template>
 
 <script>
-    import * as Tone from "tone";
 
     export default {
         name: "Chord",
@@ -274,9 +273,19 @@
                 this.$store.commit('resetPressedKeys');
             },
             playChord() {
-                let piano = new Tone.PolySynth(Tone.Synth).toDestination();
-                piano.triggerAttackRelease(this.features.notes,
-                    1);
+                let synth;
+                switch (this.instrument) {
+                    case 0: synth = this.$store.getters.getSampler;
+                        break;
+                    case 1: synth = this.$store.getters.getSynth1;
+                        break;
+                    case 2: synth = this.$store.getters.getSynth2;
+                        break;
+                    default: synth = this.$store.getters.getSampler;
+                        break;
+                }
+                synth.triggerAttackRelease([this.features.notes],
+                    '4n');
             },
             /*Chord Substitution Methods*/
             buildChord(scale, degree) {
@@ -563,6 +572,9 @@
                     }
                 });
                 return distance;
+            },
+            instrument() {
+                return this.$store.getters.getInstrument;
             }
         }
     }
