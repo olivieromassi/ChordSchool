@@ -40,9 +40,9 @@
 
                   <v-radio-group
                       v-model="instrumentSelected"
-                      row
                       mandatory>
                     <v-radio
+                        class="my-2"
                         v-for="(instrument, i) in instruments"
                         :key="i"
                         :label="`${instrument}`"
@@ -89,41 +89,8 @@
           <span> Help </span>
         </v-tooltip>
         <v-dialog v-model="dialog">
-          <v-card>
-            <v-card-title>
-                            <span class="headline">How to use <span
-                                class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
-                                <span>School</span></span>
-            </v-card-title>
-            <v-card-text>
-              <span class="font-weight-light">Chord</span>School is an app that takes as input a chord
-              progression and provides you with the possible substitution and voicings according to the rules of major scale harmony.
-              </v-card-text>
-            <v-card-text>
-
-
-              <p>1. Select the key reference using the <span class="mdi mdi-key"></span> selector</p>
-              <p>2. The modes of the reference scale are displayed in the <span class="font-weight-light">Modal Chords</span> section.</p>
-              <p>3. The hovering action reveals the fingering over the keyboard and action buttons. Use <v-icon size="small">mdi-plus</v-icon>  to add the chord to the progression
-                and  <v-icon size="small">volume_up</v-icon> button to listen it </p>
-              <p>4. Add the modal chords to the progression list using the <v-icon size="small">mdi_plus</v-icon> button</p>
-               -
-               -
-               - .
-               - The added chords appear in the Chord Progression section
-               - The hovering action reveals the fingering over the keyboard board and action buttons
-                a. Drag the chord within the Chord Progression section to rearrange it as needed.
-                b. Move the chord over the keyboard up or down an octave
-                c. View the Chord Details menu using the Experiment on the chord by applying the possible substitutions
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="secondary darken-1" text @click="dialog = false">close</v-btn>
-
-            </v-card-actions>
-          </v-card>
+          <Help></Help>
         </v-dialog>
-
       </v-app-bar>
       <v-container fluid class="px-16">
         <v-layout row wrap>
@@ -137,7 +104,7 @@
           <v-flex xs12 md12 lg12 xl12 class="mt-4">
             <v-card>
               <v-main class="mx-3 pt-3">
-                <v-row >
+                <v-row>
                   <v-col
                       cols="12"
                       sm="11">
@@ -155,7 +122,7 @@
                       {{ key.name }}
                     </div>
                   </v-col>
-                </v-row >
+                </v-row>
               </v-main>
             </v-card>
           </v-flex>
@@ -170,6 +137,7 @@ import KeyReference from "@/components/KeyReference";
 import Modes from "@/components/Modes";
 import ChordProgression from "@/components/ChordProgression";
 import Keyboard from "@/components/Keyboard";
+import Help from "@/components/Help";
 
 
 export default {
@@ -183,6 +151,7 @@ export default {
     }
   },
   components: {
+    Help,
     Keyboard,
     ChordProgression,
     Modes,
@@ -230,23 +199,26 @@ export default {
 
 </script>
 
-<style>
-  .selected{
-    border-radius: 5px;
-    box-shadow: 0 3px 3px #666;
-    font-weight: bold;
-    border: 5px solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-  }
-  .notSelected{
-    border-radius: 5px;
-    box-shadow: 0 3px 3px #666;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+<style>
+
+.selected {
+  border-radius: 5px;
+  box-shadow: 0 3px 3px #666;
+  font-weight: bold;
+  border: 5px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.notSelected {
+  border-radius: 5px;
+  box-shadow: 0 3px 3px #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
 
