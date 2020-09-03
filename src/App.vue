@@ -97,8 +97,24 @@
             </v-card-title>
             <v-card-text>
               <span class="font-weight-light">Chord</span>School is an app that takes as input a chord
-              progression and provides the user with the
-              possible substitution and voicings according to the rules of major scale harmony.
+              progression and provides you with the possible substitution and voicings according to the rules of major scale harmony.
+              </v-card-text>
+            <v-card-text>
+
+
+              <p>1. Select the key reference using the <span class="mdi mdi-key"></span> selector</p>
+              <p>2. The modes of the reference scale are displayed in the <span class="font-weight-light">Modal Chords</span> section.</p>
+              <p>3. The hovering action reveals the fingering over the keyboard and action buttons. Use <v-icon size="small">mdi-plus</v-icon>  to add the chord to the progression
+                and  <v-icon size="small">volume_up</v-icon> button to listen it </p>
+              <p>4. Add the modal chords to the progression list using the <v-icon size="small">mdi_plus</v-icon> button</p>
+               -
+               -
+               - .
+               - The added chords appear in the Chord Progression section
+               - The hovering action reveals the fingering over the keyboard board and action buttons
+                a. Drag the chord within the Chord Progression section to rearrange it as needed.
+                b. Move the chord over the keyboard up or down an octave
+                c. View the Chord Details menu using the Experiment on the chord by applying the possible substitutions
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -135,8 +151,7 @@
                     <div v-for="key in keys"
                          :key="key.name"
                          :style="`height:7.7%; width:100%`"
-                         :class="[ (key.name.includes(selectedKey) && selectedKey.length===2 )|| (key.name === selectedKey) || (key.name.includes(selectedKey) && selectedKey==='B' && key.name.length>2) ? key.colorText + ' lighten-1  white--text  selected '  : key.colorText + ' lighten-1  secondary--text  notSelected'] "
-                         align="center">
+                         :class="[ (key.name.includes(selectedKey) && selectedKey.length===2 )|| (key.name === selectedKey) || (key.name.includes(selectedKey) && selectedKey==='B' && key.name.length>2) ? key.colorText + ' lighten-1  white--text  selected '  : key.colorText + ' lighten-1  secondary--text  notSelected'] ">
                       {{ key.name }}
                     </div>
                   </v-col>
@@ -212,6 +227,7 @@ export default {
 
   }
 }
+
 </script>
 
 <style>
@@ -219,12 +235,18 @@ export default {
     border-radius: 5px;
     box-shadow: 0 3px 3px #666;
     font-weight: bold;
-    border: 5px solid
+    border: 5px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
   }
   .notSelected{
     border-radius: 5px;
     box-shadow: 0 3px 3px #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
 
