@@ -152,6 +152,12 @@ Tone.js is a Web Audio framework for creating interactive music in the browser, 
 
 The ToneJS library is available at https://tonejs.github.io/
 
+### WebStorm IDE
+
+The JetBrains WebStorm IDE allowed us to have full management of the node.js features (installation of libraries, building of the application) and full integration with the VCS. 
+
+The JetBrain WebsStorm IDE is available at https://www.jetbrains.com/webstorm/
+
 
 ## Video Demo
 Here's a short demo of our project --> [Demo]()
