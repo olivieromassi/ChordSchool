@@ -55,13 +55,13 @@ The selected Key position is highlighted in the palette and the name of the note
     
 ![Screenshot](screenshots/experimentChord.png)
 
-7. In the Chord Progression section the user can: 
+6. In the Chord Progression section the user can: 
 
     * **Play** the progression and view the fingering of the chords as the playout is moving forward in time,using the relative PLAY button
     * **Adjust** the BPM of the playout speed using the relative BPM button. 
     * **Reset** the current progression and delete all the selected chords using the RESET Button.
 
-8. In the Settings menu the user has the ability to customize the application:
+7. In the Settings menu the user has the ability to customize the application:
 
    * **Sound Settings** allowing the user to choose the sound of the playout between different instruments.
    * **Color Settings** allowing the user to set the color of the text and make it discernible in all color combinations.
