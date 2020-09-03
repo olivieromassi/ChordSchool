@@ -18,6 +18,7 @@ The ChordSchool user interfaces consists of the following  main components:
 ## How to Use
 
 The ChordSchool app workflow can be summarized by the following steps:
+![Screenshot](screenshots/referenceKey.png)
 
 1. Select the key reference using the selector (1)
 2. The modes of the reference scale are displayed in the Modal Chords section(2).
