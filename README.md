@@ -56,24 +56,29 @@ The selected Key position is highlighted in the palette and the name of the note
     + **Adjust** the BPM ** of the playout speed using the relative BPM button. 
     * **Reset** the current progression and delete all the selected chords using the RESET Button.
 
-##Chord Alterations
+## Chord Alterations
 
 ### Substitutions
-In music theory, chord substitution is the technique of using a chord in place of another in a progression of chords, or a chord progression. Much of the European classical repertoire and the vast majority of blues, jazz and rock music songs are based on chord progressions. "A chord substitution occurs when a chord is replaced by another that is made to function like the original. Usually substituted chords possess two pitches in common with the triad that they are replacing."
+In music theory, chord substitution is the technique of using a chord in place of another in a progression of chords. Much of the European classical repertoire and the vast majority of blues, jazz and rock music songs are based on chord progressions. "A chord substitution occurs when a chord is replaced by another that is made to function like the original. Usually substituted chords possess two pitches in common with the triad that they are replacing."
 
-Default Substitutions for a Single Chord: Provide suggestions on chord substitutions for single chords: 
+In the context of major scale harmony we chose to implement the following substitution mechanisms:
+ 
+* **Tritone substitution**
+The tritone substitution can be performed by exchanging a dominant seven (V degree) chord for another dominant seven chord which is a tritone away from it. For example, in the key of C major one can use D♭7 instead of G7. (D♭ is a tritone away from G).
 
-Tritone substitution - suggested on dominant chords V. 
+* **Secondary dominant**
+A secondary dominant is any chord that has the dominant function over another chord that is not the tonic of the song.
+For example, in the key of C major, the dominant chord is G7. If, in that tonality, the A7 chord appeared, that chord would be a “secondary dominant”, since it is a dominant that resolves in D, not in C (our tonic in this case).
 
-Secondary dominant – suggested to precede any of the given chords. 
+* **ii-V substitution**
+The ii-V substitution is when a chord or each chord in a progression is preceded by its supertonic (ii7) and dominant (V7), or simply its dominant. For example, a C major chord would be preceded by Dm7 and G7. Since secondary dominant chords are often inserted between the chords of a progression rather than replacing one, this may be considered as 'addition' rather than 'substitution'.
 
-ii-V substitution- suggest for each chord to be preceded by its relative supertonic ii7 and dominant. 
+* **Quality substitution
+Chord quality substitution is when the quality of a chord is changed, from major to minor or vice versa, so the new substitute chord has similar root and construction but with one pitch different. 
 
-Chord quality substitution - is when the quality of a chord is changed, from major to minor or vice versa, so the new substitute chord has similar root and construction but with one pitch different. 
+* **Relative major-minor substitution** using the relative chord from the scale that shares the same notes as the original scale. 
+The relative major/minor substitution shares two common tones and is so called because it involves the relation between major and minor keys with the same key signatures, such as C major and A minor.[11]
 
-Diminished 7th: when exists V-I sub-progression the program suggests to substitute V with VII o7. 
-
-Relative major-minor substitution: using the relative chord from the scale that shares the same notes as the original scale. 
 
 Tonic substitution: is the use of chords that sound similar to the tonic chord, instead of the I the program suggests III or VI substitution. 
 
