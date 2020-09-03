@@ -4,7 +4,7 @@
       <v-app-bar app dense hide-on-scroll class="primary lighten-1 white--text">
         <v-toolbar-title style="cursor: pointer" @click="reloadPage()">
           <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
-          <span>Score</span>
+          <span>School</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-menu
@@ -27,7 +27,7 @@
           <v-card max-width="300">
             <v-card-title primary-title class="justify-center">
               <span class="pr-1">Customize</span>
-              <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span><span>Score</span>
+              <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span><span>School</span>
             </v-card-title>
             <v-divider></v-divider>
 
@@ -93,10 +93,10 @@
             <v-card-title>
                             <span class="headline">How to use <span
                                 class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
-                                <span>Score</span></span>
+                                <span>School</span></span>
             </v-card-title>
             <v-card-text>
-              <span class="font-weight-light">Chord</span>Score is an app that takes as input a chord
+              <span class="font-weight-light">Chord</span>School is an app that takes as input a chord
               progression and provides the user with the
               possible substitution and voicings according to the rules of major scale harmony.
             </v-card-text>
