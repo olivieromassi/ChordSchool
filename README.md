@@ -1,4 +1,4 @@
-# ACTAM Project 
+# ChordSchool Project
 
 ## Web-based Educational application to visualize Major Scale harmony chords and scales 
 
