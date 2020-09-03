@@ -6,7 +6,8 @@
 
 ## Introduction
 
-For the Advanced Coding Tools and Methodologies course we have developed a Vue desktop application allowing the user to build chord progressions and experiment with the possible substitutions and voicings according to the rules of major scale harmony. 
+This application is a combined project between Advanced Coding Tools and Methodologies & Computer Music - Representations and Models courses.
+ChordSchool is a Vue.js desktop application allowing the user to build chord progressions and experiment with the possible substitutions and voicings according to the rules of major scale harmony. 
 
 Our application is focused on the educational aspect of Major Scale harmony, therefore we are visually representing the user choices in key references, relative chords and modes as colors as well as notes over the keyboard, so to help him visualise the relevant music theory aside from hearing the result.
 
@@ -130,20 +131,26 @@ The presence of this new key reference inside the progression can be heard using
 
 5. **Voicings**: Contains a list of the voicings to be applied on the chord.The result is displayed on the keyboard fingering.
 
-
-
-The keyboard is displaying
-
 ## Technologies Used
 
-### Vue
+### Vue with Vuex
 
-### Vuex
+ChordSchool code is built on HTML, CSS and JavaScript exploting the Vue.js combined with Vuex State Management. Vue.js is an open-source model–view–viewmodel JavaScript framework for building user interfaces and single-page applications. Because Vuex is written with Vue, Vuex State is reactive similar to the the Vue instance’s data. When one component updates the Vuex State, other components can be listening for when that State changes, then they can reactively respond based off that state-change (and the new State value they receive).
+
+The Vue.js library is available at https://vuejs.org/
+
 
 ### Vuetify
+The UI of ChordSchool is built on Vuetify UI library combined with Vue and Vuex framework.  Vuetify is a reusable semantic component framework for Vue.js that follows the Material Design standard used by Google. This choice has offered us the option to apply style standardization and reusable components like buttons, menus etc with ease and with a visually satisfactory result.
+
+The Vuetify library is available at https://vuetifyjs.com/en/
+
 
 ### ToneJS
 
+Tone.js is a Web Audio framework for creating interactive music in the browser, it provides high-performance building blocks to create your own synthesizers, effects, and schedule events so to guarantee a higher level of abstraction over the Web Audio API. The sounds of the playback instruments have been designed using the PolySynth and Sampler Objects of this library.
+
+The ToneJS library is available at https://tonejs.github.io/
 
 
 ## Video Demo
