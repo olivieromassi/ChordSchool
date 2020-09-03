@@ -6,9 +6,11 @@
 
 ## Introduction
 
-As a project for the Advanced Coding Tools and Methodologies course we developed a Vue.js desktop application that allows the user to build chord progressions and allows him to experiment with possible substitutions and voicings according to the rules of major scale harmony and hear the result. The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
+For the Advanced Coding Tools and Methodologies course we have developed a Vue desktop application allowing the user to build chord progressions and experiment with the possible substitutions and voicings according to the rules of major scale harmony. 
 
-Our application is focused on the educational aspect of Major Scale harmony, thus we chose to visually represent the key references, the relative chords and modes as colors as well as notes over the keyboard so to help the user visualise the relevant music theory.
+Our application is focused on the educational aspect of Major Scale harmony, therefore we are visually representing the user choices in key references, relative chords and modes as colors as well as notes over the keyboard, so to help him visualise the relevant music theory aside from hearing the result.
+
+The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
 
 ## User Interface
 
@@ -55,8 +57,15 @@ The selected Key position is highlighted in the palette and the name of the note
 7. In the Chord Progression section the user can: 
 
     * **Play** the progression and view the fingering of the chords as the playout is moving forward in time,using the relative PLAY button
-    + **Adjust** the BPM ** of the playout speed using the relative BPM button. 
+    * **Adjust** the BPM of the playout speed using the relative BPM button. 
     * **Reset** the current progression and delete all the selected chords using the RESET Button.
+
+8. In the Settings menu the user has the ability to customize the application:
+
+   * **Sound Settings** allowing the user to choose the sound of the playout between different instruments.
+   * **Color Settings** allowing the user to set the color of the text and make it discernible in all color combinations.
+   
+   ![Screenshot](screenshots/settings.png)
 
 ## Chord Alterations
 
@@ -120,11 +129,6 @@ The presence of this new key reference inside the progression can be heard using
 4. **Available Substitutions**: Contains a list of the possible substitutions to be applied on the chord, based on their degree. The result is displayed both on the progression and on the keyboard fingering.
 
 5. **Voicings**: Contains a list of the voicings to be applied on the chord.The result is displayed on the keyboard fingering.
-
-
-
-
-
 
 
 
