@@ -64,7 +64,7 @@
                                        justify="center">
                                     {{chordName}}
                                 </v-row>
-                                <v-row align="center" justify="center" class="font-weight-bold text--darken-1">
+                                <v-row v-if="distanceFromReference>0" align="center" justify="center" class="font-weight-bold text--darken-1">
                                     Distance in <v-icon small color="secondary"> mdi-music-accidental-sharp</v-icon>/<v-icon small color="secondary">mdi-music-accidental-flat</v-icon>:
                                     {{distanceFromReference}}
                                 </v-row>
