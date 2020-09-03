@@ -8,6 +8,8 @@
 
 As a project for the Advanced Coding Tools and Methodologies course we developed a Vue.js desktop application that allows the user to build chord progressions and allows him to experiment with possible substitutions and voicings according to the rules of major scale harmony and hear the result. The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
 
+Since our application is considered educational, we chose to visually represent the key references of the major scale harmony, the relative chords and modes in the context of color as well as in the context of placement of fingers over the keyboard.
+
 ## User Interface
 
 The ChordSchool user interfaces consists of the following  main components:
@@ -73,17 +75,16 @@ For example, in the key of C major, the dominant chord is G7. If, in that tonali
 * **ii-V substitution**
 The ii-V substitution is when a chord or each chord in a progression is preceded by its supertonic (ii7) and dominant (V7), or simply its dominant. For example, a C major chord would be preceded by Dm7 and G7. Since secondary dominant chords are often inserted between the chords of a progression rather than replacing one, this may be considered as 'addition' rather than 'substitution'.
 
-* **Quality substitution
+* **Quality substitution**
 Chord quality substitution is when the quality of a chord is changed, from major to minor or vice versa, so the new substitute chord has similar root and construction but with one pitch different. 
 
-* **Relative major-minor substitution** using the relative chord from the scale that shares the same notes as the original scale. 
-The relative major/minor substitution shares two common tones and is so called because it involves the relation between major and minor keys with the same key signatures, such as C major and A minor.[11]
+* **Relative major-minor substitution** 
+The relative major/minor substitution shares two common tones and is so called because it involves the relation between major and minor keys with the same key signatures, such as C major and A minor.
 
+* **Tonic substitution**
+Tonic substitution is the use of chords that sound similar to the tonic chord (or I chord) in place of the tonic. In major keys, the chords iii and vi are often substituted for the I chord, to add interest. Both of the tonic substitute chords use notes from the tonic chord, which means that they usually support a melody originally designed for the tonic (I) chord.
 
-Tonic substitution: is the use of chords that sound similar to the tonic chord, instead of the I the program suggests III or VI substitution. 
-
-Since our application is considered educational, we chose to visually represent the key references of the major scale harmony, the relative chords and modes in the context of color as well as in the context of placement of fingers over the keyboard as the chord progression is 
-
+### Voicings
 
 The keyboard is displaying
 
