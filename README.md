@@ -8,7 +8,7 @@
 
 As a project for the Advanced Coding Tools and Methodologies course we developed a Vue.js desktop application that allows the user to build chord progressions and allows him to experiment with possible substitutions and voicings according to the rules of major scale harmony and hear the result. The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
 
-Since our application is considered educational, we chose to visually represent the key references of the major scale harmony, the relative chords and modes in the context of color as well as in the context of placement of fingers over the keyboard.
+Our application is focused on the educational aspect of Major Scale harmony, thus we chose to visually represent the key references, the relative chords and modes as colors as well as notes over the keyboard so to help the user visualise the relevant music theory.
 
 ## User Interface
 
@@ -89,7 +89,7 @@ Tonic substitution is the use of chords that sound similar to the tonic chord (o
 In music theory, voicing refers to one of two closely related concepts:
 * How a musician or group distributes, or spaces, notes and chords on one or more instruments
 * The simultaneous vertical placement of notes in relation to each other.
-We focused our implementation to the vertical spacing of notes inside a single chord.
+
 
 One nomenclature for describing certain classes of voicings is the "drop-n" terminology, such as drop-2 voicings, drop-4 voicings, etc. This system views voicings as built from the top down. The highest voice is the first voice or voice 1. The second-highest voice is voice 2, etc. 
 
@@ -98,9 +98,19 @@ A dropped voicing lowers one or more voices by an octave relative to the default
 ![Screenshot](screenshots/drop2.png)
 ![Screenshot](screenshots/drop3.png)
 
-* **drop-2 voicing**.  
+We focused our implementation to the vertical spacing of notes inside a single chord:
+* **drop-2**  
+* **drop-3**
+* **drop-2+4**
+* **Add 9th**
+* **Add 9th - No 5th**
 
-It lowers the second voice by an octave.
+
+The above described chord alterations are accessible in the Chord Detailed menu along with other useful information
+
+
+
+
 
 The keyboard is displaying
 
