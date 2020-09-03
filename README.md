@@ -18,17 +18,35 @@ The ChordSchool user interfaces consists of the following  main components:
 ## How to Use
 
 The ChordSchool app workflow can be summarized by the following steps:
+
+1. Select the key reference using the selector
 ![Screenshot](screenshots/referenceKey.png)
 
-1. Select the key reference using the selector (1)
-2. The modes of the reference scale are displayed in the Modal Chords section(2).
-3. The hovering action reveals the fingering over the keyboard and action buttons to add or listen to the modal chord.(3)  
+2. The modes of the reference scale are displayed in the Modal Chords section. 
+The selected Key is highlighted in the circle of 5ths palette on the right section of the control panel  
+
+![Screenshot](screenshots/modalChords.png)
+
+3. The hovering action reveals the fingering over the keyboard and action buttons to add or listen to the modal chord.
+![Screenshot](screenshots/fingeringAndActions.png)
+  
 4. Add the modal chords to the progression list using the "add" button.
-5. The added chords appear in the Chord Progression section(4)
+
+5. The added chords appear in the Chord Progression section
+
+![Screenshot](screenshots/chordProgressionSimple.png)
+
 6. The hovering action reveals the fingering over the keyboard board and action buttons
-    a. Drag the chord within the Chord Progression section to rearrange it as needed.
-    b. Move the chord over the keyboard up or down an octave(5)
-    c. View the Chord Details menu using the Experiment on the chord by applying the possible substitutions 
+
+    a. **Drag** the chord within the Chord Progression section to rearrange it as needed.
+    b. **Move** the chord over the keyboard up or down an octave(5)
+    c. **View** the chord Details menu using the Experiment on the chord by applying the possible substitutions 
+    or voicings on the selected chord. 
+    d. **Remove** the chord if it is not needed
+    
+![Screenshot](screenshots/experimentChord.png)
+
+7. Hear the result and view the fingering of the chord progression by pressing the Play button. The playout speed can be controlled by the BPM button. The progression can be deleted by  
 
 
 
