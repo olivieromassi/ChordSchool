@@ -32,8 +32,8 @@ The selected Key position is highlighted in the palette and the name of the note
 ![Screenshot](screenshots/modalChords.png)
 
 3. The hovering action reveals the fingering over the keyboard and the action buttons:
-    i. **Add** the chord to Chord Progression section.
-    ii. **Listen** to the chord over in its first position fingering over the scale
+    * **Add** the chord to Chord Progression section.
+    * **Listen** to the chord over in its first position fingering over the scale
 
 ![Screenshot](screenshots/fingeringAndActions.png)
  
@@ -43,11 +43,11 @@ The selected Key position is highlighted in the palette and the name of the note
 
 5. Hovering over the progression list chords reveals the fingering over the keyboard board and additional action buttons
 
-    i.  **Drag** the chord within the Chord Progression section to rearrange it as needed.
-    ii.  **Move** the chord over the keyboard up or down an octave
-    iii. **View** the chord Details menu using the Experiment on the chord by applying the possible substitutions 
+   * **Drag** the chord within the Chord Progression section to rearrange it as needed.
+   * **Move** the chord over the keyboard up or down an octave
+   * **View** the chord Details menu using the Experiment on the chord by applying the possible substitutions 
     or voicings on the selected chord. 
-    iv. **Remove** the chord if it is not needed
+   * **Remove** the chord if it is not needed
     
 ![Screenshot](screenshots/experimentChord.png)
 
