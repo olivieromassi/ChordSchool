@@ -89,7 +89,7 @@ Tonic substitution is the use of chords that sound similar to the tonic chord (o
 In music theory, voicing refers to one of two closely related concepts:
 * How a musician or group distributes, or spaces, notes and chords on one or more instruments
 * The simultaneous vertical placement of notes in relation to each other.
-We focused our implementation to the vertical spacing of notes inside a single chord.
+
 
 One nomenclature for describing certain classes of voicings is the "drop-n" terminology, such as drop-2 voicings, drop-4 voicings, etc. This system views voicings as built from the top down. The highest voice is the first voice or voice 1. The second-highest voice is voice 2, etc. 
 
@@ -98,9 +98,15 @@ A dropped voicing lowers one or more voices by an octave relative to the default
 ![Screenshot](screenshots/drop2.png)
 ![Screenshot](screenshots/drop3.png)
 
-* **drop-2 voicing**.  
+We focused our implementation to the vertical spacing of notes inside a single chord:
+* **drop-2**  
+* **drop-3**
+* **drop-2+4**
+* **Add 9th**
+* **Add 9th - No 5th**
 
-It lowers the second voice by an octave.
+
+
 
 The keyboard is displaying
 
