@@ -8,7 +8,7 @@
 
 As a project for the Advanced Coding Tools and Methodologies course we developed a Vue.js desktop application that allows the user to build chord progressions and allows him to experiment with possible substitutions and voicings according to the rules of major scale harmony and hear the result. The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
 
-Since our application is considered educational, we chose to visually represent the key references of the major scale harmony, the relative chords and modes in the context of color as well as in the context of placement of fingers over the keyboard.
+Our application is focused on the educational aspect of Major Scale harmony, thus we chose to visually represent the key references, the relative chords and modes as colors as well as notes over the keyboard so to help the user visualise the relevant music theory.
 
 ## User Interface
 
@@ -104,6 +104,10 @@ We focused our implementation to the vertical spacing of notes inside a single c
 * **drop-2+4**
 * **Add 9th**
 * **Add 9th - No 5th**
+
+
+The above described chord alterations are accessible in the Chord Detailed menu along with other useful information
+
 
 
 
