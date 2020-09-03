@@ -33,7 +33,7 @@ The selected Key position is highlighted in the palette and the name of the note
 
 3. The hovering action reveals the fingering over the keyboard and the action buttons:
     * **Add** the chord to Chord Progression section.
-    * **Listen** to the chord over in its first position fingering over the scale
+    * **Listen** to the chord over in its first position fingering over the scale.
 
 ![Screenshot](screenshots/fingeringAndActions.png)
  
@@ -45,21 +45,37 @@ The selected Key position is highlighted in the palette and the name of the note
 
    * **Drag** the chord within the Chord Progression section to rearrange it as needed.
    * **Move** the chord over the keyboard up or down an octave
-   * **View** the chord Details menu using the Experiment on the chord by applying the possible substitutions 
-    or voicings on the selected chord. 
+   * **View** the chord Details menu using the Details button. The Details screen and its options are described in depth in the following section **Chord Alterations**  
    * **Remove** the chord if it is not needed
     
 ![Screenshot](screenshots/experimentChord.png)
 
-7. Hear the result and view the fingering of the chord progression by pressing the Play button. The playout speed can be controlled by the BPM button. The progression can be deleted by  
+7. In the Chord Progression section the user can: 
 
+    * **Play** the progression and view the fingering of the chords as the playout is moving forward in time,using the relative PLAY button
+    + **Adjust** the BPM ** of the playout speed using the relative BPM button. 
+    * **Reset** the current progression and delete all the selected chords using the RESET Button.
 
+##Chord Alterations
 
+### Substitutions
+In music theory, chord substitution is the technique of using a chord in place of another in a progression of chords, or a chord progression. Much of the European classical repertoire and the vast majority of blues, jazz and rock music songs are based on chord progressions. "A chord substitution occurs when a chord is replaced by another that is made to function like the original. Usually substituted chords possess two pitches in common with the triad that they are replacing."
 
+Default Substitutions for a Single Chord: Provide suggestions on chord substitutions for single chords: 
 
+Tritone substitution - suggested on dominant chords V. 
 
+Secondary dominant – suggested to precede any of the given chords. 
 
+ii-V substitution- suggest for each chord to be preceded by its relative supertonic ii7 and dominant. 
 
+Chord quality substitution - is when the quality of a chord is changed, from major to minor or vice versa, so the new substitute chord has similar root and construction but with one pitch different. 
+
+Diminished 7th: when exists V-I sub-progression the program suggests to substitute V with VII o7. 
+
+Relative major-minor substitution: using the relative chord from the scale that shares the same notes as the original scale. 
+
+Tonic substitution: is the use of chords that sound similar to the tonic chord, instead of the I the program suggests III or VI substitution. 
 
 Since our application is considered educational, we chose to visually represent the key references of the major scale harmony, the relative chords and modes in the context of color as well as in the context of placement of fingers over the keyboard as the chord progression is 
 
