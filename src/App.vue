@@ -1,226 +1,231 @@
 <template>
-    <v-app id="app">
-        <v-main>
-            <v-app-bar app dense hide-on-scroll class="primary lighten-1 white--text">
-                <v-toolbar-title style="cursor: pointer" @click="reloadPage()">
-                    <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
-                    <span>Score</span>
-                </v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-menu
-                        v-model="menuColor"
-                        :close-on-content-click="false"
-                        offset-x>
-                    <template v-slot:activator="{ on: menuColor, attrs }">
-                        <v-tooltip bottom>
-                            <template v-slot:activator="{ on: tooltip }">
-                                <v-btn x-small depressed text class="primary lighten-1"
-                                       v-bind="attrs"
-                                       v-on="{ ...tooltip, ...menuColor }">
-                                    <v-icon>settings</v-icon>
-                                </v-btn>
-                            </template>
-                            <span> Settings </span>
-                        </v-tooltip>
-                    </template>
+  <v-app id="app">
+    <v-main>
+      <v-app-bar app dense hide-on-scroll class="primary lighten-1 white--text">
+        <v-toolbar-title style="cursor: pointer" @click="reloadPage()">
+          <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
+          <span>Score</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-menu
+            v-model="menuColor"
+            :close-on-content-click="false"
+            offset-x>
+          <template v-slot:activator="{ on: menuColor, attrs }">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on: tooltip }">
+                <v-btn x-small depressed text class="primary lighten-1"
+                       v-bind="attrs"
+                       v-on="{ ...tooltip, ...menuColor }">
+                  <v-icon>settings</v-icon>
+                </v-btn>
+              </template>
+              <span> Settings </span>
+            </v-tooltip>
+          </template>
 
-                    <v-card max-width="300">
-                        <v-card-title primary-title class="justify-center">
-                            <span class="pr-1">Customize</span>
-                            <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span><span>Score</span>
-                        </v-card-title>
-                        <v-divider></v-divider>
+          <v-card max-width="300">
+            <v-card-title primary-title class="justify-center">
+              <span class="pr-1">Customize</span>
+              <span class="font-weight-light secondary--text text--lighten-2 ">Chord</span><span>Score</span>
+            </v-card-title>
+            <v-divider></v-divider>
 
-                        <v-expansion-panels hover>
-                            <v-expansion-panel>
-                                <v-expansion-panel-header class="align-self-start">
-                                    Select Sound
-                                </v-expansion-panel-header>
-                                <v-expansion-panel-content>
+            <v-expansion-panels hover>
+              <v-expansion-panel>
+                <v-expansion-panel-header class="align-self-start">
+                  Select Sound
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
 
-                                    <v-radio-group
-                                            v-model="instrumentSelected"
-                                            row
-                                            mandatory>
-                                        <v-radio
-                                                v-for="(instrument, i) in instruments"
-                                                :key="i"
-                                                :label="`${instrument}`"
-                                                :value="i"
-                                                v-on:click="setInstrument(instrumentSelected)">
-                                        </v-radio>
-                                    </v-radio-group>
-                                </v-expansion-panel-content>
-                            </v-expansion-panel>
-                            <v-divider></v-divider>
-                            <v-expansion-panel>
-                                <v-expansion-panel-header>Select Color</v-expansion-panel-header>
-                                <v-expansion-panel-content>
-                                    <v-card-text class="mx-2">
-                                        <span>Choose the text color using the palette.</span>
-                                    </v-card-text>
-                                    <v-divider></v-divider>
-                                    <v-card-text>
-                                        <v-color-picker class="ma-2"
-                                                        hide-inputs
-                                                        v-model=$vuetify.theme.themes.light.secondary>
-                                        </v-color-picker>
-                                    </v-card-text>
-                                    <v-divider></v-divider>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                        <v-btn text @click="menuColor = false, getColors()">Cancel</v-btn>
-                                        <v-btn color="primary" text @click="menuColor = false , setColors()">Save
-                                        </v-btn>
-                                    </v-card-actions>
-                                </v-expansion-panel-content>
-                            </v-expansion-panel>
-                        </v-expansion-panels>
-                    </v-card>
-                </v-menu>
-                <v-tooltip bottom>
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn v-bind="attrs"
-                               v-on="on"
-                               x-small depressed text class="primary lighten-1" @click.stop="dialog = true">
-                            <v-icon>help_outline</v-icon>
-                        </v-btn>
-                    </template>
-                    <span> Help </span>
-                </v-tooltip>
-                <v-dialog v-model="dialog">
-                    <v-card>
-                        <v-card-title>
+                  <v-radio-group
+                      v-model="instrumentSelected"
+                      row
+                      mandatory>
+                    <v-radio
+                        v-for="(instrument, i) in instruments"
+                        :key="i"
+                        :label="`${instrument}`"
+                        :value="i"
+                        v-on:click="setInstrument(instrumentSelected)">
+                    </v-radio>
+                  </v-radio-group>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+              <v-divider></v-divider>
+              <v-expansion-panel>
+                <v-expansion-panel-header>Select Color</v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <v-card-text class="mx-2">
+                    <span>Choose the text color using the palette.</span>
+                  </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-text>
+                    <v-color-picker class="ma-2"
+                                    hide-inputs
+                                    v-model=$vuetify.theme.themes.light.secondary>
+                    </v-color-picker>
+                  </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn text @click="menuColor = false, getColors()">Cancel</v-btn>
+                    <v-btn color="primary" text @click="menuColor = false , setColors()">Save
+                    </v-btn>
+                  </v-card-actions>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </v-card>
+        </v-menu>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs"
+                   v-on="on"
+                   x-small depressed text class="primary lighten-1" @click.stop="dialog = true">
+              <v-icon>help_outline</v-icon>
+            </v-btn>
+          </template>
+          <span> Help </span>
+        </v-tooltip>
+        <v-dialog v-model="dialog">
+          <v-card>
+            <v-card-title>
                             <span class="headline">How to use <span
-                                    class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
+                                class="font-weight-light secondary--text text--lighten-2 ">Chord</span>
                                 <span>Score</span></span>
-                        </v-card-title>
-                        <v-card-text>
-                            <span class="font-weight-light">Chord</span>Score is an app that takes as input a chord
-                            progression and provides the user with the
-                            possible substitution and voicings according to the rules of major scale harmony.
-                        </v-card-text>
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="secondary darken-1" text @click="dialog = false">close</v-btn>
+            </v-card-title>
+            <v-card-text>
+              <span class="font-weight-light">Chord</span>Score is an app that takes as input a chord
+              progression and provides the user with the
+              possible substitution and voicings according to the rules of major scale harmony.
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="secondary darken-1" text @click="dialog = false">close</v-btn>
 
-                        </v-card-actions>
-                    </v-card>
-                </v-dialog>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
 
-            </v-app-bar>
-            <v-container fluid class="px-16">
-                <v-layout row wrap>
-                    <v-flex xs12 md12 lg12 xl12>
-                        <v-row>
-                            <v-spacer></v-spacer>
-                            <Keyboard class="hidden-md-and-down"></Keyboard>
-                            <v-spacer></v-spacer>
-                        </v-row>
-                    </v-flex>
-                    <v-flex xs12 md12 lg12 xl12 class="mt-4">
-                        <v-card>
-                            <v-main class="mx-3 pt-3">
-                                <v-row no-gutters>
-                                    <v-col
-                                            cols="12"
-                                            sm="11">
-                                        <KeyReference></KeyReference>
-                                        <Modes></Modes>
-                                        <ChordProgression></ChordProgression>
-                                    </v-col>
-                                    <v-col class="pl-5"
-                                           cols="12"
-                                           sm="1">
-                                        <div id="palette" v-for="key in keys"
-                                             :key="key.name"
-                                             :style="`height:6.5%; width:100%`"
-                                             :class="`${key.colorText} lighten-1  secondary--text`"
-                                             align="center">
-                                            {{key.name}}
-                                        </div>
-                                    </v-col>
-                                </v-row>
-                            </v-main>
-                        </v-card>
-                    </v-flex>
-                </v-layout>
-            </v-container>
-        </v-main>
-    </v-app>
+      </v-app-bar>
+      <v-container fluid class="px-16">
+        <v-layout row wrap>
+          <v-flex xs12 md12 lg12 xl12>
+            <v-row>
+              <v-spacer></v-spacer>
+              <Keyboard class="hidden-md-and-down"></Keyboard>
+              <v-spacer></v-spacer>
+            </v-row>
+          </v-flex>
+          <v-flex xs12 md12 lg12 xl12 class="mt-4">
+            <v-card>
+              <v-main class="mx-3 pt-3">
+                <v-row >
+                  <v-col
+                      cols="12"
+                      sm="11">
+                    <KeyReference></KeyReference>
+                    <Modes></Modes>
+                    <ChordProgression></ChordProgression>
+                  </v-col>
+                  <v-col class="pl-5"
+                         cols="12"
+                         sm="1">
+                    <div v-for="key in keys"
+                         :key="key.name"
+                         :style="`height:7.7%; width:100%`"
+                         :class="[ (key.name.includes(selectedKey) && selectedKey.length===2 )|| (key.name === selectedKey) ? key.colorText + ' lighten-1  white--text  selected '  : key.colorText + ' lighten-1  secondary--text  notSelected'] "
+                         align="center">
+                      {{ key.name }}
+                    </div>
+                  </v-col>
+                </v-row >
+              </v-main>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-    import KeyReference from "@/components/KeyReference";
-    import Modes from "@/components/Modes";
-    import ChordProgression from "@/components/ChordProgression";
-    import Keyboard from "@/components/Keyboard";
+import KeyReference from "@/components/KeyReference";
+import Modes from "@/components/Modes";
+import ChordProgression from "@/components/ChordProgression";
+import Keyboard from "@/components/Keyboard";
 
 
-    export default {
+export default {
 
-        name: 'App',
-        data: function () {
-            return {
-                dialog: false,
-                menuColor: false,
-                instrumentSelected: 0
-            }
-        },
-        components: {
-            Keyboard,
-            ChordProgression,
-            Modes,
-            KeyReference
-        },
-        methods: {
-            reloadPage() {
-                window.location.reload()
-            },
-            setColors() {
-                localStorage.setItem("theme_secondary", this.$vuetify.theme.themes.light.secondary);
-            },
-            getColors() {
-                let theme_secondary = localStorage.getItem("theme_secondary");
-                if (theme_secondary !== null) {
-                    this.$vuetify.theme.themes.light.secondary = theme_secondary;
-                }
-            },
-            setInstrument(instrumentSelected) {
-                this.$store.commit('setInstrument', instrumentSelected);
-            },
-        },
-
-        mounted() {
-            const theme_secondary = localStorage.getItem("theme_secondary");
-            if (theme_secondary !== null) {
-                this.$vuetify.theme.themes.light.secondary = theme_secondary;
-            }
-        },
-
-        computed: {
-            instruments() {
-                return this.$store.getters.getInstruments
-            },
-            keys() {
-                return this.$store.getters.getKeysNameColor
-            }
-        }
+  name: 'App',
+  data: function () {
+    return {
+      dialog: false,
+      menuColor: false,
+      instrumentSelected: 0
     }
+  },
+  components: {
+    Keyboard,
+    ChordProgression,
+    Modes,
+    KeyReference
+  },
+  methods: {
+    reloadPage() {
+      window.location.reload()
+    },
+    setColors() {
+      localStorage.setItem("theme_secondary", this.$vuetify.theme.themes.light.secondary);
+    },
+    getColors() {
+      let theme_secondary = localStorage.getItem("theme_secondary");
+      if (theme_secondary !== null) {
+        this.$vuetify.theme.themes.light.secondary = theme_secondary;
+      }
+    },
+    setInstrument(instrumentSelected) {
+      this.$store.commit('setInstrument', instrumentSelected);
+    },
+  },
+
+  mounted() {
+    const theme_secondary = localStorage.getItem("theme_secondary");
+    if (theme_secondary !== null) {
+      this.$vuetify.theme.themes.light.secondary = theme_secondary;
+    }
+  },
+
+  computed: {
+    instruments() {
+      return this.$store.getters.getInstruments
+    },
+    keys() {
+      return this.$store.getters.getKeysNameColor
+    },
+    selectedKey() {
+
+      return this.$store.getters.getSelectedKey
+    }
+
+
+  }
+}
 </script>
 
 <style>
-    #palette {
-        position: relative;
-        width: auto;
-        height: auto;
-        border: 2px solid transparent;
-        border-right: none;
-        border-radius: 5px;
-        box-shadow: 0 3px 5px #666;
-        justify-content: center;
-        align-items: flex-end;
-        font-weight: bold;
-    }
+  .selected{
+    border-radius: 5px;
+    box-shadow: 0 3px 3px #666;
+    font-weight: bold;
+    border: 5px solid
+
+  }
+  .notSelected{
+    border-radius: 5px;
+    box-shadow: 0 3px 3px #666;
+  }
 </style>
 
