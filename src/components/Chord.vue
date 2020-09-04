@@ -267,6 +267,7 @@
                 this.$store.commit('deleteChordFromProgression', this.features);
             },
             fingerChord() {
+                this.$store.commit('resetPressedKeys');
                 this.$store.commit('fingerChord', this.features.notes);
             },
             resetKeyboard() {
