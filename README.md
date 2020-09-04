@@ -18,7 +18,7 @@ A working version of ChordSchool can be found here: https://fkutsukos.github.io/
 ## User Interface
 
 The ChordSchool user interfaces consists of the following  main components:
-1. The **Keyboard** that extends over three octaves and is displaying the notes composing the major scale of reference as well as  the placement of fingers over the it for the modal chords in their first position as well as all the possible alterations when applied by the user. Please note that the keyboard is available for medium and above screen sizes.
+1. The **Keyboard** that extends over three octaves and is displaying the notes composing the major scale of reference as well as the placement of fingers over it for the modal chords in their first position as well as all the possible alterations when applied by the user. Please note that the keyboard is available for medium and above screen sizes.
 
 2. The **control panel** where the user mainly interacts with the application. The user is able to create the chord progression of his choice, by placing a series of chords available from the seven modes of the reference scale. The user can reorder the progression by dragging its elements and hear the final result in different sound environments and configurable playout speed. As the user interacts with the control panel, the keyboard highlights his choices and helps him position himself over the keyboard as a player. The control panel is available for all screen sizes.
 
@@ -59,7 +59,7 @@ The selected Key position is highlighted in the palette and the name of the note
 
 6. In the Chord Progression section the user can: 
 
-    * **Play** the progression and view the fingering of the chords as the playout is moving forward in time,using the relative PLAY button
+    * **Play** the progression and view the fingering of the chords as the playout is moving forward in time, using the relative PLAY button
     * **Adjust** the BPM of the playout speed using the relative BPM button. 
     * **Reset** the current progression and delete all the selected chords using the RESET Button.
 
@@ -131,7 +131,7 @@ The presence of this new key reference inside the progression can be heard using
 
 4. **Available Substitutions**: Contains a list of the possible substitutions to be applied on the chord, based on their degree. The result is displayed both on the progression and on the keyboard fingering.
 
-5. **Voicings**: Contains a list of the voicings to be applied on the chord.The result is displayed on the keyboard fingering.
+5. **Voicings**: Contains a list of the voicings to be applied on the chord. The result is displayed on the keyboard fingering.
 
 ## Technologies Used
 
@@ -143,7 +143,7 @@ The Vue.js library is available at https://vuejs.org/
 
 
 ### Vuetify
-The UI of ChordSchool is built on Vuetify UI library combined with Vue and Vuex framework.  Vuetify is a reusable semantic component framework for Vue.js that follows the Material Design standard used by Google. This choice has offered us the option to apply style standardization and reusable components like buttons, menus etc with ease and with a visually satisfactory result.
+The UI of ChordSchool is built on Vuetify UI library combined with Vue and Vuex framework. Vuetify is a reusable semantic component framework for Vue.js that follows the Material Design standard used by Google. This choice has offered us the option to apply style standardization and reusable components like buttons, menus etc. with ease and with a visually satisfactory result.
 
 The Vuetify library is available at https://vuetifyjs.com/en/
 
