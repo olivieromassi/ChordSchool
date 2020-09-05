@@ -162,7 +162,7 @@ The JetBrain WebsStorm IDE is available at https://www.jetbrains.com/webstorm/
 
 
 ## Video Demo
-Here's a short demo of our project: ---
+Here's a short demo of our project: https://youtu.be/hOSSSHiEU8Q
 
 
 ## Building the project:
