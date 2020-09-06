@@ -118,7 +118,7 @@
                     <div v-for="key in keys"
                          :key="key.name"
                          :style="`height:7.7%; width:100%`"
-                         :class="[ (key.name.includes(selectedKey) && selectedKey.length===2 )|| (key.name === selectedKey) || (key.name.includes(selectedKey) && selectedKey==='B' && key.name.length>2) ? key.colorText + ' lighten-1  white--text  selected '  : key.colorText + ' lighten-1  secondary--text  notSelected'] ">
+                         :class="[ (key.highlight)|| (key.name.includes(selectedKey) && selectedKey.length===2 )|| (key.name === selectedKey) || (key.name.includes(selectedKey) && selectedKey==='B' && key.name.length>2) ? key.colorText + ' lighten-1  white--text  selected '  : key.colorText + ' lighten-1  secondary--text  notSelected'] ">
                       {{ key.name }}
                     </div>
                   </v-col>
@@ -210,6 +210,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 22px;
 
 }
 

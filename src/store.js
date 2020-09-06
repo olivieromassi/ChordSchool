@@ -25,18 +25,18 @@ export const store = new Vuex.Store({
             {name: 'Cb', color: colors.lightGreen, colorText: 'light-green'}],
 
         circleOfFifths:
-            [{name: 'C', colorText: 'red'},
-                {name: 'G', colorText: 'deep-orange'},
-                {name: 'D', colorText: 'orange'},
-                {name: 'A', colorText: 'amber'},
-                {name: 'E', colorText: 'yellow'},
-                {name: 'B/Cb', colorText: 'light-green'},
-                {name: 'F#/Gb', colorText: 'green'},
-                {name: 'C#/Db', colorText: 'teal'},
-                {name: 'Ab', colorText: 'light-blue'},
-                {name: 'Eb', colorText: 'blue'},
-                {name: 'Bb', colorText: 'indigo'},
-                {name: 'F', colorText: 'purple'}],
+            [{name: 'C', colorText: 'red', highlight: false},
+                {name: 'G', colorText: 'deep-orange', highlight: false},
+                {name: 'D', colorText: 'orange', highlight: false},
+                {name: 'A', colorText: 'amber', highlight: false},
+                {name: 'E', colorText: 'yellow', highlight: false},
+                {name: 'B/Cb', colorText: 'light-green', highlight: false},
+                {name: 'F#/Gb', colorText: 'green', highlight: false},
+                {name: 'C#/Db', colorText: 'teal', highlight: false},
+                {name: 'Ab', colorText: 'light-blue', highlight: false},
+                {name: 'Eb', colorText: 'blue', highlight: false},
+                {name: 'Bb', colorText: 'indigo', highlight: false},
+                {name: 'F', colorText: 'purple', highlight: false}],
 
         /*This list represents the notes of the chromatic scale*/
         chromaticScale: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
@@ -129,7 +129,7 @@ export const store = new Vuex.Store({
         /*Variable used as the selector for the different available sounds*/
         instrument: 0,
 
-        instruments:['piano' , 'sine-synth', 'saw-synth'],
+        instruments: ['piano', 'sine-synth', 'saw-synth'],
 
         /*This variable defines the sound of a piano starting from samples*/
         sampler: new Tone.Sampler({
@@ -152,16 +152,16 @@ export const store = new Vuex.Store({
 
         /*This variable defines the sound of a sinusoidal synthesizer*/
         synth1: new Tone.PolySynth(Tone.Synth, {
-            oscillator : {
-                type : "sine"
+            oscillator: {
+                type: "sine"
             },
             volume: -5
         }).toDestination(),
 
         /*This variable defines the sound of a sawtooth synthesizer*/
         synth2: new Tone.PolySynth(Tone.Synth, {
-            oscillator : {
-                type : "sawtooth"
+            oscillator: {
+                type: "sawtooth"
             },
             volume: -5
         }).toDestination(),
@@ -307,7 +307,6 @@ export const store = new Vuex.Store({
         commitProgression(state, chords) {
             state.progression = chords.items;
         },
-
 
 
         /*METHODS RELATED TO KEYBOARD FINGERING*/

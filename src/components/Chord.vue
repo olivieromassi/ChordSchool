@@ -3,7 +3,6 @@
         <v-row class="mx-1">
             <v-hover v-slot:default="{ hover }">
                 <v-card
-                    :elevation="hover ? 12 : 2"
                     :style="`font-size: 40px;box-shadow: ${distanceFromReference}px ${distanceFromReference}px ${distanceFromReference}px var(--v-secondary-base) !important;`"
                     :class="[distanceFromReference > 0 ? chordClass + ' ' + chordColor + ' ' + chordShade : chordClass + ' ' + 'primary' + ' ' + chordShade] "
                     @mouseenter="fingerChord()"
@@ -294,10 +293,22 @@ export default {
             this.$store.commit('deleteChordFromProgression', this.features);
         },
         fingerChord() {
+
+            for (let key of this.keys){
+                if (key.name === this.chordKeyRefScale){
+                    this.keys[this.keys.indexOf(key)].highlight = true;
+                    break;
+                }
+                else if (key.name.includes(this.chordKeyRefScale) && this.chordKeyRefScale!== "F"){
+                    this.keys[this.keys.indexOf(key)].highlight = true;
+                    break;
+                }
+            }
             this.$store.commit('resetPressedKeys');
             this.$store.commit('fingerChord', this.features.notes);
         },
         resetKeyboard() {
+            this.keys.forEach((key)=>{key.highlight = false;});
             this.$store.commit('resetPressedKeys');
         },
         playChord() {
@@ -607,6 +618,9 @@ export default {
         },
         instrument() {
             return this.$store.getters.getInstrument;
+        },
+        keys() {
+            return this.$store.getters.getKeysNameColor
         }
     }
 }
