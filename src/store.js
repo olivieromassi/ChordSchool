@@ -425,7 +425,7 @@ export const store = new Vuex.Store({
         },
         addNinth(state, index) {
             let chord = state.progression[index].notes;
-            let noteIndex = state.progression[index].scale.indexOf(state.progression[index].tonic) + 1;
+            let noteIndex = (state.progression[index].scale.indexOf(state.progression[index].tonic) + 1) % 7;
             let note = state.progression[index].scale[noteIndex];
             let octave = note.slice(-1);
             octave = octave - (-1);
