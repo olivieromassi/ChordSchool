@@ -13,7 +13,7 @@ Our application is focused on the educational aspect of Major Scale harmony, the
 
 The app is configured to run in all screen sizes and major browsers, so it's totally cross-platform and available for every desktop OS.
 
-A working version of ChordSchool can be found here: https://fkutsukos.github.io/index.html
+A working version of ChordSchool can be found here: https://olivieromassi.github.io/index.html
 
 ## User Interface
 
@@ -162,7 +162,7 @@ The JetBrain WebsStorm IDE is available at https://www.jetbrains.com/webstorm/
 
 
 ## Video Demo
-Here's a short demo of our project: ---
+Here's a short demo of our project: https://youtu.be/hOSSSHiEU8Q
 
 
 ## Building the project:
