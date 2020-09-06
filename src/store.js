@@ -308,6 +308,8 @@ export const store = new Vuex.Store({
             state.progression = chords.items;
         },
 
+
+
         /*METHODS RELATED TO KEYBOARD FINGERING*/
         /*This method resets the keyboard state to zero and fingers the chord*/
         resetPressedKeys(state) {
