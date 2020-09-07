@@ -427,11 +427,22 @@ export const store = new Vuex.Store({
         addNinth(state, index) {
             let chord = state.progression[index].notes;
             let noteIndex = (state.progression[index].scale.indexOf(state.progression[index].tonic) + 1) % 7;
-            let note = state.progression[index].scale[noteIndex];
-            let octave = note.slice(-1);
-            octave = octave - (-1);
+            let second = state.progression[index].scale[noteIndex];
+            let tonic = state.progression[index].tonic;
+            let octave;
+
+            state.progression[index].notes.forEach(value => {
+                if (value.slice(0, -1) === state.progression[index].tonic.slice(0, -1))
+                    octave = value.slice(-1);
+            });
+
+            if (tonic.slice(0, -1) === 'B' || tonic.slice(0, -1) === 'Bb')
+                octave = octave - (-2);
+            else
+                octave = octave - (-1);
+
             if (octave <= 5)
-                chord.push(note.slice(0, -1) + octave);
+                chord.push(second.slice(0, -1) + octave);
         },
 
         deleteFifth(state, index) {
