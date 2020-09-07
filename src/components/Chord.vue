@@ -607,14 +607,20 @@ export default {
             return this.features.scale[0].slice(0, -1)
         },
         distanceFromReference() {
-            let distance = 0;
-            let keys = this.$store.getters.getKeyReference.map(e => e.slice(0, -1));
-            this.features.scale.forEach(value => {
-                if (!keys.includes(value.slice(0, -1))) {
-                    distance++;
-                }
-            });
-            return distance;
+            let distance = [];
+            let refIndex = this.keys.map(e => e.name).indexOf(this.$store.getters.getSelectedKey);
+            let chordIndex = this.keys.map(e => e.name).indexOf(this.features.scale[0].slice(0, -1));
+
+            if (chordIndex >= refIndex)
+                distance[0] = chordIndex - refIndex;
+            else
+                distance[0] = refIndex - chordIndex;
+            distance[1] = 12 - distance[0];
+
+            if (distance[0] <= distance[1])
+                return {distance: distance[0], type: '#'};
+            else
+                return {distance: distance[1], type: 'b'};
         },
         instrument() {
             return this.$store.getters.getInstrument;
