@@ -3,8 +3,8 @@
         <v-row class="mx-1">
             <v-hover v-slot:default="{ hover }">
                 <v-card
-                    :style="`font-size: 40px;box-shadow: ${distanceFromReference}px ${distanceFromReference}px ${distanceFromReference}px var(--v-secondary-base) !important;`"
-                    :class="[distanceFromReference > 0 ? chordClass + ' ' + chordColor + ' ' + chordShade : chordClass + ' ' + 'primary' + ' ' + chordShade] "
+                    :style="`font-size: 40px;box-shadow: ${distanceFromReference.distance}px ${distanceFromReference.distance}px ${distanceFromReference.distance}px var(--v-secondary-base) !important;`"
+                    :class="[distanceFromReference.distance > 0 ? chordClass + ' ' + chordColor + ' ' + chordShade : chordClass + ' ' + 'primary' + ' ' + chordShade] "
                     @mouseenter="fingerChord()"
                     @mouseleave="resetKeyboard()">
                     <v-card-actions>
@@ -53,7 +53,7 @@
                                 </v-tooltip>
                             </template>
                             <v-card max-width="200"
-                                    :class="[distanceFromReference > 0 ? chordDetailsClass + ' ' + chordColor + ' ' + chordShade : chordDetailsClass + ' ' + 'primary' + ' ' + chordShade] ">
+                                    :class="[distanceFromReference.distance > 0 ? chordDetailsClass + ' ' + chordColor + ' ' + chordShade : chordDetailsClass + ' ' + 'primary' + ' ' + chordShade] ">
                                 <v-card-text class="secondary--text">
 
                                     <v-row align="center" justify="center">
@@ -64,14 +64,19 @@
                                            justify="center">
                                         {{ chordName }}
                                     </v-row>
-                                    <v-row v-if="distanceFromReference>0" align="center" justify="center"
+                                    <v-row v-if="distanceFromReference.distance>0 && distanceFromReference.type==='#'" align="center" justify="center"
                                            class="font-weight-bold text--darken-1">
                                         Distance in
                                         <v-icon small color="secondary"> mdi-music-accidental-sharp</v-icon>
-                                        /
+                                        :
+                                        {{ distanceFromReference.distance }}
+                                    </v-row>
+                                    <v-row v-if="distanceFromReference.distance>0 && distanceFromReference.type==='b'" align="center" justify="center"
+                                           class="font-weight-bold text--darken-1">
+                                        Distance in
                                         <v-icon small color="secondary">mdi-music-accidental-flat</v-icon>
                                         :
-                                        {{ distanceFromReference }}
+                                        {{ distanceFromReference.distance }}
                                     </v-row>
 
                                 </v-card-text>
@@ -608,8 +613,31 @@ export default {
         },
         distanceFromReference() {
             let distance = [];
-            let refIndex = this.keys.map(e => e.name).indexOf(this.$store.getters.getSelectedKey);
-            let chordIndex = this.keys.map(e => e.name).indexOf(this.features.scale[0].slice(0, -1));
+            let refIndex;
+            let chordIndex;
+
+
+            for (let key of this.keys){
+                if (key.name === this.$store.getters.getSelectedKey){
+                    chordIndex = this.keys.indexOf(key);
+                    break;
+                }
+                else if (key.name.includes(this.$store.getters.getSelectedKey) && this.$store.getters.getSelectedKey!== "F"){
+                    chordIndex = this.keys.indexOf(key);
+                    break;
+                }
+            }
+
+            for (let key of this.keys){
+                if (key.name === this.chordKeyRefScale){
+                    refIndex = this.keys.indexOf(key);
+                    break;
+                }
+                else if (key.name.includes(this.chordKeyRefScale) && this.chordKeyRefScale!== "F"){
+                    refIndex = this.keys.indexOf(key);
+                    break;
+                }
+            }
 
             if (chordIndex >= refIndex)
                 distance[0] = chordIndex - refIndex;
