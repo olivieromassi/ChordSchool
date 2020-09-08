@@ -64,14 +64,16 @@
                                            justify="center">
                                         {{ chordName }}
                                     </v-row>
-                                    <v-row v-if="distanceFromReference.distance>0 && distanceFromReference.type==='#'" align="center" justify="center"
+                                    <v-row v-if="distanceFromReference.distance>0 && distanceFromReference.type==='#'"
+                                           align="center" justify="center"
                                            class="font-weight-bold text--darken-1">
                                         Distance in
                                         <v-icon small color="secondary"> mdi-music-accidental-sharp</v-icon>
                                         :
                                         {{ distanceFromReference.distance }}
                                     </v-row>
-                                    <v-row v-if="distanceFromReference.distance>0 && distanceFromReference.type==='b'" align="center" justify="center"
+                                    <v-row v-if="distanceFromReference.distance>0 && distanceFromReference.type==='b'"
+                                           align="center" justify="center"
                                            class="font-weight-bold text--darken-1">
                                         Distance in
                                         <v-icon small color="secondary">mdi-music-accidental-flat</v-icon>
@@ -299,12 +301,11 @@ export default {
         },
         fingerChord() {
 
-            for (let key of this.keys){
-                if (key.name === this.chordKeyRefScale){
+            for (let key of this.keys) {
+                if (key.name === this.chordKeyRefScale) {
                     this.keys[this.keys.indexOf(key)].highlight = true;
                     break;
-                }
-                else if (key.name.includes(this.chordKeyRefScale) && this.chordKeyRefScale!== "F"){
+                } else if (key.name.includes(this.chordKeyRefScale) && this.chordKeyRefScale !== "F") {
                     this.keys[this.keys.indexOf(key)].highlight = true;
                     break;
                 }
@@ -313,7 +314,9 @@ export default {
             this.$store.commit('fingerChord', this.features.notes);
         },
         resetKeyboard() {
-            this.keys.forEach((key)=>{key.highlight = false;});
+            this.keys.forEach((key) => {
+                key.highlight = false;
+            });
             this.$store.commit('resetPressedKeys');
         },
         playChord() {
@@ -617,33 +620,33 @@ export default {
             let chordIndex;
 
 
-            for (let key of this.keys){
-                if (key.name === this.$store.getters.getSelectedKey){
+            for (let key of this.keys) {
+                if (key.name === this.$store.getters.getSelectedKey) {
                     chordIndex = this.keys.indexOf(key);
                     break;
-                }
-                else if (key.name.includes(this.$store.getters.getSelectedKey) && this.$store.getters.getSelectedKey!== "F"){
+                } else if (key.name.includes(this.$store.getters.getSelectedKey) && this.$store.getters.getSelectedKey !== "F") {
                     chordIndex = this.keys.indexOf(key);
                     break;
                 }
             }
 
-            for (let key of this.keys){
-                if (key.name === this.chordKeyRefScale){
+            for (let key of this.keys) {
+                if (key.name === this.chordKeyRefScale) {
                     refIndex = this.keys.indexOf(key);
                     break;
-                }
-                else if (key.name.includes(this.chordKeyRefScale) && this.chordKeyRefScale!== "F"){
+                } else if (key.name.includes(this.chordKeyRefScale) && this.chordKeyRefScale !== "F") {
                     refIndex = this.keys.indexOf(key);
                     break;
                 }
             }
 
-            if (chordIndex >= refIndex)
+            if (chordIndex >= refIndex) {
                 distance[0] = chordIndex - refIndex;
-            else
-                distance[0] = refIndex - chordIndex;
-            distance[1] = 12 - distance[0];
+                distance[1] = 12 - distance[0]
+            } else {
+                distance[1] = refIndex - chordIndex;
+                distance[0] = 12 - distance[1];
+            }
 
             if (distance[0] <= distance[1])
                 return {distance: distance[0], type: '#'};
