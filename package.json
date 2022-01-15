@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "material-design-icons": "^3.0.1",
-    "node-forge": "^0.10.0",
+    "node-forge": "^1.0.0",
     "serialize-javascript": "^5.0.1",
     "tone": "^14.7.39",
     "vue": "^2.6.11",
